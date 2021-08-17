@@ -2,7 +2,9 @@ import styled from "styled-components";
 
 export const StyledButtonOutline = styled.button`
 	margin-top: var(--space-xxsm);
-	margin-right: var(--space-xxsm);
+	margin-left: ${(props) => (props.align === "center" ? "auto" : "unset")};
+	margin-right: ${(props) =>
+		props.align === "center" ? "auto" : "var(--space-xxsm)"};
 	display: flex;
 	flex-direction: row;
 	justify-content: center;

@@ -3,13 +3,23 @@ import { StyledButtonOutline, StyledButtonFilled } from "./button.styles";
 interface Props {
 	children: string;
 	href?: string;
+	align?: string;
 	variant: string;
 }
 
-export default function Button({ children, href, variant = "filled" }: Props) {
+export default function Button({
+	children,
+	href,
+	variant = "filled",
+	align,
+}: Props) {
 	if (variant === "outlined") {
-		return <StyledButtonOutline>{children}</StyledButtonOutline>;
+		return (
+			<StyledButtonOutline align={align}>{children}</StyledButtonOutline>
+		);
 	} else {
-		return <StyledButtonFilled>{children}</StyledButtonFilled>;
+		return (
+			<StyledButtonFilled align={align}>{children}</StyledButtonFilled>
+		);
 	}
 }

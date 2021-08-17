@@ -1,8 +1,11 @@
 import Container from "../../layout/Container";
 import Button from "../../ui/Button";
 import Heading from "../../ui/Heading";
+import Paragraph from "../../ui/Paragraph";
 import { StyledAbout } from "./about.styles";
+import Carousel from "./Carousel";
 import Imagebox from "./Imagebox";
+import ImageGrid from "./ImageGrid";
 
 export default function About() {
 	return (
@@ -41,6 +44,24 @@ export default function About() {
 					est!
 				</p>
 				<Button variant="outlined">Contact us</Button>
+
+				<Carousel />
+
+				<Heading
+					align="center"
+					pretitle="Experiences"
+					content="Just enjoy it!"
+				/>
+
+				<Paragraph align="center">
+					Snackwave vinyl post-ironic jean shorts ugh brunch organic
+					tofu. Kinfolk forage biodiesel cornhole austin pinterest.
+					Brooklyn fashion axe kinfolk live-edge leggings 3 wolf moon.
+				</Paragraph>
+				<Button variant="filled" align="center">
+					Find a place to stay
+				</Button>
+				<ImageGrid />
 			</Container>
 		</StyledAbout>
 	);

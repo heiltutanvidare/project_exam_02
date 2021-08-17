@@ -7,5 +7,5 @@ export const StyledPretitle = styled.p`
 	letter-spacing: 0.5em;
 	text-transform: uppercase;
 	margin-bottom: var(--space-xsm);
-	color: ${(props) => (props.color ? props.color : "var(--clr-drk-500)")};
+	color: ${(props) => (props.color ? props.color : "var(--clr-drk-400)")};
 `;
