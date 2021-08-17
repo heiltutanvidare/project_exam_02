@@ -3,7 +3,7 @@
 	--max-width: 1200px;
 
 	/* Spacing */
-	--space-xxsm: 2rem;
+	--space-xxsm: 1.75rem;
 	--space-xsm: 2.5rem;
 	--space-sm: 4.25rem;
 	--space-md: 6.5rem;
@@ -11,6 +11,7 @@
 	--space-xl: 15rem;
 
 	/* Colors */
+	--clr-body-bg: #faf9f6;
 	--clr-drk-900: #202122;
 	--clr-drk-800: #393b3c;
 	--clr-drk-700: #505354;

@@ -1,6 +1,8 @@
 import styled from "styled-components";
 
 export const StyledButtonOutline = styled.button`
+	margin-top: var(--space-xxsm);
+	margin-right: var(--space-xxsm);
 	display: flex;
 	flex-direction: row;
 	justify-content: center;

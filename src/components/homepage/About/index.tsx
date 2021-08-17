@@ -1,3 +1,4 @@
+import Container from "../../layout/Container";
 import Button from "../../ui/Button";
 import Heading from "../../ui/Heading";
 import { StyledAbout } from "./about.styles";
@@ -6,7 +7,7 @@ import Imagebox from "./Imagebox";
 export default function About() {
 	return (
 		<StyledAbout>
-			<div className="max-width">
+			<Container>
 				<Heading
 					align="left"
 					pretitle="We are Holidaze"
@@ -40,7 +41,7 @@ export default function About() {
 					est!
 				</p>
 				<Button variant="outlined">Contact us</Button>
-			</div>
+			</Container>
 		</StyledAbout>
 	);
 }
