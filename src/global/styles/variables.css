@@ -22,6 +22,11 @@
 	--clr-drk-100: #dde3e8;
 	--clr-drk-50: #f4faff;
 
+	/* Border-radius */
+	--br-sm: 0.5rem;
+	--br-md: 1rem;
+	--br-lg: 1.5rem;
+
 	/* Transitions */
 	--cubic-bezier: cubic-bezier(0.61, 0.37, 0.55, 1.29);
 	--transition-fast: 0.125s var(--cubic-bezier);
