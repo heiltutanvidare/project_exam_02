@@ -12,7 +12,7 @@ export const StyledImagebox = styled.div`
 		grid-row: 1 / 10;
 
 		img {
-			height: 100%;
+			height: auto;
 			object-fit: cover;
 		}
 	}
@@ -23,7 +23,7 @@ export const StyledImagebox = styled.div`
 		grid-row: 9 / -1;
 
 		img {
-			height: 100%;
+			height: auto;
 			object-fit: cover;
 		}
 	}
