@@ -3,6 +3,7 @@ import Container from "../../layout/Container";
 import { StyledSearchResults } from "./searchResults.styles";
 import { API_BASE_URL } from "../../../constants/api";
 import useFetch from "../../../hooks/useFetch";
+import Loader from "../../ui/Loader";
 
 export default function SearchResults() {
 	const { data, fetching, error } = useFetch(
@@ -13,7 +14,7 @@ export default function SearchResults() {
 	if (fetching) {
 		return (
 			<Container>
-				<p>Loading...</p>
+				<Loader />
 			</Container>
 		);
 	}
