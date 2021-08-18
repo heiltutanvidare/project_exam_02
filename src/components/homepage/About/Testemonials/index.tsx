@@ -1,7 +1,10 @@
 import DecorativeImage from "../../../ui/DecorativeImage";
 import Heading from "../../../ui/Heading";
 import Paragraph from "../../../ui/Paragraph";
-import { StyledTestemonials } from "./testemonials.styles";
+import {
+	StyledTestemonials,
+	StyledQuotationMarks,
+} from "./testemonials.styles";
 import hiker from "../../../../assets/photos/hiker.png";
 import Container from "../../../layout/Container";
 
@@ -9,12 +12,13 @@ export default function Testemonials() {
 	return (
 		<StyledTestemonials>
 			<Container>
-				<div className="pullup">
+				<div className="pullup--xl">
 					<Heading
 						align="center"
 						pretitle="Testemonials"
-						content="What other travelers say"
+						content="What the other travelers say"
 					/>
+					<StyledQuotationMarks>“</StyledQuotationMarks>
 					<Paragraph align="center">
 						Snackwave vinyl post-ironic jean shorts ugh brunch
 						organic tofu. Kinfolk forage biodiesel cornhole austin
@@ -23,7 +27,9 @@ export default function Testemonials() {
 					</Paragraph>
 				</div>
 			</Container>
-			<DecorativeImage image={hiker} height="37rem" />
+			<div className="pullup--lg">
+				<DecorativeImage image={hiker} height="37rem" />
+			</div>
 		</StyledTestemonials>
 	);
 }

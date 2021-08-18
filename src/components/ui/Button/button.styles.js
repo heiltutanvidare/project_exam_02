@@ -15,6 +15,7 @@ export const StyledButtonOutline = styled.button`
 	border: 1px solid var(--clr-drk-900);
 	background: none;
 	color: var(--clr-drk-900);
+	width: ${(props) => (props.fullwidth ? "100%" : "auto")};
 `;
 
 export const StyledButtonFilled = styled(StyledButtonOutline)`

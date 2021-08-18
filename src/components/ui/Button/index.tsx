@@ -4,10 +4,12 @@ interface Props {
 	children: string;
 	href?: string;
 	align?: string;
+	fullwidth?: boolean;
 	variant: string;
 }
 
 export default function Button({
+	fullwidth,
 	children,
 	href,
 	variant = "filled",
@@ -15,11 +17,15 @@ export default function Button({
 }: Props) {
 	if (variant === "outlined") {
 		return (
-			<StyledButtonOutline align={align}>{children}</StyledButtonOutline>
+			<StyledButtonOutline fullwidth={fullwidth} align={align}>
+				{children}
+			</StyledButtonOutline>
 		);
 	} else {
 		return (
-			<StyledButtonFilled align={align}>{children}</StyledButtonFilled>
+			<StyledButtonFilled fullwidth={fullwidth} align={align}>
+				{children}
+			</StyledButtonFilled>
 		);
 	}
 }

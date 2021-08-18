@@ -4,6 +4,7 @@ import Heading from "../../ui/Heading";
 import Paragraph from "../../ui/Paragraph";
 import { StyledAbout } from "./about.styles";
 import Carousel from "./Carousel";
+import Contact from "./Contact";
 import Imagebox from "./Imagebox";
 import ImageGrid from "./ImageGrid";
 import Testemonials from "./Testemonials";
@@ -64,6 +65,9 @@ export default function About() {
 				<ImageGrid />
 			</Container>
 			<Testemonials />
+			<Container>
+				<Contact />
+			</Container>
 		</StyledAbout>
 	);
 }

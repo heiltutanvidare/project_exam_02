@@ -2,7 +2,7 @@ import styled from "styled-components";
 
 export const StyledImagebox = styled.div`
 	margin-top: var(--space-xsm);
-	margin-bottom: var(--space-xsm);
+	margin-bottom: var(--space-lg);
 	display: grid;
 	grid-template-columns: repeat(4, 1fr);
 	grid-template-rows: repeat(12, 1fr);
