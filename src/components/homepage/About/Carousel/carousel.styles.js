@@ -12,5 +12,5 @@ export const StyledCarouselContainer = styled.div`
 	grid-template-columns: min-content auto;
 	grid-gap: 1rem;
 	margin-top: var(--space-md);
-	margin-bottom: var(--space-xl);
+	margin-bottom: var(--space-lg);
 `;

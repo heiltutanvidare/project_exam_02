@@ -6,6 +6,7 @@ import { StyledAbout } from "./about.styles";
 import Carousel from "./Carousel";
 import Imagebox from "./Imagebox";
 import ImageGrid from "./ImageGrid";
+import Testemonials from "./Testemonials";
 
 export default function About() {
 	return (
@@ -52,7 +53,6 @@ export default function About() {
 					pretitle="Experiences"
 					content="Just enjoy it!"
 				/>
-
 				<Paragraph align="center">
 					Snackwave vinyl post-ironic jean shorts ugh brunch organic
 					tofu. Kinfolk forage biodiesel cornhole austin pinterest.
@@ -63,6 +63,7 @@ export default function About() {
 				</Button>
 				<ImageGrid />
 			</Container>
+			<Testemonials />
 		</StyledAbout>
 	);
 }
