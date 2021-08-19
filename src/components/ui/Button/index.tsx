@@ -1,4 +1,9 @@
-import { StyledButtonOutline, StyledButtonFilled } from "./button.styles";
+import {
+	StyledButtonOutline,
+	StyledButtonFilled,
+	StyledButtonForm,
+} from "./button.styles";
+import search from "../../../assets/graphics/Search.svg";
 
 interface Props {
 	children: string;
@@ -20,6 +25,13 @@ export default function Button({
 			<StyledButtonOutline fullwidth={fullwidth} align={align}>
 				{children}
 			</StyledButtonOutline>
+		);
+	} else if (variant === "form") {
+		return (
+			<StyledButtonForm fullwidth={fullwidth} align={align}>
+				<img src={search} alt="Search icon" />
+				{children}
+			</StyledButtonForm>
 		);
 	} else {
 		return (

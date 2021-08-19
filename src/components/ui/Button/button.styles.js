@@ -22,3 +22,16 @@ export const StyledButtonFilled = styled(StyledButtonOutline)`
 	background: var(--clr-drk-900);
 	color: var(--clr-drk-50);
 `;
+
+export const StyledButtonForm = styled(StyledButtonFilled)`
+	border-radius: 0;
+	margin-top: 0;
+	display: flex;
+	align-content: center;
+	justify-content: center;
+
+	img {
+		max-width: 1.25rem;
+		margin-right: 0.5rem;
+	}
+`;
