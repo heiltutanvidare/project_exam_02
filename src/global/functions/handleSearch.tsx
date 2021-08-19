@@ -1,6 +1,6 @@
-export default function handleSearch(e: React.SyntheticEvent) {
-	e.preventDefault();
+import React from "react";
 
+export default function handleSearch(e: React.SyntheticEvent) {
 	const target = e.target as typeof e.target & {
 		location: { value: string };
 		guests: { value: number };
@@ -18,9 +18,9 @@ export default function handleSearch(e: React.SyntheticEvent) {
 		checkInDate.getTime() - checkOutDate.getTime();
 	const differenceInDays: number = differenceInTime / (1000 * 3600 * 24);
 
-	console.log("Wants to stay at: " + location);
-	console.log("Number of guests: " + guests);
-	console.log("Arrives at: " + checkIn);
-	console.log("Leaves at: " + checkOut);
-	console.log("They want to stay: " + differenceInDays + " days");
+	return {
+		location: location,
+		guests: guests,
+		days: differenceInDays,
+	};
 }

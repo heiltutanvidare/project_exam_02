@@ -1,7 +1,7 @@
 import Accommodation from "../../accommodations/Accommodation";
 import Container from "../../layout/Container";
 import { StyledSearchResults } from "./searchResults.styles";
-import { API_BASE_URL } from "../../../constants/api";
+import { API_BASE_URL } from "../../../global/constants/api";
 import useFetch from "../../../hooks/useFetch";
 import Loader from "../../ui/Loader";
 

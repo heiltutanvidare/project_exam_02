@@ -1,3 +1,5 @@
+import { useContext } from "react";
+import SearchContext from "../../../global/contexts/SearchContext";
 import handleSearch from "../../../global/functions/handleSearch";
 import Container from "../../layout/Container";
 import Button from "../../ui/Button";
@@ -10,9 +12,17 @@ import {
 } from "./searchBox.styles";
 
 export default function SearchBox() {
+	const [, setSearch] = useContext(SearchContext);
+
+	function handleSubmit(e: React.SyntheticEvent) {
+		e.preventDefault();
+		const search: {} = handleSearch(e);
+		setSearch(search);
+	}
+
 	return (
 		<Container>
-			<StyledForm onSubmit={handleSearch}>
+			<StyledForm onSubmit={handleSubmit}>
 				<StyledFormGrid>
 					<StyledField>
 						<StyledLabel htmlFor="location">Location</StyledLabel>
