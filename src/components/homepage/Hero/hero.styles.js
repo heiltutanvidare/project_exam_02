@@ -10,6 +10,7 @@ export const StyledHero = styled.section`
 	background-position: center center;
 	background-repeat: no-repeat;
 	position: relative;
+	padding-top: 3.75rem;
 
 	.overlay {
 		background: rgba(0, 0, 0, 0.3);

@@ -1,13 +1,19 @@
 import styled from "styled-components";
 
 export const StyledHeader = styled.header`
-	/* position: fixed;
+	position: fixed;
 	z-index: 1000;
 	top: 0;
 	left: 0;
-	right: 0; */
-	border-bottom: 1px solid var(--clr-drk-50);
-	background: var(--clr-drk-900);
+	right: 0;
+	border-bottom: 1px solid transparent;
+	background: none;
+	transition: all 0.5s linear;
+
+	&.filled {
+		background: var(--clr-drk-900);
+		border-color: var(--clr-drk-50);
+	}
 
 	.inner {
 		padding-top: 1.25rem;
