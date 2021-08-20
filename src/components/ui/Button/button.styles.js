@@ -16,11 +16,24 @@ export const StyledButtonOutline = styled.button`
 	background: none;
 	color: var(--clr-drk-900);
 	width: ${(props) => (props.fullwidth ? "100%" : "auto")};
+	cursor: pointer;
+	transition: all 0.125s linear;
+
+	&:hover {
+		background: var(--clr-drk-900);
+		color: var(--clr-drk-50);
+		transform: scale(0.98);
+	}
 `;
 
 export const StyledButtonFilled = styled(StyledButtonOutline)`
 	background: var(--clr-drk-900);
 	color: var(--clr-drk-50);
+
+	&:hover {
+		background: var(--clr-drk-600);
+		border-color: var(--clr-drk-600);
+	}
 `;
 
 export const StyledButtonForm = styled(StyledButtonFilled)`
@@ -33,5 +46,10 @@ export const StyledButtonForm = styled(StyledButtonFilled)`
 	img {
 		max-width: 1.25rem;
 		margin-right: 0.5rem;
+	}
+
+	&:hover {
+		background: var(--clr-drk-600);
+		transform: scale(1);
 	}
 `;
