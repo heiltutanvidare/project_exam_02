@@ -11,6 +11,8 @@
 	--space-xl: 15rem;
 
 	/* Colors */
+	--clr-danger: #ef5d77;
+	--clr-danger-transp: #ef5d7822;
 	--clr-white: #ffffff;
 	--clr-body-bg: #faf9f6;
 	--clr-drk-900-transp: #20212200;
