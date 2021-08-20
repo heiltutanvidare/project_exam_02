@@ -18,7 +18,9 @@ export const StyledContact = styled.div`
 		border: none;
 		background: none;
 		border-bottom: 1px solid var(--clr-drk-900);
-		padding: 0.4rem 0;
+		padding: 0.4rem;
+		border-radius: 0;
+		margin: 0;
 
 		&::placeholder {
 			color: var(--clr-drk-500);
@@ -32,7 +34,9 @@ export const StyledContact = styled.div`
 		border: none;
 		background: none;
 		border-bottom: 1px solid var(--clr-drk-900);
-		padding: 0.4rem 0;
+		padding: 0.4rem;
+		border-radius: 0;
+		margin: 0;
 
 		&::placeholder {
 			color: var(--clr-drk-500);

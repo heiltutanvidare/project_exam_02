@@ -3,36 +3,37 @@ import { useForm } from "react-hook-form";
 import * as yup from "yup";
 import { yupResolver } from "@hookform/resolvers/yup";
 import {
-	MIN_FIRST_NAME_LENGTH,
-	MIN_LAST_NAME_LENGTH,
+	MIN_NAME_LENGTH,
 	MIN_MESSAGE_LENGTH,
+	MIN_SUBJECT_LENGTH,
 } from "../../../../global/constants/formValidation";
 import Button from "../../../ui/Button/Button";
 import Heading from "../../../ui/Heading/Heading";
 import { StyledContact } from "./contact.styles";
 import Message from "../../../ui/Message/Message";
+import submitContactMessage from "../../../../global/functions/submitContactMessage";
 
 // Yup schema
 const schema = yup.object().shape({
-	firstName: yup
+	name: yup
 		.string()
-		.required("Please enter your first name")
+		.required("Please enter your name")
 		.min(
-			MIN_FIRST_NAME_LENGTH,
-			`Please enter at least ${MIN_FIRST_NAME_LENGTH} characters`
-		),
-	lastName: yup
-		.string()
-		.required("Please enter your last name")
-		.min(
-			MIN_LAST_NAME_LENGTH,
-			`Please enter at least ${MIN_LAST_NAME_LENGTH} characters`
+			MIN_NAME_LENGTH,
+			`Please enter at least ${MIN_NAME_LENGTH} characters`
 		),
 	email: yup
 		.string()
 		.required("Please enter your email address")
 		.email("Please enter a valid email address"),
-	phone: yup.number(),
+	phone: yup.string().optional(),
+	subject: yup
+		.string()
+		.required("Please enter a subject")
+		.min(
+			MIN_SUBJECT_LENGTH,
+			`Please enter at least ${MIN_SUBJECT_LENGTH} characters`
+		),
 	message: yup
 		.string()
 		.required("Please enter you message")
@@ -58,6 +59,7 @@ export default function Contact() {
 	function onSubmit(data) {
 		console.log(data);
 		setSubmitted(true);
+		submitContactMessage(data);
 		reset();
 	}
 
@@ -73,33 +75,17 @@ export default function Contact() {
 			/>
 			<form onSubmit={handleSubmit(onSubmit)}>
 				<div className="form__field">
-					<label htmlFor="firstName">First name</label>
+					<label htmlFor="name">Name</label>
 					<input
 						type="text"
-						placeholder="Enter your first name"
-						id="firstName"
+						placeholder="Enter your name"
+						id="name"
 						errors={errors}
-						{...register("firstName")}
-						className={errors.firstName ? "hasError" : ""}
+						{...register("name")}
+						className={errors.name ? "hasError" : ""}
 					/>
-					{errors.firstName && (
-						<p className="form__error">
-							{errors.firstName.message}
-						</p>
-					)}
-				</div>
-
-				<div className="form__field">
-					<label htmlFor="lastName">Last name</label>
-					<input
-						type="text"
-						placeholder="Enter your last name"
-						id="lastName"
-						{...register("lastName")}
-						className={errors.lastName ? "hasError" : ""}
-					/>
-					{errors.lastName && (
-						<p className="form__error">{errors.lastName.message}</p>
+					{errors.name && (
+						<p className="form__error">{errors.name.message}</p>
 					)}
 				</div>
 
@@ -120,11 +106,25 @@ export default function Contact() {
 				<div className="form__field">
 					<label htmlFor="phone">Phone number</label>
 					<input
-						type="text"
+						type="tel"
 						placeholder="Enter your phone number"
 						id="phone"
 						{...register("phone")}
 					/>
+				</div>
+
+				<div className="form__field">
+					<label htmlFor="subject">Subject</label>
+					<input
+						type="text"
+						placeholder="Enter a subject"
+						id="subject"
+						{...register("subject")}
+						className={errors.subject ? "hasError" : ""}
+					/>
+					{errors.subject && (
+						<p className="form__error">{errors.subject.message}</p>
+					)}
 				</div>
 
 				<div className="form__field">
