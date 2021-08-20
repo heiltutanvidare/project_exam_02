@@ -1,19 +1,13 @@
+import PropTypes from "prop-types";
 import { StyledHeading } from "./heading.styles";
-import Pretitle from "../Pretitle";
-
-interface Props {
-	content: string;
-	pretitle?: string;
-	align?: string;
-	heroTitle?: boolean;
-}
+import Pretitle from "../Pretitle/Pretitle";
 
 export default function Heading({
 	content,
 	pretitle,
 	align = "left",
 	heroTitle = false,
-}: Props) {
+}) {
 	return (
 		<>
 			{pretitle && <Pretitle align={align}>{pretitle}</Pretitle>}
@@ -23,3 +17,15 @@ export default function Heading({
 		</>
 	);
 }
+
+Heading.propTypes = {
+	content: PropTypes.string.isRequired,
+	pretitle: PropTypes.string,
+	align: PropTypes.string,
+	heroTitle: PropTypes.bool,
+};
+
+Heading.defaultProps = {
+	align: "left",
+	heroTitle: false,
+};

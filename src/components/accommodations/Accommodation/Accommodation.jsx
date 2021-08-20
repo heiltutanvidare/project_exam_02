@@ -1,13 +1,7 @@
+import PropTypes from "prop-types";
 import { StyledAccommodation } from "./accommodation.styles";
 
-interface Props {
-	price: number;
-	title: string;
-	type: string;
-	image: string;
-}
-
-export default function Accommodation({ price, title, type, image }: Props) {
+export default function Accommodation({ price, title, type, image }) {
 	return (
 		<StyledAccommodation>
 			<img className="accommodation__image" src={image} alt={title} />
@@ -20,3 +14,10 @@ export default function Accommodation({ price, title, type, image }: Props) {
 		</StyledAccommodation>
 	);
 }
+
+Accommodation.propTypes = {
+	price: PropTypes.number.isRequired,
+	title: PropTypes.string.isRequired,
+	type: PropTypes.string.isRequired,
+	image: PropTypes.string.isRequired,
+};

@@ -1,13 +1,13 @@
-import Container from "../../layout/Container";
-import Button from "../../ui/Button";
-import Heading from "../../ui/Heading";
-import Paragraph from "../../ui/Paragraph";
+import Container from "../../layout/Container/Container";
+import Button from "../../ui/Button/Button";
+import Heading from "../../ui/Heading/Heading";
+import Paragraph from "../../ui/Paragraph/Paragraph";
 import { StyledAbout } from "./about.styles";
-import Carousel from "./Carousel";
-import Contact from "./Contact";
-import Imagebox from "./Imagebox";
-import ImageGrid from "./ImageGrid";
-import Testemonials from "./Testemonials";
+import Carousel from "./Carousel/Carousel";
+import Contact from "./Contact/Contact";
+import Imagebox from "./Imagebox/Imagebox";
+import ImageGrid from "./ImageGrid/ImageGrid";
+import Testemonials from "./Testemonials/Testemonials";
 
 export default function About() {
 	return (

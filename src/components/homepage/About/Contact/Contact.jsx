@@ -1,6 +1,6 @@
-import Button from "../../../ui/Button";
+import Button from "../../../ui/Button/Button";
 import FormField from "../../../ui/Forms/FormField";
-import Heading from "../../../ui/Heading";
+import Heading from "../../../ui/Heading/Heading";
 import { StyledContact } from "./contact.styles";
 
 export default function Contact() {

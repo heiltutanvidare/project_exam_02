@@ -1,9 +1,9 @@
-import Accommodation from "../../accommodations/Accommodation";
-import Container from "../../layout/Container";
+import Accommodation from "../../accommodations/Accommodation/Accommodation";
+import Container from "../../layout/Container/Container";
 import { StyledSearchResults } from "./searchResults.styles";
 import { API_BASE_URL } from "../../../global/constants/api";
 import useFetch from "../../../hooks/useFetch";
-import Loader from "../../ui/Loader";
+import Loader from "../../ui/Loader/Loader";
 
 export default function SearchResults() {
 	const { data, fetching, error } = useFetch(

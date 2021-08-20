@@ -1,4 +1,4 @@
-import GridItem from "./GridItem";
+import GridItem from "./GridItem/GridItem";
 import { StyledImageGrid } from "./imageGrid.styles";
 import experience01 from "../../../../assets/photos/experience01.jpg";
 import experience02 from "../../../../assets/photos/experience02.jpg";

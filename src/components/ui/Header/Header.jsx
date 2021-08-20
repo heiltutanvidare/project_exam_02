@@ -1,5 +1,5 @@
-import Hamburger from "../Hamburger";
-import Logo from "../Logo";
+import Hamburger from "../Hamburger/Hamburger";
+import Logo from "../Logo/Logo";
 import { StyledHeader } from "./header.styles";
 
 export default function Header() {

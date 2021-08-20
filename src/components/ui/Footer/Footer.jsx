@@ -1,4 +1,4 @@
-import Container from "../../layout/Container";
+import Container from "../../layout/Container/Container";
 import { StyledFooter } from "./footer.styles";
 
 export default function Footer() {

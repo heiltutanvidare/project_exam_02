@@ -1,6 +1,6 @@
 import { StyledHero } from "./hero.styles";
-import Heading from "../../ui/Heading";
-import Pretitle from "../../ui/Pretitle";
+import Heading from "../../ui/Heading/Heading";
+import Pretitle from "../../ui/Pretitle/Pretitle";
 
 export default function Hero() {
 	return (

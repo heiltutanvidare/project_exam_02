@@ -1,12 +1,12 @@
-import DecorativeImage from "../../../ui/DecorativeImage";
-import Heading from "../../../ui/Heading";
-import Paragraph from "../../../ui/Paragraph";
+import DecorativeImage from "../../../ui/DecorativeImage/DecorativeImage";
+import Heading from "../../../ui/Heading/Heading";
+import Paragraph from "../../../ui/Paragraph/Paragraph";
 import {
 	StyledTestemonials,
 	StyledQuotationMarks,
 } from "./testemonials.styles";
 import hiker from "../../../../assets/photos/hiker.png";
-import Container from "../../../layout/Container";
+import Container from "../../../layout/Container/Container";
 
 export default function Testemonials() {
 	return (

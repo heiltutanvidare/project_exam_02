@@ -1,8 +1,8 @@
 import { useContext } from "react";
 import SearchContext from "../../../global/contexts/SearchContext";
 import handleSearch from "../../../global/functions/handleSearch";
-import Container from "../../layout/Container";
-import Button from "../../ui/Button";
+import Container from "../../layout/Container/Container";
+import Button from "../../ui/Button/Button";
 import {
 	StyledForm,
 	StyledField,
@@ -15,9 +15,9 @@ export default function SearchBox() {
 	const [search, setSearch] = useContext(SearchContext);
 	console.log("Search in Context is:", search);
 
-	function handleSubmit(e: React.SyntheticEvent) {
+	function handleSubmit(e) {
 		e.preventDefault();
-		const searchTerms: {} = handleSearch(e);
+		const searchTerms = handleSearch(e);
 		console.log("Searchterms are:", searchTerms);
 		setSearch(searchTerms);
 		console.log("Search in Context is:", search);
@@ -45,16 +45,16 @@ export default function SearchBox() {
 						/>
 					</StyledField>
 					<StyledField>
-						<StyledLabel htmlFor="checkout">Check in</StyledLabel>
+						<StyledLabel htmlFor="checkin">Check in</StyledLabel>
+						<StyledInput type="date" id="checkin" name="checkin" />
+					</StyledField>
+					<StyledField>
+						<StyledLabel htmlFor="checkout">Check out</StyledLabel>
 						<StyledInput
 							type="date"
 							id="checkout"
 							name="checkout"
 						/>
-					</StyledField>
-					<StyledField>
-						<StyledLabel htmlFor="checkin">Check out</StyledLabel>
-						<StyledInput type="date" id="checkin" name="checkin" />
 					</StyledField>
 				</StyledFormGrid>
 				<Button variant="form" fullwidth>
