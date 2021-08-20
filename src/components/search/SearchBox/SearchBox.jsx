@@ -1,7 +1,6 @@
 import { useContext } from "react";
 import SearchContext from "../../../global/contexts/SearchContext";
 import handleSearch from "../../../global/functions/handleSearch";
-import Container from "../../layout/Container/Container";
 import Button from "../../ui/Button/Button";
 import {
 	StyledForm,
@@ -24,43 +23,37 @@ export default function SearchBox() {
 	}
 
 	return (
-		<Container>
-			<StyledForm onSubmit={handleSubmit}>
-				<StyledFormGrid>
-					<StyledField>
-						<StyledLabel htmlFor="location">Location</StyledLabel>
-						<StyledInput
-							placeholder="Bergen"
-							id="location"
-							name="location"
-						/>
-					</StyledField>
-					<StyledField>
-						<StyledLabel htmlFor="guests">Guests</StyledLabel>
-						<StyledInput
-							placeholder="2"
-							id="guests"
-							name="guests"
-							type="number"
-						/>
-					</StyledField>
-					<StyledField>
-						<StyledLabel htmlFor="checkin">Check in</StyledLabel>
-						<StyledInput type="date" id="checkin" name="checkin" />
-					</StyledField>
-					<StyledField>
-						<StyledLabel htmlFor="checkout">Check out</StyledLabel>
-						<StyledInput
-							type="date"
-							id="checkout"
-							name="checkout"
-						/>
-					</StyledField>
-				</StyledFormGrid>
-				<Button variant="form" fullwidth>
-					Search
-				</Button>
-			</StyledForm>
-		</Container>
+		<StyledForm onSubmit={handleSubmit}>
+			<StyledFormGrid>
+				<StyledField>
+					<StyledLabel htmlFor="location">Location</StyledLabel>
+					<StyledInput
+						placeholder="Bergen"
+						id="location"
+						name="location"
+					/>
+				</StyledField>
+				<StyledField>
+					<StyledLabel htmlFor="guests">Guests</StyledLabel>
+					<StyledInput
+						placeholder="2"
+						id="guests"
+						name="guests"
+						type="number"
+					/>
+				</StyledField>
+				<StyledField>
+					<StyledLabel htmlFor="checkin">Check in</StyledLabel>
+					<StyledInput type="date" id="checkin" name="checkin" />
+				</StyledField>
+				<StyledField>
+					<StyledLabel htmlFor="checkout">Check out</StyledLabel>
+					<StyledInput type="date" id="checkout" name="checkout" />
+				</StyledField>
+			</StyledFormGrid>
+			<Button variant="form" fullwidth>
+				Search
+			</Button>
+		</StyledForm>
 	);
 }

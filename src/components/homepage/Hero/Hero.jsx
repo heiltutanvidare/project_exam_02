@@ -1,6 +1,7 @@
 import { StyledHero } from "./hero.styles";
 import Heading from "../../ui/Heading/Heading";
 import Pretitle from "../../ui/Pretitle/Pretitle";
+import SearchBox from "../../search/SearchBox/SearchBox";
 
 export default function Hero() {
 	return (
@@ -12,9 +13,12 @@ export default function Hero() {
 					content="Western Norway the way it’s meant to be experienced"
 					heroTitle
 				></Heading>
-				<Pretitle align="center" color="var(--clr-drk-50)">
-					Find a place to stay
-				</Pretitle>
+				<div>
+					<Pretitle align="center" color="var(--clr-drk-50)">
+						Find a place to stay
+					</Pretitle>
+					<SearchBox />
+				</div>
 			</div>
 		</StyledHero>
 	);

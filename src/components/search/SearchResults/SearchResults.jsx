@@ -1,3 +1,5 @@
+import { useContext } from "react";
+import SearchContext from "../../../global/contexts/SearchContext";
 import Accommodation from "../../accommodations/Accommodation/Accommodation";
 import Container from "../../layout/Container/Container";
 import { StyledSearchResults } from "./searchResults.styles";
@@ -9,7 +11,14 @@ export default function SearchResults() {
 	const { data, fetching, error } = useFetch(
 		`${API_BASE_URL}/establishments`
 	);
-	console.log(data);
+
+	const [search] = useContext(SearchContext);
+
+	let numberOfDays = 1;
+	if (search) {
+		numberOfDays = search.days;
+		console.log(numberOfDays);
+	}
 
 	if (fetching) {
 		return (
@@ -39,6 +48,7 @@ export default function SearchResults() {
 								title={accommodation.title}
 								type={accommodation.type.accommodation_type}
 								image={accommodation.main_image.url}
+								total={accommodation.price * numberOfDays}
 							/>
 						);
 					})}

@@ -24,7 +24,7 @@ export const StyledHero = styled.section`
 		display: flex;
 		flex-direction: column;
 		justify-content: space-around;
-		height: 100%;
+		height: 110%;
 		position: relative;
 		z-index: 1;
 	}

@@ -2,7 +2,7 @@ import styled from "styled-components";
 
 export const StyledForm = styled.form`
 	margin: var(--space-xsm) 0;
-	border-radius: var(--br-md);
+	border-radius: var(--br-xsm);
 	overflow: hidden;
 	box-shadow: var(--box-shadow-md);
 `;
@@ -21,6 +21,7 @@ export const StyledField = styled.div`
 `;
 
 export const StyledLabel = styled.label`
+	color: var(--clr-drk-800);
 	font-size: 0.75rem;
 	font-weight: 700;
 	width: 100%;

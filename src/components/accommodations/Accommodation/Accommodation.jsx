@@ -1,7 +1,7 @@
 import PropTypes from "prop-types";
 import { StyledAccommodation } from "./accommodation.styles";
 
-export default function Accommodation({ price, title, type, image }) {
+export default function Accommodation({ price, title, type, image, total }) {
 	return (
 		<StyledAccommodation>
 			<img className="accommodation__image" src={image} alt={title} />
@@ -10,7 +10,7 @@ export default function Accommodation({ price, title, type, image }) {
 			<p className="accommodation__price">
 				<span>{price}</span> / night
 			</p>
-			<p className="accommodation__price--total">4.243$ total</p>
+			<p className="accommodation__price--total">{total}$ total</p>
 		</StyledAccommodation>
 	);
 }
@@ -20,4 +20,5 @@ Accommodation.propTypes = {
 	title: PropTypes.string.isRequired,
 	type: PropTypes.string.isRequired,
 	image: PropTypes.string.isRequired,
+	total: PropTypes.number.isRequired,
 };

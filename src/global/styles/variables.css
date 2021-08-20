@@ -28,6 +28,7 @@
 	--clr-drk-50: #f4faff;
 
 	/* Border-radius */
+	--br-xsm: 0.25rem;
 	--br-sm: 0.5rem;
 	--br-md: 1rem;
 	--br-lg: 1.5rem;
