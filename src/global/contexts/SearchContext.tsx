@@ -1,16 +1,9 @@
-import React, { useState } from "react";
+import React, { FC, useState } from "react";
 
-// Search state saved in context to
-// make it avbailable for the search components
+const SearchContext = React.createContext<any>([null, () => {}]);
 
-const SearchContext = React.createContext([null, () => {}]);
-
-interface Props {
-	children: React.ReactNode;
-}
-
-export const SearchProvider = ({ children }: Props) => {
-	const [search, setSearch]: any = useState({});
+export const SearchProvider: FC = ({ children }) => {
+	const [search, setSearch] = useState(null);
 	return (
 		<SearchContext.Provider value={[search, setSearch]}>
 			{children}

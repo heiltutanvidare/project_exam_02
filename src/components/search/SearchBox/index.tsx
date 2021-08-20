@@ -12,12 +12,15 @@ import {
 } from "./searchBox.styles";
 
 export default function SearchBox() {
-	const [, setSearch] = useContext(SearchContext);
+	const [search, setSearch] = useContext(SearchContext);
+	console.log("Search in Context is:", search);
 
 	function handleSubmit(e: React.SyntheticEvent) {
 		e.preventDefault();
-		const search: {} = handleSearch(e);
-		setSearch(search);
+		const searchTerms: {} = handleSearch(e);
+		console.log("Searchterms are:", searchTerms);
+		setSearch(searchTerms);
+		console.log("Search in Context is:", search);
 	}
 
 	return (
