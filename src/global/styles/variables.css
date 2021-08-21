@@ -27,6 +27,9 @@
 	--clr-drk-100: #dde3e8;
 	--clr-drk-50: #f4faff;
 
+	--clr-primary-900: #051524;
+	--clr-primary-500: #032d51;
+
 	/* Border-radius */
 	--br-xsm: 0.25rem;
 	--br-sm: 0.5rem;
