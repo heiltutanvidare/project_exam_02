@@ -29,4 +29,8 @@ export const StyledHero = styled.section`
 		position: relative;
 		z-index: 1;
 	}
+
+	.pullup {
+		margin-top: -1.5rem;
+	}
 `;

@@ -10,14 +10,16 @@ export default function Hero() {
 			<div className="inner max-width">
 				<Heading
 					align="center"
-					content="Western Norway the way it’s meant to be experienced"
+					content="Rest a bit before your next amazing adventure"
 					heroTitle
 				></Heading>
 				<div>
 					<Pretitle align="center" color="var(--clr-drk-50)">
 						Find a place to stay
 					</Pretitle>
-					<SearchBox />
+					<div className="pullup">
+						<SearchBox />
+					</div>
 				</div>
 			</div>
 		</StyledHero>
