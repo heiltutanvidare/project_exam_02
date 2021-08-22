@@ -6,6 +6,8 @@ export default function Message({ heading, message, variant }) {
 
 	if (variant === "danger") {
 		bg = "var(--clr-danger)";
+	} else if (variant === "success") {
+		bg = "var(--clr-success)";
 	}
 
 	return (

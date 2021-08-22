@@ -1,17 +1,23 @@
 import styled from "styled-components";
 
 export const StyledMenuOverlay = styled.div`
-	padding-top: var(--space-xsm);
 	position: fixed;
 	top: 0;
-	width: 85%;
+	left: 0;
 	right: 0;
 	bottom: 0;
-	margin-left: auto;
 	overflow-y: scroll;
-	background-color: var(--clr-primary-900);
 	color: var(--clr-drk-50);
 	z-index: 3000;
+	background-color: rgba(0, 0, 0, 0.75);
+
+	.inner {
+		padding-top: var(--space-xsm);
+		padding-bottom: var(--space-md);
+		background-color: var(--clr-primary-900);
+		margin-left: auto;
+		width: 85%;
+	}
 
 	.menu {
 		&__close__button {
@@ -32,6 +38,7 @@ export const StyledMenuOverlay = styled.div`
 				padding: 0.5rem;
 				border-radius: 50%;
 				fill: red;
+				margin-left: 0.5rem;
 			}
 		}
 
@@ -60,9 +67,9 @@ export const StyledMenuOverlay = styled.div`
 		}
 
 		&__links__container {
-			margin: 2.5rem 0;
+			margin: var(--space-xxsm) 0;
 			display: grid;
-			grid-gap: 1rem;
+			grid-gap: 0.5rem;
 		}
 
 		&__link {
@@ -70,14 +77,15 @@ export const StyledMenuOverlay = styled.div`
 			text-decoration: none;
 			display: flex;
 			align-items: center;
+			font-size: 0.75rem;
 
 			svg {
 				display: block;
 				width: 1.5rem;
-				outline: 1px solid pink;
-				padding: 0.25rem;
+				padding: 5px;
 				background: white;
 				border-radius: 50%;
+				margin-right: 0.75rem;
 
 				path {
 					fill: var(--clr-drk-900);

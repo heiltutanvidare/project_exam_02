@@ -12,9 +12,14 @@ export const StyledButtonOutline = styled.button`
 	font-weight: 700;
 	padding: 0.5rem 1rem;
 	border-radius: var(--br-sm);
-	border: 1px solid var(--clr-drk-900);
+	border: 1px solid
+		${(props) =>
+			props.color === "light"
+				? "var(--clr-drk-50)"
+				: "var(--clr-drk-900)"};
 	background: none;
-	color: var(--clr-drk-900);
+	color: ${(props) =>
+		props.color === "light" ? "var(--clr-drk-50)" : "var(--clr-drk-900)"};
 	width: ${(props) => (props.fullwidth ? "100%" : "auto")};
 	cursor: pointer;
 	transition: all 0.125s linear;

@@ -1,3 +1,4 @@
+import PropTypes from "prop-types";
 import {
 	StyledButtonOutline,
 	StyledButtonFilled,
@@ -5,39 +6,54 @@ import {
 } from "./button.styles";
 import search from "../../../assets/graphics/Search.svg";
 
-interface Props {
-	children: string;
-	href?: string;
-	align?: string;
-	fullwidth?: boolean;
-	variant: string;
-}
-
 export default function Button({
 	fullwidth,
 	children,
 	href,
 	variant = "filled",
+	color = "dark",
 	align,
-}: Props) {
+}) {
 	if (variant === "outlined") {
 		return (
-			<StyledButtonOutline fullwidth={fullwidth} align={align}>
+			<StyledButtonOutline
+				color={color}
+				fullwidth={fullwidth}
+				align={align}
+			>
 				{children}
 			</StyledButtonOutline>
 		);
 	} else if (variant === "form") {
 		return (
-			<StyledButtonForm fullwidth={fullwidth} align={align}>
+			<StyledButtonForm color={color} fullwidth={fullwidth} align={align}>
 				<img src={search} alt="Search icon" />
 				{children}
 			</StyledButtonForm>
 		);
 	} else {
 		return (
-			<StyledButtonFilled fullwidth={fullwidth} align={align}>
+			<StyledButtonFilled
+				color={color}
+				fullwidth={fullwidth}
+				align={align}
+			>
 				{children}
 			</StyledButtonFilled>
 		);
 	}
 }
+
+Button.propTypes = {
+	children: PropTypes.node.isRequired,
+	href: PropTypes.string,
+	align: PropTypes.string,
+	fullwidth: PropTypes.bool,
+	variant: PropTypes.string.isRequired,
+	color: PropTypes.string.isRequired,
+};
+
+Button.defaultProps = {
+	variant: "filled",
+	color: "dark",
+};
