@@ -6,14 +6,17 @@ import Footer from "./components/ui/Footer/Footer";
 import Header from "./components/ui/Header/Header";
 import Container from "./components/layout/Container/Container";
 import { SearchProvider } from "./global/contexts/SearchContext";
+import { MenuContextProvider } from "./global/contexts/menuContext";
 import MenuOverlay from "./components/ui/MenuOverlay/MenuOverlay";
 
 function App() {
 	return (
 		<Router>
 			<main>
-				<MenuOverlay />
-				<Header />
+				<MenuContextProvider>
+					<MenuOverlay />
+					<Header />
+				</MenuContextProvider>
 				<nav style={{ marginTop: "4rem" }}>
 					<ul>
 						<li>

@@ -1,3 +1,5 @@
+import { useContext } from "react";
+import MenuContext from "../../../global/contexts/menuContext";
 import Container from "../../layout/Container/Container";
 import { StyledMenuOverlay } from "./menuOverlay.styles";
 import close from "../../../assets/graphics/Close.svg";
@@ -6,11 +8,32 @@ import PhoneIcon from "../../../assets/graphics/PhoneIcon";
 import EnquiryForm from "../../forms/EnquityForm/EnquiryForm";
 
 export default function MenuOverlay() {
+	const [menuIsOpen, setMenuIsOpen] = useContext(MenuContext);
+
+	function handleMenuClick(e) {
+		if (e.target.classList.contains("outer")) {
+			setMenuIsOpen(false);
+		}
+	}
+
 	return (
-		<StyledMenuOverlay>
+		<StyledMenuOverlay
+			open={menuIsOpen}
+			className="outer"
+			onClick={(e) => {
+				handleMenuClick(e);
+			}}
+		>
 			<div className="inner">
 				<Container>
-					<button className="menu__close__button">
+					<button
+						className="menu__close__button"
+						onClick={() => {
+							if (menuIsOpen) {
+								setMenuIsOpen(false);
+							}
+						}}
+					>
 						Close <img src={close} alt="Close the overlay meny" />
 					</button>
 					<h2 className="menu__title">
