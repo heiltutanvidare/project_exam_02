@@ -1,10 +1,7 @@
+import PropTypes from "prop-types";
 import { StyledLoader } from "./loader.styles";
 
-interface Props {
-	text?: string;
-}
-
-export default function Loader({ text }: Props) {
+export default function Loader({ text }) {
 	return (
 		<StyledLoader>
 			<div className="dots">
@@ -18,3 +15,7 @@ export default function Loader({ text }: Props) {
 		</StyledLoader>
 	);
 }
+
+Loader.propTypes = {
+	text: PropTypes.string,
+};

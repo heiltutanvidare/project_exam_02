@@ -1,15 +1,16 @@
+import PropTypes from "prop-types";
 import { StyledPretitle } from "./pretitle.styles";
 
-interface Props {
-	children: string;
-	align?: string;
-	color?: string;
-}
-
-export default function Pretitle({ children, align, color }: Props) {
+export default function Pretitle({ children, align, color }) {
 	return (
 		<StyledPretitle align={align} color={color}>
 			{children}
 		</StyledPretitle>
 	);
 }
+
+Pretitle.propTypes = {
+	children: PropTypes.node.isRequired,
+	align: PropTypes.string,
+	color: PropTypes.string,
+};
