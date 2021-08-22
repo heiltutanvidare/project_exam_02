@@ -1,4 +1,4 @@
-import { BrowserRouter as Router, Switch, Route, Link } from "react-router-dom";
+import { HashRouter as Router, Switch, Route } from "react-router-dom";
 import About from "./components/homepage/About/About";
 import Hero from "./components/homepage/Hero/Hero";
 import SearchPage from "./components/search/SearchPage/SearchPage";
@@ -17,19 +17,6 @@ function App() {
 					<MenuOverlay />
 					<Header />
 				</MenuContextProvider>
-				<nav style={{ marginTop: "4rem" }}>
-					<ul>
-						<li>
-							<Link to="/">Home</Link>
-						</li>
-						<li>
-							<Link to="/login">Log in</Link>
-						</li>
-						<li>
-							<Link to="/admin">Admin</Link>
-						</li>
-					</ul>
-				</nav>
 				<Switch>
 					<Route path="/admin">
 						<Container>

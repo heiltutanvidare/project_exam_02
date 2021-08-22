@@ -6,6 +6,8 @@ import close from "../../../assets/graphics/Close.svg";
 import MailIcon from "../../../assets/graphics/MailIcon";
 import PhoneIcon from "../../../assets/graphics/PhoneIcon";
 import EnquiryForm from "../../forms/EnquityForm/EnquiryForm";
+import MenuNav from "../Navigation/MenuNav/MenuNav";
+import DecorativeDivider from "../DecorativeDivider/DecorativeDivider";
 
 export default function MenuOverlay() {
 	const [menuIsOpen, setMenuIsOpen] = useContext(MenuContext);
@@ -36,6 +38,9 @@ export default function MenuOverlay() {
 					>
 						Close <img src={close} alt="Close the overlay meny" />
 					</button>
+
+					<MenuNav />
+
 					<h2 className="menu__title">
 						Reach us <span>directly</span>
 					</h2>
@@ -69,12 +74,12 @@ export default function MenuOverlay() {
 					<p className="menu__opening-hours">
 						Saturday <span>09:00–15:00</span>
 					</p>
-
+					<DecorativeDivider bg="var(--clr-drk-50)" width="10%" />
 					<h2 className="menu__title">
 						Enquire about <span>an accommodation?</span>
 					</h2>
 					<p className="menu__text">
-						We always respond within 24 working hours
+						We normally respond within <span>24 working hours</span>
 					</p>
 					<EnquiryForm />
 				</Container>

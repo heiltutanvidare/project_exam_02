@@ -7,6 +7,10 @@ export const StyledContact = styled.div`
 		flex-direction: column;
 	}
 
+	#scrollToContactUs {
+		scroll-margin-top: 8rem;
+	}
+
 	label {
 		color: var(--clr-drk-500);
 		font-size: 0.625rem;

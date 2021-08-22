@@ -70,6 +70,10 @@ export const StyledMenuOverlay = styled.div`
 		&__text {
 			font-size: 0.875rem;
 			margin: var(--space-xxsm) 0;
+
+			span {
+				display: block;
+			}
 		}
 
 		&__address {
@@ -103,6 +107,10 @@ export const StyledMenuOverlay = styled.div`
 					fill: var(--clr-drk-900);
 				}
 			}
+		}
+
+		&__opening-hours {
+			font-weight: 300;
 		}
 	}
 `;

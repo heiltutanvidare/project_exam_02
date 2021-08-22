@@ -73,7 +73,7 @@ export default function Contact() {
 				content="Send us a message"
 				pretitle="Lets chat"
 			/>
-			<form onSubmit={handleSubmit(onSubmit)}>
+			<form onSubmit={handleSubmit(onSubmit)} id="scrollToContactUs">
 				<div className="form__field">
 					<label htmlFor="name">Name</label>
 					<input
