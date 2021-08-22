@@ -16,27 +16,28 @@ function App() {
 				<MenuContextProvider>
 					<MenuOverlay />
 					<Header />
+
+					<Switch>
+						<Route path="/admin">
+							<Container>
+								<p>This will be the admin page</p>
+							</Container>
+						</Route>
+						<Route path="/login">
+							<Container>
+								<p>This will be the login page</p>
+							</Container>
+						</Route>
+						<Route path="/" exact>
+							<SearchProvider>
+								<Hero />
+								<SearchPage />
+							</SearchProvider>
+							<About />
+						</Route>
+					</Switch>
+					<Footer />
 				</MenuContextProvider>
-				<Switch>
-					<Route path="/admin">
-						<Container>
-							<p>This will be the admin page</p>
-						</Container>
-					</Route>
-					<Route path="/login">
-						<Container>
-							<p>This will be the login page</p>
-						</Container>
-					</Route>
-					<Route path="/">
-						<SearchProvider>
-							<Hero />
-							<SearchPage />
-						</SearchProvider>
-						<About />
-					</Route>
-				</Switch>
-				<Footer />
 			</main>
 		</Router>
 	);

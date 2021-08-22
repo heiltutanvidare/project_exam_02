@@ -13,6 +13,7 @@ export default function Button({
 	variant = "filled",
 	color = "dark",
 	align,
+	event,
 }) {
 	if (variant === "outlined") {
 		return (
@@ -20,13 +21,19 @@ export default function Button({
 				color={color}
 				fullwidth={fullwidth}
 				align={align}
+				onClick={event}
 			>
 				{children}
 			</StyledButtonOutline>
 		);
 	} else if (variant === "form") {
 		return (
-			<StyledButtonForm color={color} fullwidth={fullwidth} align={align}>
+			<StyledButtonForm
+				color={color}
+				onClick={event}
+				fullwidth={fullwidth}
+				align={align}
+			>
 				<img src={search} alt="Search icon" />
 				{children}
 			</StyledButtonForm>
@@ -37,6 +44,7 @@ export default function Button({
 				color={color}
 				fullwidth={fullwidth}
 				align={align}
+				onClick={event}
 			>
 				{children}
 			</StyledButtonFilled>
@@ -51,6 +59,7 @@ Button.propTypes = {
 	fullwidth: PropTypes.bool,
 	variant: PropTypes.string.isRequired,
 	color: PropTypes.string.isRequired,
+	event: PropTypes.func,
 };
 
 Button.defaultProps = {

@@ -1,3 +1,5 @@
+import { useContext } from "react";
+import MenuContext from "../../../global/contexts/menuContext";
 import Container from "../../layout/Container/Container";
 import Button from "../../ui/Button/Button";
 import Heading from "../../ui/Heading/Heading";
@@ -10,6 +12,11 @@ import ImageGrid from "./ImageGrid/ImageGrid";
 import Testemonials from "./Testemonials/Testemonials";
 
 export default function About() {
+	const [, setMenuIsOpen] = useContext(MenuContext);
+	function openEnquiry() {
+		setMenuIsOpen(true);
+	}
+
 	return (
 		<StyledAbout>
 			<Container>
@@ -28,7 +35,9 @@ export default function About() {
 					nulla totam, odit odio perferendis quae omnis accusantium
 					est!
 				</p>
-				<Button variant="filled">Send an inquiry</Button>
+				<Button event={openEnquiry} variant="filled">
+					Send an inquiry
+				</Button>
 				<Imagebox />
 				<Heading
 					align="left"

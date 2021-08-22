@@ -75,7 +75,7 @@ export default function MenuOverlay() {
 						Saturday <span>09:00–15:00</span>
 					</p>
 					<DecorativeDivider bg="var(--clr-drk-50)" width="10%" />
-					<h2 className="menu__title">
+					<h2 className="menu__title" id="scrollToEnquiryForm">
 						Enquire about <span>an accommodation?</span>
 					</h2>
 					<p className="menu__text">
