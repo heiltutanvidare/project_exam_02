@@ -1,9 +1,12 @@
 import styled from "styled-components";
+import { Link } from "react-router-dom";
 
-export const StyledAccommodation = styled.div`
+export const StyledAccommodation = styled(Link)`
 	display: grid;
 	grid-template-rows: 200px repeat(4, auto);
 	grid-gap: 0.5rem;
+	text-decoration: none;
+	color: inherit;
 
 	.accommodation__image {
 		border-radius: var(--br-sm);

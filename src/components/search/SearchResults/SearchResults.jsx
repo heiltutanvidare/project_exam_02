@@ -48,6 +48,7 @@ export default function SearchResults() {
 								type={accommodation.type.accommodation_type}
 								image={accommodation.main_image.url}
 								total={accommodation.price * numberOfDays}
+								to={`accommodation/${accommodation.id}`}
 							/>
 						);
 					})}

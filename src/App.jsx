@@ -8,34 +8,43 @@ import Container from "./components/layout/Container/Container";
 import { SearchProvider } from "./global/contexts/SearchContext";
 import { MenuContextProvider } from "./global/contexts/menuContext";
 import MenuOverlay from "./components/ui/MenuOverlay/MenuOverlay";
+import AccommodationPage from "./components/accommodations/AccommodationPage/AccommodationPage";
+import ScrollToTop from "./global/functions/ScrollToTop";
 
 function App() {
 	return (
 		<Router>
+			<ScrollToTop />
 			<main>
 				<MenuContextProvider>
 					<MenuOverlay />
-					<Header />
-
-					<Switch>
-						<Route path="/" exact>
-							<SearchProvider>
+					<SearchProvider>
+						<Switch>
+							<Route exact path="/">
+								<Header filled={false} />
 								<Hero />
 								<SearchPage />
-							</SearchProvider>
-							<About />
-						</Route>
-						<Route path="/admin">
-							<Container>
-								<p>This will be the admin page</p>
-							</Container>
-						</Route>
-						<Route path="/login">
-							<Container>
-								<p>This will be the login page</p>
-							</Container>
-						</Route>
-					</Switch>
+								<About />
+							</Route>
+							<Route path="/accommodation/:id">
+								<Header filled={true} />
+								<AccommodationPage />
+							</Route>
+							<Route path="/admin">
+								<Header filled={true} />
+								<Container>
+									<p>This will be the admin page</p>
+								</Container>
+							</Route>
+							<Route path="/login">
+								<Header filled={true} />
+								<Container>
+									<p>This will be the login page</p>
+								</Container>
+							</Route>
+						</Switch>
+					</SearchProvider>
+
 					<Footer />
 				</MenuContextProvider>
 			</main>

@@ -11,15 +11,12 @@ import {
 } from "./searchBox.styles";
 
 export default function SearchBox() {
-	const [search, setSearch] = useContext(SearchContext);
-	console.log("Search in Context is:", search);
+	const [, setSearch] = useContext(SearchContext);
 
 	function handleSubmit(e) {
 		e.preventDefault();
 		const searchTerms = handleSearch(e);
-		console.log("Searchterms are:", searchTerms);
 		setSearch(searchTerms);
-		console.log("Search in Context is:", search);
 	}
 
 	return (
