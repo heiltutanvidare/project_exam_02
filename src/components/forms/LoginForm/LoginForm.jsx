@@ -14,6 +14,7 @@ const schema = yup.object().shape({
 
 export default function LoginForm() {
 	const [loggedIn, setLoggedIn] = useState(false);
+	const [logInFailed, setLogInFailed] = useState(false);
 
 	const {
 		register,
@@ -25,9 +26,14 @@ export default function LoginForm() {
 	async function onSubmit(data) {
 		console.log(data);
 		const login = await submitLogin(data.username, data.password);
-		console.log("Slik gjekk login:", login);
+		console.log(login);
 		if (login.success) {
+			setLogInFailed(false);
 			setLoggedIn(true);
+		}
+		if (login.json.error) {
+			setLoggedIn(false);
+			setLogInFailed(true);
 		}
 		reset();
 	}
@@ -39,6 +45,15 @@ export default function LoginForm() {
 
 	return (
 		<StyledLoginForm>
+			{logInFailed && (
+				<div className="message-container">
+					<Message
+						heading="Wrong username or password"
+						message="Please ensure you have entered your correct credentials"
+						variant="danger"
+					/>
+				</div>
+			)}
 			{loggedIn && (
 				<div className="message-container">
 					<Message
@@ -57,7 +72,9 @@ export default function LoginForm() {
 						id="username"
 						errors={errors}
 						{...register("username")}
-						className={errors.username ? "hasError" : ""}
+						className={
+							errors.username || logInFailed ? "hasError" : ""
+						}
 					/>
 					{errors.username && (
 						<p className="form__error">{errors.username.message}</p>
@@ -72,7 +89,9 @@ export default function LoginForm() {
 						id="password"
 						errors={errors}
 						{...register("password")}
-						className={errors.password ? "hasError" : ""}
+						className={
+							errors.password || logInFailed ? "hasError" : ""
+						}
 					/>
 					{errors.password && (
 						<p className="form__error">{errors.password.message}</p>

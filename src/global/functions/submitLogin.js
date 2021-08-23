@@ -2,8 +2,8 @@ import { API_BASE_URL } from "../constants/api";
 
 async function submitLogin(username, password) {
 	const data = JSON.stringify({
-		identifier: username,
 		password: password,
+		identifier: username,
 	});
 
 	console.log("Data:", data);
@@ -11,6 +11,9 @@ async function submitLogin(username, password) {
 	const options = {
 		method: "POST",
 		body: data,
+		headers: {
+			"Content-Type": "application/json",
+		},
 	};
 
 	try {
