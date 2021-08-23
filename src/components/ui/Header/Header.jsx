@@ -1,4 +1,5 @@
 import { useRef, useEffect } from "react";
+import PropTypes from "prop-types";
 import Hamburger from "../Hamburger/Hamburger";
 import Logo from "../Logo/Logo";
 import { StyledHeader } from "./header.styles";
@@ -32,3 +33,7 @@ export default function Header({ filled = true }) {
 		</StyledHeader>
 	);
 }
+
+Header.propTypes = {
+	filled: PropTypes.bool.isRequired,
+};

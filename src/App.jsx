@@ -10,6 +10,7 @@ import { MenuContextProvider } from "./global/contexts/menuContext";
 import MenuOverlay from "./components/ui/MenuOverlay/MenuOverlay";
 import AccommodationPage from "./components/accommodations/AccommodationPage/AccommodationPage";
 import ScrollToTop from "./global/functions/ScrollToTop";
+import LoginPage from "./components/admin/LoginPage/LoginPage";
 
 function App() {
 	return (
@@ -35,13 +36,16 @@ function App() {
 									<Header filled={true} />
 									<Container>
 										<p>This will be the admin page</p>
+										<p>This will be the admin page</p>
+										<p>This will be the admin page</p>
+										<p>This will be the admin page</p>
+										<p>This will be the admin page</p>
+										<p>This will be the admin page</p>
 									</Container>
 								</Route>
 								<Route path="/login">
 									<Header filled={true} />
-									<Container>
-										<p>This will be the login page</p>
-									</Container>
+									<LoginPage />
 								</Route>
 							</Switch>
 						</div>
