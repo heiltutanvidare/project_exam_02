@@ -5,6 +5,25 @@ export const StyledForm = styled.form`
 	border-radius: var(--br-xsm);
 	overflow: hidden;
 	box-shadow: var(--box-shadow-md);
+
+	#checkin,
+	#checkout {
+		min-height: 1rem;
+		font-size: 0.875rem;
+		color: var(--clr-drk-500);
+		padding: 0 0.5rem 0 0;
+		font-size: 1rem;
+		background: none;
+		outline: none;
+		border: none;
+		padding: 0;
+		width: 100%;
+	}
+
+	#checkin::-webkit-calendar-picker-indicator,
+	#checkout::-webkit-calendar-picker-indicator {
+		opacity: 0.75;
+	}
 `;
 
 export const StyledFormGrid = styled.div`
@@ -34,12 +53,6 @@ export const StyledInput = styled.input`
 	border: none;
 	padding: 0;
 	width: 100%;
-
-	&[type="date"] {
-		font-size: 0.875rem;
-		color: var(--clr-drk-500);
-		padding: 0 0.5rem 0 0;
-	}
 
 	&::placeholder {
 		font-size: 0.875rem;

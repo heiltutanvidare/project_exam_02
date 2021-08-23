@@ -41,11 +41,11 @@ export default function SearchBox() {
 				</StyledField>
 				<StyledField>
 					<StyledLabel htmlFor="checkin">Check in</StyledLabel>
-					<StyledInput type="date" id="checkin" name="checkin" />
+					<input type="date" id="checkin" name="checkin" />
 				</StyledField>
 				<StyledField>
 					<StyledLabel htmlFor="checkout">Check out</StyledLabel>
-					<StyledInput type="date" id="checkout" name="checkout" />
+					<input type="date" id="checkout" name="checkout" />
 				</StyledField>
 			</StyledFormGrid>
 			<Button variant="form" fullwidth>

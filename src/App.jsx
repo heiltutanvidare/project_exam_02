@@ -15,39 +15,40 @@ function App() {
 	return (
 		<Router>
 			<ScrollToTop />
-			<main>
-				<MenuContextProvider>
-					<MenuOverlay />
-					<SearchProvider>
-						<Switch>
-							<Route exact path="/">
-								<Header filled={false} />
-								<Hero />
-								<SearchPage />
-								<About />
-							</Route>
-							<Route path="/accommodation/:id">
-								<Header filled={true} />
-								<AccommodationPage />
-							</Route>
-							<Route path="/admin">
-								<Header filled={true} />
-								<Container>
-									<p>This will be the admin page</p>
-								</Container>
-							</Route>
-							<Route path="/login">
-								<Header filled={true} />
-								<Container>
-									<p>This will be the login page</p>
-								</Container>
-							</Route>
-						</Switch>
-					</SearchProvider>
-
+			<MenuContextProvider>
+				<SearchProvider>
+					<div className="layout__wrapper">
+						<div>
+							<MenuOverlay />
+							<Switch>
+								<Route exact path="/">
+									<Header filled={false} />
+									<Hero />
+									<SearchPage />
+									<About />
+								</Route>
+								<Route path="/accommodation/:id">
+									<Header filled={true} />
+									<AccommodationPage />
+								</Route>
+								<Route path="/admin">
+									<Header filled={true} />
+									<Container>
+										<p>This will be the admin page</p>
+									</Container>
+								</Route>
+								<Route path="/login">
+									<Header filled={true} />
+									<Container>
+										<p>This will be the login page</p>
+									</Container>
+								</Route>
+							</Switch>
+						</div>
+					</div>
 					<Footer />
-				</MenuContextProvider>
-			</main>
+				</SearchProvider>
+			</MenuContextProvider>
 		</Router>
 	);
 }
