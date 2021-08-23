@@ -9,9 +9,9 @@ import {
 } from "../../../../global/constants/formValidation";
 import Button from "../../../ui/Button/Button";
 import Heading from "../../../ui/Heading/Heading";
-import { StyledContact } from "./contact.styles";
 import Message from "../../../ui/Message/Message";
 import submitContactMessage from "../../../../global/functions/submitContactMessage";
+import { StyledContact } from "./contact.styles";
 
 // Yup schema
 const schema = yup.object().shape({

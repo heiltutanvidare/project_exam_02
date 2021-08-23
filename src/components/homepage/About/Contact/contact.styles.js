@@ -8,7 +8,7 @@ export const StyledContact = styled.div`
 	}
 
 	#scrollToContactUs {
-		scroll-margin-top: 8rem;
+		scroll-margin-top: 12rem;
 	}
 
 	label {
