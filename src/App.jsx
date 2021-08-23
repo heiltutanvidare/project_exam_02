@@ -18,6 +18,13 @@ function App() {
 					<Header />
 
 					<Switch>
+						<Route path="/" exact>
+							<SearchProvider>
+								<Hero />
+								<SearchPage />
+							</SearchProvider>
+							<About />
+						</Route>
 						<Route path="/admin">
 							<Container>
 								<p>This will be the admin page</p>
@@ -27,13 +34,6 @@ function App() {
 							<Container>
 								<p>This will be the login page</p>
 							</Container>
-						</Route>
-						<Route path="/" exact>
-							<SearchProvider>
-								<Hero />
-								<SearchPage />
-							</SearchProvider>
-							<About />
 						</Route>
 					</Switch>
 					<Footer />

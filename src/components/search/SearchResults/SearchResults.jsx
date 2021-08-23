@@ -17,7 +17,6 @@ export default function SearchResults() {
 	let numberOfDays = 1;
 	if (search) {
 		numberOfDays = search.days;
-		console.log(numberOfDays);
 	}
 
 	if (fetching) {

@@ -58,7 +58,9 @@ export default function EnquiryForm() {
 	}
 
 	// Log any form validation errors
-	console.log("Errors:", errors);
+	if (Object.entries(errors).length !== 0) {
+		console.log("Errors:", errors);
+	}
 
 	return (
 		<StyledEnquiryForm>

@@ -6,7 +6,6 @@ import { StyledHeader } from "./header.styles";
 export default function Header() {
 	const headerRef = useRef();
 	useEffect(() => {
-		console.log(headerRef.current.offsetHeight);
 		window.addEventListener("scroll", () => {
 			let scrollDistance = window.scrollY;
 			if (scrollDistance > headerRef.current.offsetHeight / 2) {
