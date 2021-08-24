@@ -4,7 +4,7 @@ import * as yup from "yup";
 import { yupResolver } from "@hookform/resolvers/yup";
 import Button from "../../ui/Button/Button";
 import Message from "../../ui/Message/Message";
-import submitUpdate from "../../../global/functions/submitUpdate";
+import submitCreate from "../../../global/functions/submitCreate";
 import { StyledLoginForm } from "../LoginForm/loginForm.styles";
 import AuthContext from "../../../global/contexts/AuthContext";
 import { useHistory } from "react-router";
@@ -30,9 +30,9 @@ const schema = yup.object().shape({
 	description: yup.string().required("Please enter a description"),
 });
 
-export default function EditAccommodationForm({ accommodation }) {
-	const [updated, setUpdated] = useState(false);
-	const [updateFailed, setUpdateFailed] = useState(false);
+export default function AddAccommodationForm() {
+	const [created, setCreated] = useState(false);
+	const [creatingFailed, setCreatingFailed] = useState(false);
 	const [auth] = useContext(AuthContext);
 
 	const history = useHistory();
@@ -46,21 +46,21 @@ export default function EditAccommodationForm({ accommodation }) {
 
 	async function onSubmit(data) {
 		const doUpdate = window.confirm(
-			"This will update this accommodation. Are you sure you want to to that?"
+			"This will create this accommodation. Are you sure you want to to that?"
 		);
 		if (doUpdate) {
-			const update = await submitUpdate(data, auth, accommodation.id);
-			if (update.success) {
-				setUpdateFailed(false);
-				setUpdated(true);
+			const create = await submitCreate(data, auth);
+			if (create.success) {
+				setCreatingFailed(false);
+				setCreated(true);
 				reset();
 				setTimeout(() => {
 					history.push("/admin");
 				}, 1500);
 			}
-			if (update.json.error) {
-				setUpdated(false);
-				setUpdateFailed(true);
+			if (create.json.error) {
+				setCreated(false);
+				setCreatingFailed(true);
 			}
 		}
 	}
@@ -72,19 +72,19 @@ export default function EditAccommodationForm({ accommodation }) {
 
 	return (
 		<StyledLoginForm>
-			{updateFailed && (
+			{creatingFailed && (
 				<div className="message-container">
 					<Message
-						heading="Could not update accommodation"
-						message="Something went wrong when updating the accommodation. We are investigating what might have happened."
+						heading="Could not create accommodation"
+						message="Something went wrong when creating the accommodation. We are investigating what might have happened."
 						variant="danger"
 					/>
 				</div>
 			)}
-			{updated && (
+			{created && (
 				<div className="message-container">
 					<Message
-						heading="Successfully updated 🥳"
+						heading="Successfully created 🥳"
 						message="Redirection you to the admin page now…"
 						variant="success"
 					/>
@@ -95,13 +95,12 @@ export default function EditAccommodationForm({ accommodation }) {
 					<label htmlFor="title">Title (required)</label>
 					<input
 						type="text"
-						defaultValue={accommodation.title}
 						placeholder="Enter your title"
 						id="title"
 						errors={errors}
 						{...register("title")}
 						className={
-							errors.title || updateFailed ? "hasError" : ""
+							errors.title || creatingFailed ? "hasError" : ""
 						}
 					/>
 					{errors.title && (
@@ -113,13 +112,12 @@ export default function EditAccommodationForm({ accommodation }) {
 					<label htmlFor="km_from_city">Kilometers (required)</label>
 					<input
 						type="number"
-						defaultValue={accommodation.km_from_city}
 						placeholder="Kilometers from city centre"
 						id="km_from_city"
 						errors={errors}
 						{...register("km_from_city")}
 						className={
-							errors.km_from_city || updateFailed
+							errors.km_from_city || creatingFailed
 								? "hasError"
 								: ""
 						}
@@ -135,13 +133,12 @@ export default function EditAccommodationForm({ accommodation }) {
 					<label htmlFor="price">Price in USD (required)</label>
 					<input
 						type="number"
-						defaultValue={accommodation.price}
 						placeholder="Enter a price in USD"
 						id="price"
 						errors={errors}
 						{...register("price")}
 						className={
-							errors.price || updateFailed ? "hasError" : ""
+							errors.price || creatingFailed ? "hasError" : ""
 						}
 					/>
 					{errors.price && (
@@ -153,13 +150,12 @@ export default function EditAccommodationForm({ accommodation }) {
 					<label htmlFor="bedrooms">Bedrooms (required)</label>
 					<input
 						type="number"
-						defaultValue={accommodation.bedrooms}
 						placeholder="Enter number of bedrooms"
 						id="bedrooms"
 						errors={errors}
 						{...register("bedrooms")}
 						className={
-							errors.bedrooms || updateFailed ? "hasError" : ""
+							errors.bedrooms || creatingFailed ? "hasError" : ""
 						}
 					/>
 					{errors.bedrooms && (
@@ -171,13 +167,12 @@ export default function EditAccommodationForm({ accommodation }) {
 					<label htmlFor="bathrooms">Bathrooms (required)</label>
 					<input
 						type="number"
-						defaultValue={accommodation.bathrooms}
 						placeholder="Enter number of bathrooms"
 						id="bathrooms"
 						errors={errors}
 						{...register("bathrooms")}
 						className={
-							errors.bathrooms || updateFailed ? "hasError" : ""
+							errors.bathrooms || creatingFailed ? "hasError" : ""
 						}
 					/>
 					{errors.bathrooms && (
@@ -191,13 +186,14 @@ export default function EditAccommodationForm({ accommodation }) {
 					<label htmlFor="description">Description (required)</label>
 					<textarea
 						rows="8"
-						defaultValue={accommodation.description}
 						placeholder="Enter a description"
 						id="description"
 						errors={errors}
 						{...register("description")}
 						className={
-							errors.description || updateFailed ? "hasError" : ""
+							errors.description || creatingFailed
+								? "hasError"
+								: ""
 						}
 					/>
 					{errors.description && (
@@ -209,7 +205,7 @@ export default function EditAccommodationForm({ accommodation }) {
 
 				<div className="button-group">
 					<Button variant="filled" color="dark" fullwidth={false}>
-						Submit changes
+						Submit new accommodation
 					</Button>
 				</div>
 			</form>

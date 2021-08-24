@@ -13,6 +13,7 @@ import AccommodationPage from "./components/accommodations/AccommodationPage/Acc
 import ScrollToTop from "./global/functions/ScrollToTop";
 import LoginPage from "./components/admin/LoginPage/LoginPage";
 import AdminPage from "./components/admin/AdminPage/AdminPage";
+import AddAccommodationPage from "./components/admin/AdminPage/AddAccommodationPage/AddAccommodationPage";
 
 function App() {
 	return (
@@ -42,6 +43,10 @@ function App() {
 									<Route path="/edit/:id">
 										<Header filled={true} />
 										<EditAccommodationPage />
+									</Route>
+									<Route path="/add">
+										<Header filled={true} />
+										<AddAccommodationPage />
 									</Route>
 									<Route path="/login">
 										<Header filled={true} />

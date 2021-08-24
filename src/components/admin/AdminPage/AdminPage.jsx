@@ -10,9 +10,11 @@ import MessageList from "./MessageList/MessageList";
 import EnquiryList from "./EnquiryList/EnquiryList";
 import { useHistory } from "react-router-dom";
 import AccommodationList from "./AccommodationList/AccommodationList";
+import { Link } from "react-router-dom";
+import Button from "../../ui/Button/Button";
 
 export default function AdminPage() {
-	const [activeView, setActiveView] = useState("enquiries");
+	const [activeView, setActiveView] = useState("accommodations");
 	const [auth] = useContext(AuthContext);
 	const history = useHistory();
 
@@ -33,6 +35,17 @@ export default function AdminPage() {
 						<ul className="nav__list">
 							<li
 								className={`nav__list-item ${
+									activeView === "accommodations"
+										? "active"
+										: ""
+								}`}
+								onClick={() => setActiveView("accommodations")}
+							>
+								<HouseIcon />
+								<p>Accommodations</p>
+							</li>
+							<li
+								className={`nav__list-item ${
 									activeView === "enquiries" ? "active" : ""
 								}`}
 								onClick={() => setActiveView("enquiries")}
@@ -48,17 +61,6 @@ export default function AdminPage() {
 							>
 								<MailIcon />
 								<p>Messages</p>
-							</li>
-							<li
-								className={`nav__list-item ${
-									activeView === "accommodations"
-										? "active"
-										: ""
-								}`}
-								onClick={() => setActiveView("accommodations")}
-							>
-								<HouseIcon />
-								<p>Accommodations</p>
 							</li>
 						</ul>
 					</nav>
@@ -92,6 +94,9 @@ export default function AdminPage() {
 								will see them. Click on a property to open edit
 								mode.
 							</p>
+							<Button variant="outlined">
+								<Link to="/add">+ Add new accommodation</Link>
+							</Button>
 							<AccommodationList />
 						</>
 					)}

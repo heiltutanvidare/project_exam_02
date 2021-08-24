@@ -29,6 +29,11 @@ export const StyledButtonOutline = styled.button`
 		color: var(--clr-drk-50);
 		transform: scale(0.98);
 	}
+
+	a {
+		color: inherit;
+		text-decoration: none;
+	}
 `;
 
 export const StyledButtonFilled = styled(StyledButtonOutline)`
