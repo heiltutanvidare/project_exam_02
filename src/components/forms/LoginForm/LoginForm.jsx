@@ -1,11 +1,13 @@
-import { useState } from "react";
+import { useState, useContext } from "react";
 import { useForm } from "react-hook-form";
+import { useHistory } from "react-router-dom";
 import * as yup from "yup";
 import { yupResolver } from "@hookform/resolvers/yup";
 import Button from "../../ui/Button/Button";
 import Message from "../../ui/Message/Message";
 import submitLogin from "../../../global/functions/submitLogin";
 import { StyledLoginForm } from "./loginForm.styles";
+import AuthContext from "../../../global/contexts/AuthContext";
 
 const schema = yup.object().shape({
 	username: yup.string().required("Please enter your username"),
@@ -15,6 +17,9 @@ const schema = yup.object().shape({
 export default function LoginForm() {
 	const [loggedIn, setLoggedIn] = useState(false);
 	const [logInFailed, setLogInFailed] = useState(false);
+	const [, setAuth] = useContext(AuthContext);
+
+	const history = useHistory();
 
 	const {
 		register,
@@ -24,12 +29,14 @@ export default function LoginForm() {
 	} = useForm({ resolver: yupResolver(schema) });
 
 	async function onSubmit(data) {
-		console.log(data);
 		const login = await submitLogin(data.username, data.password);
-		console.log(login);
 		if (login.success) {
 			setLogInFailed(false);
 			setLoggedIn(true);
+			setAuth(login.json.jwt);
+			setTimeout(() => {
+				history.push("/admin");
+			}, 2000);
 		}
 		if (login.json.error) {
 			setLoggedIn(false);
