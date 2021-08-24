@@ -1,10 +1,17 @@
+import { useContext } from "react";
+import Message from "../../../ui/Message/Message";
 import { API_BASE_URL } from "../../../../global/constants/api";
-import useFetch from "../../../../hooks/useFetch";
+import useAuthenticatedFetch from "../../../../hooks/useAuthenticatedFetch";
 import Loader from "../../../ui/Loader/Loader";
+import AuthContext from "../../../../global/contexts/AuthContext";
 import { StyledMessageList } from "./messageList.styles";
 
 export default function MessageList() {
-	const { data, fetching, error } = useFetch(`${API_BASE_URL}/messages`);
+	const [auth] = useContext(AuthContext);
+	const { data, fetching, error } = useAuthenticatedFetch(
+		`${API_BASE_URL}/messages`,
+		auth
+	);
 
 	if (fetching) {
 		return <Loader />;
@@ -14,8 +21,7 @@ export default function MessageList() {
 		return <p>An error occured :(</p>;
 	}
 
-	if (data) {
-		console.log(data);
+	if (auth && data) {
 		return (
 			<StyledMessageList>
 				{data.map((message) => {
@@ -50,5 +56,12 @@ export default function MessageList() {
 				})}
 			</StyledMessageList>
 		);
-	}
+	} else
+		return (
+			<Message
+				variant="danger"
+				heading="You are logged out"
+				message="Only users who are logged in can access the messages."
+			/>
+		);
 }

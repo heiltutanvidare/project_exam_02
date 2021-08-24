@@ -2,15 +2,16 @@ import { useContext } from "react";
 import { API_BASE_URL } from "../../../../global/constants/api";
 import useAuthenticatedFetch from "../../../../hooks/useAuthenticatedFetch";
 import Loader from "../../../ui/Loader/Loader";
-import { StyledMessageList } from "../MessageList/messageList.styles";
 import AuthContext from "../../../../global/contexts/AuthContext";
+import Message from "../../../ui/Message/Message";
+import { StyledMessageList } from "../MessageList/messageList.styles";
 
 export default function EnquiryList() {
-	const [token: auth] = useContext(AuthContext);
+	const [auth] = useContext(AuthContext);
 
 	const { data, fetching, error } = useAuthenticatedFetch(
 		`${API_BASE_URL}/enquiries`,
-		token
+		auth
 	);
 
 	if (fetching) {
@@ -21,11 +22,7 @@ export default function EnquiryList() {
 		return <p>An error occured :(</p>;
 	}
 
-	if (data) {
-		console.log(data);
-	}
-
-	if (data) {
+	if (auth && data) {
 		return (
 			<StyledMessageList>
 				{data.map((enquiry) => {
@@ -57,12 +54,21 @@ export default function EnquiryList() {
 								Interest, wants and needs
 							</p>
 							<p className="message__value message__value--nonGrid">
-								{enquiry.message}
+								{enquiry.message
+									? enquiry.message
+									: "Not provided"}
 							</p>
 						</div>
 					);
 				})}
 			</StyledMessageList>
 		);
-	}
+	} else
+		return (
+			<Message
+				variant="danger"
+				heading="You are logged out"
+				message="Only users who are logged in can access the enquiries."
+			/>
+		);
 }
