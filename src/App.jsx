@@ -4,6 +4,7 @@ import Hero from "./components/homepage/Hero/Hero";
 import SearchPage from "./components/search/SearchPage/SearchPage";
 import Footer from "./components/ui/Footer/Footer";
 import Header from "./components/ui/Header/Header";
+import EditAccommodationPage from "./components/admin/AdminPage/EditAccommodationPage/EditAccommodationPage";
 import { SearchProvider } from "./global/contexts/SearchContext";
 import { MenuContextProvider } from "./global/contexts/menuContext";
 import { AuthProvider } from "./global/contexts/AuthContext";
@@ -37,6 +38,10 @@ function App() {
 									<Route path="/admin">
 										<Header filled={true} />
 										<AdminPage />
+									</Route>
+									<Route path="/edit/:id">
+										<Header filled={true} />
+										<EditAccommodationPage />
 									</Route>
 									<Route path="/login">
 										<Header filled={true} />

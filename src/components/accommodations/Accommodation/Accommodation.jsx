@@ -17,7 +17,9 @@ export default function Accommodation({
 			<p className="accommodation__price">
 				<span>{price}</span> / night
 			</p>
-			<p className="accommodation__price--total">{total}$ total</p>
+			{total && (
+				<p className="accommodation__price--total">{total}$ total</p>
+			)}
 		</StyledAccommodation>
 	);
 }
@@ -27,6 +29,6 @@ Accommodation.propTypes = {
 	title: PropTypes.string.isRequired,
 	type: PropTypes.string.isRequired,
 	image: PropTypes.string.isRequired,
-	total: PropTypes.number.isRequired,
+	total: PropTypes.number,
 	to: PropTypes.string.isRequired,
 };

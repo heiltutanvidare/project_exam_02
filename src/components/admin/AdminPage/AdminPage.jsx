@@ -9,6 +9,7 @@ import { StyledAdminPage } from "./adminPage.styles";
 import MessageList from "./MessageList/MessageList";
 import EnquiryList from "./EnquiryList/EnquiryList";
 import { useHistory } from "react-router-dom";
+import AccommodationList from "./AccommodationList/AccommodationList";
 
 export default function AdminPage() {
 	const [activeView, setActiveView] = useState("enquiries");
@@ -91,6 +92,7 @@ export default function AdminPage() {
 								will see them. Click on a property to open edit
 								mode.
 							</p>
+							<AccommodationList />
 						</>
 					)}
 				</Container>
