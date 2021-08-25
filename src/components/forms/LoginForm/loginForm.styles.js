@@ -18,14 +18,38 @@ export const StyledLoginForm = styled.section`
 	}
 
 	input,
-	textarea {
+	textarea,
+	select {
 		font-family: inherit;
 		border: 1px solid var(--clr-drk-500);
 		padding: 0.5rem;
 		border-radius: var(--br-xsm);
+		background-color: var(--clr-white);
 
 		&::placeholder {
 			font-size: 0.75rem;
+		}
+	}
+
+	.form__checkbox__grid {
+		margin-top: 0.25rem;
+		display: grid;
+		grid-template-columns: repeat(3, 1fr);
+		grid-gap: 0.75rem;
+	}
+
+	.form__checkbox__field {
+		display: flex;
+		align-items: center;
+
+		input,
+		label {
+			margin: 0;
+			line-height: 1;
+		}
+
+		input {
+			margin-right: 0.25rem;
 		}
 	}
 

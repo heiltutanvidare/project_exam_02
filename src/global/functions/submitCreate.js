@@ -1,14 +1,31 @@
 import { API_BASE_URL } from "../constants/api";
 
-async function submitCreate(updateData, token) {
-	const data = JSON.stringify(updateData);
+async function submitCreate(uploadData, token) {
+	console.log(uploadData);
+	const mainImage = uploadData.main_image[0];
+	const formData = new FormData();
+	formData.append("files.main_image", mainImage, mainImage.name);
+
+	const data = {
+		amenities: uploadData.amenities,
+		bathrooms: uploadData.bathrooms,
+		bedrooms: uploadData.bedrooms,
+		km_from_city: uploadData.km_from_city,
+		description: uploadData.description,
+		title: uploadData.title,
+		price: uploadData.price,
+		type: uploadData.type,
+	};
+
+	console.log(JSON.stringify(data));
+
+	formData.append("data", JSON.stringify(data));
 
 	const options = {
 		method: "POST",
-		body: data,
+		body: formData,
 		headers: {
 			Authorization: `Bearer ${token}`,
-			"Content-Type": "application/json",
 		},
 	};
 

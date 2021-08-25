@@ -35,8 +35,17 @@ export default function AccommodationList() {
 									key={accommodation.id}
 									price={accommodation.price}
 									title={accommodation.title}
-									type={accommodation.type.accommodation_type}
-									image={accommodation.main_image.url}
+									type={
+										accommodation.type?.accommodation_type
+											? accommodation.type
+													.accommodation_type
+											: "Who knows"
+									}
+									image={
+										accommodation.main_image?.url
+											? accommodation.main_image.url
+											: "https://picsum.photos/200/300"
+									}
 									to={`edit/${accommodation.id}`}
 								/>
 							);

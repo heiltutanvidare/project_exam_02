@@ -1,16 +1,22 @@
 import { useState, useContext } from "react";
+import { useHistory } from "react-router";
 import { useForm } from "react-hook-form";
 import * as yup from "yup";
 import { yupResolver } from "@hookform/resolvers/yup";
+import { API_BASE_URL } from "../../../global/constants/api";
 import Button from "../../ui/Button/Button";
 import Message from "../../ui/Message/Message";
+import useFetch from "../../../hooks/useFetch";
+import AuthContext from "../../../global/contexts/AuthContext";
 import submitCreate from "../../../global/functions/submitCreate";
 import { StyledLoginForm } from "../LoginForm/loginForm.styles";
-import AuthContext from "../../../global/contexts/AuthContext";
-import { useHistory } from "react-router";
 
 const schema = yup.object().shape({
 	title: yup.string().required("Please enter a title"),
+	type: yup
+		.number()
+		.required("Please select an accommodation type")
+		.typeError("Please select an accommodation type"),
 	km_from_city: yup
 		.number()
 		.required("Please enter how far the place is from the city center")
@@ -28,12 +34,15 @@ const schema = yup.object().shape({
 		.required("Please enter how many bathrooms there are")
 		.typeError("Please enter a number"),
 	description: yup.string().required("Please enter a description"),
+	amenities: yup.array().nullable(),
 });
 
 export default function AddAccommodationForm() {
 	const [created, setCreated] = useState(false);
 	const [creatingFailed, setCreatingFailed] = useState(false);
 	const [auth] = useContext(AuthContext);
+	const { data: types } = useFetch(`${API_BASE_URL}/types`);
+	const { data: amenities } = useFetch(`${API_BASE_URL}/amenities`);
 
 	const history = useHistory();
 
@@ -45,6 +54,7 @@ export default function AddAccommodationForm() {
 	} = useForm({ resolver: yupResolver(schema) });
 
 	async function onSubmit(data) {
+		console.log(data);
 		const doUpdate = window.confirm(
 			"This will create this accommodation. Are you sure you want to to that?"
 		);
@@ -97,7 +107,6 @@ export default function AddAccommodationForm() {
 						type="text"
 						placeholder="Enter your title"
 						id="title"
-						errors={errors}
 						{...register("title")}
 						className={
 							errors.title || creatingFailed ? "hasError" : ""
@@ -109,12 +118,35 @@ export default function AddAccommodationForm() {
 				</div>
 
 				<div className="form__field">
+					<label htmlFor="type">Accommodation type (required)</label>
+					<select
+						name="type"
+						id="type"
+						className={
+							errors.type || creatingFailed ? "hasError" : ""
+						}
+						{...register("type")}
+					>
+						<option value="">Select an accommodation type</option>
+						{types.map((type) => {
+							return (
+								<option key={type.id} value={type.id}>
+									{type.accommodation_type}
+								</option>
+							);
+						})}
+					</select>
+					{errors.type && (
+						<p className="form__error">{errors.type.message}</p>
+					)}
+				</div>
+
+				<div className="form__field">
 					<label htmlFor="km_from_city">Kilometers (required)</label>
 					<input
 						type="number"
 						placeholder="Kilometers from city centre"
 						id="km_from_city"
-						errors={errors}
 						{...register("km_from_city")}
 						className={
 							errors.km_from_city || creatingFailed
@@ -135,7 +167,6 @@ export default function AddAccommodationForm() {
 						type="number"
 						placeholder="Enter a price in USD"
 						id="price"
-						errors={errors}
 						{...register("price")}
 						className={
 							errors.price || creatingFailed ? "hasError" : ""
@@ -152,7 +183,6 @@ export default function AddAccommodationForm() {
 						type="number"
 						placeholder="Enter number of bedrooms"
 						id="bedrooms"
-						errors={errors}
 						{...register("bedrooms")}
 						className={
 							errors.bedrooms || creatingFailed ? "hasError" : ""
@@ -169,7 +199,6 @@ export default function AddAccommodationForm() {
 						type="number"
 						placeholder="Enter number of bathrooms"
 						id="bathrooms"
-						errors={errors}
 						{...register("bathrooms")}
 						className={
 							errors.bathrooms || creatingFailed ? "hasError" : ""
@@ -188,7 +217,6 @@ export default function AddAccommodationForm() {
 						rows="8"
 						placeholder="Enter a description"
 						id="description"
-						errors={errors}
 						{...register("description")}
 						className={
 							errors.description || creatingFailed
@@ -199,6 +227,56 @@ export default function AddAccommodationForm() {
 					{errors.description && (
 						<p className="form__error">
 							{errors.description.message}
+						</p>
+					)}
+				</div>
+
+				<div className="form__field">
+					<label htmlFor="amenities">Amenities</label>
+					<div className="form__checkbox__grid">
+						{amenities.map((amenity) => {
+							return (
+								<div
+									className="form__checkbox__field"
+									key={amenity.id}
+								>
+									<input
+										type="checkbox"
+										name={amenity.amenity}
+										id={amenity.amenity}
+										value={amenity.id}
+										{...register("amenities")}
+									/>
+									<label htmlFor={amenity.amenity}>
+										{amenity.amenity}
+									</label>
+								</div>
+							);
+						})}
+					</div>
+					{errors.amenities && (
+						<p className="form__error">
+							{errors.amenities.message}
+						</p>
+					)}
+				</div>
+
+				<div className="form__field">
+					<label htmlFor="main_image">Main image</label>
+					<input
+						className={
+							errors.main_image || creatingFailed
+								? "hasError"
+								: ""
+						}
+						type="file"
+						name="main_image"
+						id="main_image"
+						{...register("main_image")}
+					/>
+					{errors.main_image && (
+						<p className="form__error">
+							{errors.main_image.message}
 						</p>
 					)}
 				</div>
