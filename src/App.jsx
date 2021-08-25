@@ -29,6 +29,10 @@ function App() {
 									<Route exact path="/">
 										<Header filled={false} />
 										<Hero />
+										<About />
+									</Route>
+									<Route path="/search">
+										<Header filled={true} />
 										<SearchPage />
 										<About />
 									</Route>

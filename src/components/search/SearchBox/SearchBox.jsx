@@ -1,4 +1,5 @@
 import { useContext } from "react";
+import { useHistory } from "react-router-dom";
 import SearchContext from "../../../global/contexts/SearchContext";
 import handleSearch from "../../../global/functions/handleSearch";
 import Button from "../../ui/Button/Button";
@@ -13,10 +14,15 @@ import {
 export default function SearchBox() {
 	const [, setSearch] = useContext(SearchContext);
 
+	const history = useHistory();
+
 	function handleSubmit(e) {
 		e.preventDefault();
 		const searchTerms = handleSearch(e);
 		setSearch(searchTerms);
+		if (history.location.pathname !== "/search") {
+			history.push("/search");
+		}
 	}
 
 	return (

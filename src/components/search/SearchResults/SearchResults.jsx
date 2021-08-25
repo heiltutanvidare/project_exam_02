@@ -36,23 +36,21 @@ export default function SearchResults() {
 	}
 
 	return (
-		<Container>
-			<StyledSearchResults>
-				{data.length > 0 &&
-					data.map((accommodation) => {
-						return (
-							<Accommodation
-								key={accommodation.id}
-								price={accommodation.price}
-								title={accommodation.title}
-								type={accommodation.type.accommodation_type}
-								image={accommodation.main_image.url}
-								total={accommodation.price * numberOfDays}
-								to={`accommodation/${accommodation.id}`}
-							/>
-						);
-					})}
-			</StyledSearchResults>
-		</Container>
+		<StyledSearchResults>
+			{data.length > 0 &&
+				data.map((accommodation) => {
+					return (
+						<Accommodation
+							key={accommodation.id}
+							price={accommodation.price}
+							title={accommodation.title}
+							type={accommodation.type.accommodation_type}
+							image={accommodation.main_image.url}
+							total={accommodation.price * numberOfDays}
+							to={`accommodation/${accommodation.id}`}
+						/>
+					);
+				})}
+		</StyledSearchResults>
 	);
 }
