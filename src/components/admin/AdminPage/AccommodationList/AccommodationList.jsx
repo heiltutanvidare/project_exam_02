@@ -1,4 +1,4 @@
-import { useContext, useEffect } from "react";
+import { useContext } from "react";
 import Loader from "../../../ui/Loader/Loader";
 import Message from "../../../ui/Message/Message";
 import { StyledSearchResults } from "../../../search/SearchResults/searchResults.styles";

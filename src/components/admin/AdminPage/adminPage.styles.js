@@ -41,4 +41,12 @@ export const StyledAdminPage = styled.section`
 			color: var(--clr-drk-900);
 		}
 	}
+
+	.hidden {
+		display: none;
+	}
+
+	.visible {
+		display: block;
+	}
 `;
