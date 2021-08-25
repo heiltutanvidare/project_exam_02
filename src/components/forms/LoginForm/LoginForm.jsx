@@ -5,9 +5,10 @@ import * as yup from "yup";
 import { yupResolver } from "@hookform/resolvers/yup";
 import Button from "../../ui/Button/Button";
 import Message from "../../ui/Message/Message";
+import FullPageMessage from "../../ui/Message/FullPageMessage";
 import submitLogin from "../../../global/functions/submitLogin";
-import { StyledLoginForm } from "./loginForm.styles";
 import AuthContext from "../../../global/contexts/AuthContext";
+import { StyledLoginForm } from "./loginForm.styles";
 
 const schema = yup.object().shape({
 	username: yup.string().required("Please enter your username"),
@@ -15,6 +16,7 @@ const schema = yup.object().shape({
 });
 
 export default function LoginForm() {
+	const [loading, setLoading] = useState(false);
 	const [loggedIn, setLoggedIn] = useState(false);
 	const [logInFailed, setLogInFailed] = useState(false);
 	const [, setAuth] = useContext(AuthContext);
@@ -29,8 +31,12 @@ export default function LoginForm() {
 	} = useForm({ resolver: yupResolver(schema) });
 
 	async function onSubmit(data) {
+		window.scrollTo(0, 0);
+		setLoading(true);
 		const login = await submitLogin(data.username, data.password);
 		if (login.success) {
+			setLoading(false);
+
 			setLogInFailed(false);
 			setLoggedIn(true);
 			setAuth(login.json.jwt);
@@ -39,6 +45,7 @@ export default function LoginForm() {
 			}, 2000);
 		}
 		if (login.json.error) {
+			setLoading(false);
 			setLoggedIn(false);
 			setLogInFailed(true);
 		}
@@ -52,6 +59,14 @@ export default function LoginForm() {
 
 	return (
 		<StyledLoginForm>
+			{loading && (
+				<FullPageMessage
+					loader
+					variant="waiting"
+					heading="Loging in"
+					message="Please wait while we log you in"
+				/>
+			)}
 			{logInFailed && (
 				<div className="message-container">
 					<Message
@@ -62,13 +77,12 @@ export default function LoginForm() {
 				</div>
 			)}
 			{loggedIn && (
-				<div className="message-container">
-					<Message
-						heading="Successfully logged in 🥳"
-						message="Redirection you to the admin page now…"
-						variant="success"
-					/>
-				</div>
+				<FullPageMessage
+					loader
+					variant="success"
+					heading="Successfully logged in 🥳"
+					message="Redirection you to the admin page now…"
+				/>
 			)}
 			<form onSubmit={handleSubmit(onSubmit)}>
 				<div className="form__field">

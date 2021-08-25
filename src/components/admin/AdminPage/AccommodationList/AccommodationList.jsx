@@ -1,4 +1,4 @@
-import { useContext } from "react";
+import { useContext, useEffect } from "react";
 import Loader from "../../../ui/Loader/Loader";
 import Message from "../../../ui/Message/Message";
 import { StyledSearchResults } from "../../../search/SearchResults/searchResults.styles";
@@ -11,17 +11,23 @@ import { StyledAccommodationList } from "./accommodation.styles";
 export default function AccommodationList() {
 	const [auth] = useContext(AuthContext);
 
-	const { data, fetching, error } = useAuthenticatedFetch(
+	let { data, fetching, error } = useAuthenticatedFetch(
 		`${API_BASE_URL}/establishments`,
 		auth
 	);
 
 	if (fetching) {
-		return <Loader />;
+		return <Loader text="Loading accommodations" />;
 	}
 
 	if (error) {
-		return <p>An error occured :(</p>;
+		return (
+			<Message
+				variant="danger"
+				heading="Something went wrong"
+				message="We are sorry but we could not fetch the accommodations at this time. Please try again later."
+			/>
+		);
 	}
 
 	if (auth && data) {

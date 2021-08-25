@@ -14,7 +14,7 @@ export default function MessageList() {
 	);
 
 	if (fetching) {
-		return <Loader />;
+		return <Loader text="Loading messages" />;
 	}
 
 	if (error) {

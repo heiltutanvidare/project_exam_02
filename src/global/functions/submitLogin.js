@@ -6,8 +6,6 @@ async function submitLogin(username, password) {
 		identifier: username,
 	});
 
-	console.log("Data:", data);
-
 	const options = {
 		method: "POST",
 		body: data,
@@ -19,7 +17,6 @@ async function submitLogin(username, password) {
 	try {
 		const response = await fetch(`${API_BASE_URL}/auth/local`, options);
 		const json = await response.json();
-		console.log(json);
 		if (json.error) {
 			return { success: false, json: json };
 		}

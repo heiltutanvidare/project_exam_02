@@ -10,6 +10,7 @@ import useFetch from "../../../hooks/useFetch";
 import AuthContext from "../../../global/contexts/AuthContext";
 import submitCreate from "../../../global/functions/submitCreate";
 import { StyledLoginForm } from "../LoginForm/loginForm.styles";
+import FullPageMessage from "../../ui/Message/FullPageMessage";
 
 const schema = yup.object().shape({
 	title: yup.string().required("Please enter a title"),
@@ -38,6 +39,7 @@ const schema = yup.object().shape({
 });
 
 export default function AddAccommodationForm() {
+	const [loading, setLoading] = useState(false);
 	const [created, setCreated] = useState(false);
 	const [creatingFailed, setCreatingFailed] = useState(false);
 	const [auth] = useContext(AuthContext);
@@ -59,16 +61,20 @@ export default function AddAccommodationForm() {
 			"This will create this accommodation. Are you sure you want to to that?"
 		);
 		if (doUpdate) {
+			window.scrollTo(0, 0);
+			setLoading(true);
 			const create = await submitCreate(data, auth);
 			if (create.success) {
+				setLoading(false);
 				setCreatingFailed(false);
 				setCreated(true);
 				reset();
 				setTimeout(() => {
 					history.push("/admin");
-				}, 1500);
+				}, 2000);
 			}
 			if (create.json.error) {
+				setLoading(false);
 				setCreated(false);
 				setCreatingFailed(true);
 			}
@@ -82,6 +88,14 @@ export default function AddAccommodationForm() {
 
 	return (
 		<StyledLoginForm>
+			{loading && (
+				<FullPageMessage
+					loader
+					variant="waiting"
+					heading="Creating accommodation"
+					message="Please wait for the process to finish"
+				/>
+			)}
 			{creatingFailed && (
 				<div className="message-container">
 					<Message
@@ -92,13 +106,12 @@ export default function AddAccommodationForm() {
 				</div>
 			)}
 			{created && (
-				<div className="message-container">
-					<Message
-						heading="Successfully created 🥳"
-						message="Redirection you to the admin page now…"
-						variant="success"
-					/>
-				</div>
+				<FullPageMessage
+					loader
+					variant="success"
+					heading="Successfully created 🥳"
+					message="Redirection you to the admin page now…"
+				/>
 			)}
 			<form onSubmit={handleSubmit(onSubmit)}>
 				<div className="form__field">

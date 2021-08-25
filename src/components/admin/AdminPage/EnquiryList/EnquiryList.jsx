@@ -15,7 +15,7 @@ export default function EnquiryList() {
 	);
 
 	if (fetching) {
-		return <Loader />;
+		return <Loader text="Loading enquiries" />;
 	}
 
 	if (error) {

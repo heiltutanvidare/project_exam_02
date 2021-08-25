@@ -1,23 +1,28 @@
 import styled from "styled-components";
 
 export const StyledLoader = styled.div`
-	margin: var(--space-xsm) 0;
+	margin: ${(props) =>
+		props.inMessage ? "1.5rem 0 0 0" : "var(--space-xsm) 0"};
 	display: grid;
 	place-content: center;
+	place-content: ${(props) => (props.inMessage ? "start" : "center")};
 
 	.loading__text {
 		font-size: 0.85rem;
+		text-align: center;
 	}
 
 	.dots {
 		display: flex;
 		padding-bottom: 0.5rem;
+		justify-content: center;
 	}
 
 	.dot {
 		height: 0.75rem;
 		width: 0.75rem;
-		background-color: var(--clr-drk-600);
+		background-color: ${(props) =>
+			props.bg ? props.bg : "var(--clr-drk-600)"};
 		border-radius: 50%;
 		margin-right: 0.25rem;
 		animation: loading 0.5s linear alternate infinite;
@@ -43,11 +48,11 @@ export const StyledLoader = styled.div`
 	@keyframes loading {
 		from {
 			transform: translateY(0);
-			background-color: var(--clr-drk-50);
+			filter: brightness(1);
 		}
 		to {
 			transform: translateY(-0.5rem);
-			background-color: var(--clr-drk-900);
+			filter: brightness(3);
 		}
 	}
 `;
