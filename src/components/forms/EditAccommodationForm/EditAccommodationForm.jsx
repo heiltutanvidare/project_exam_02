@@ -11,6 +11,7 @@ import AuthContext from "../../../global/contexts/AuthContext";
 import submitUpdate from "../../../global/functions/submitUpdate";
 import FullPageMessage from "../../ui/Message/FullPageMessage";
 import { StyledLoginForm } from "../LoginForm/loginForm.styles";
+import { type } from "os";
 
 const schema = yup.object().shape({
 	title: yup.string().required("Please enter a title"),
@@ -45,7 +46,7 @@ export default function EditAccommodationForm({ accommodation }) {
 	const [auth] = useContext(AuthContext);
 	const { data: types } = useFetch(`${API_BASE_URL}/types`);
 	const { data: amenities } = useFetch(`${API_BASE_URL}/amenities`);
-
+	console.log(types);
 	const history = useHistory();
 
 	function checkIfAmenityExists(id) {
@@ -138,7 +139,7 @@ export default function EditAccommodationForm({ accommodation }) {
 					<label htmlFor="type">Accommodation type (required)</label>
 					<select
 						name="type"
-						value={accommodation.type.id}
+						defaultValue=""
 						id="type"
 						className={
 							errors.type || updateFailed ? "hasError" : ""

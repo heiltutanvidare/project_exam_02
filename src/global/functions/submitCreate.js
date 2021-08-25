@@ -17,8 +17,6 @@ async function submitCreate(uploadData, token) {
 		type: uploadData.type,
 	};
 
-	console.log(JSON.stringify(data));
-
 	formData.append("data", JSON.stringify(data));
 
 	const options = {
