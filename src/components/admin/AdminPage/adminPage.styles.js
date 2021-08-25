@@ -4,12 +4,12 @@ export const StyledAdminPage = styled.section`
 	margin: 4rem 0;
 
 	.nav {
-		display: flex;
-		justify-content: center;
 		margin-bottom: var(--space-xxsm);
+		width: 100%;
 
 		&__list {
 			display: flex;
+			justify-content: center;
 			align-items: flex-end;
 			list-style: none;
 			padding: 0;

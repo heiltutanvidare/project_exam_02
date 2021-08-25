@@ -44,23 +44,12 @@ export default function EditAccommodationForm({ accommodation }) {
 	const [updateFailed, setUpdateFailed] = useState(false);
 	const [auth] = useContext(AuthContext);
 	const { data: types } = useFetch(`${API_BASE_URL}/types`);
-	console.log(types);
-
-	let typeOptions = [];
-	types.forEach((type) => {
-		typeOptions.push({ value: type.id, label: type.accommodation_type });
-	});
-
 	const { data: amenities } = useFetch(`${API_BASE_URL}/amenities`);
 
 	const history = useHistory();
 
 	function checkIfAmenityExists(id) {
 		return accommodation.amenities.find((amenity) => amenity.id === id);
-	}
-
-	function checkIfTypeExists(id) {
-		return id === accommodation.type.id;
 	}
 
 	const {
@@ -149,23 +138,19 @@ export default function EditAccommodationForm({ accommodation }) {
 					<label htmlFor="type">Accommodation type (required)</label>
 					<select
 						name="type"
-						defaultValue={accommodation.type.id}
+						value={accommodation.type.id}
 						id="type"
 						className={
 							errors.type || updateFailed ? "hasError" : ""
 						}
 						{...register("type")}
 					>
-						<option defaultValue="">
+						<option value="" disabled>
 							Select an accommodation type
 						</option>
 						{types.map((type) => {
 							return (
-								<option
-									key={type.id}
-									value={type.id}
-									selected={checkIfTypeExists(type.id)}
-								>
+								<option key={type.id} value={type.id}>
 									{type.accommodation_type}
 								</option>
 							);
