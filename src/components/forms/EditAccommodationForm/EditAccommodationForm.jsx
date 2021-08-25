@@ -1,16 +1,23 @@
 import { useState, useContext } from "react";
+import { useHistory } from "react-router";
 import { useForm } from "react-hook-form";
 import * as yup from "yup";
 import { yupResolver } from "@hookform/resolvers/yup";
+import { API_BASE_URL } from "../../../global/constants/api";
 import Button from "../../ui/Button/Button";
 import Message from "../../ui/Message/Message";
-import submitUpdate from "../../../global/functions/submitUpdate";
-import { StyledLoginForm } from "../LoginForm/loginForm.styles";
+import useFetch from "../../../hooks/useFetch";
 import AuthContext from "../../../global/contexts/AuthContext";
-import { useHistory } from "react-router";
+import submitUpdate from "../../../global/functions/submitUpdate";
+import FullPageMessage from "../../ui/Message/FullPageMessage";
+import { StyledLoginForm } from "../LoginForm/loginForm.styles";
 
 const schema = yup.object().shape({
 	title: yup.string().required("Please enter a title"),
+	type: yup
+		.number()
+		.required("Please select an accommodation type")
+		.typeError("Please select an accommodation type"),
 	km_from_city: yup
 		.number()
 		.required("Please enter how far the place is from the city center")
@@ -28,14 +35,33 @@ const schema = yup.object().shape({
 		.required("Please enter how many bathrooms there are")
 		.typeError("Please enter a number"),
 	description: yup.string().required("Please enter a description"),
+	amenities: yup.array().nullable(),
 });
 
 export default function EditAccommodationForm({ accommodation }) {
+	const [loading, setLoading] = useState(false);
 	const [updated, setUpdated] = useState(false);
 	const [updateFailed, setUpdateFailed] = useState(false);
 	const [auth] = useContext(AuthContext);
+	const { data: types } = useFetch(`${API_BASE_URL}/types`);
+	console.log(types);
+
+	let typeOptions = [];
+	types.forEach((type) => {
+		typeOptions.push({ value: type.id, label: type.accommodation_type });
+	});
+
+	const { data: amenities } = useFetch(`${API_BASE_URL}/amenities`);
 
 	const history = useHistory();
+
+	function checkIfAmenityExists(id) {
+		return accommodation.amenities.find((amenity) => amenity.id === id);
+	}
+
+	function checkIfTypeExists(id) {
+		return id === accommodation.type.id;
+	}
 
 	const {
 		register,
@@ -49,16 +75,20 @@ export default function EditAccommodationForm({ accommodation }) {
 			"This will update this accommodation. Are you sure you want to to that?"
 		);
 		if (doUpdate) {
+			window.scrollTo(0, 0);
+			setLoading(true);
 			const update = await submitUpdate(data, auth, accommodation.id);
 			if (update.success) {
+				setLoading(false);
 				setUpdateFailed(false);
 				setUpdated(true);
 				reset();
 				setTimeout(() => {
 					history.push("/admin");
-				}, 1500);
+				}, 2000);
 			}
 			if (update.json.error) {
+				setLoading(false);
 				setUpdated(false);
 				setUpdateFailed(true);
 			}
@@ -72,6 +102,14 @@ export default function EditAccommodationForm({ accommodation }) {
 
 	return (
 		<StyledLoginForm>
+			{loading && (
+				<FullPageMessage
+					loader
+					variant="waiting"
+					heading="Updating the accommodation"
+					message="Please wait for the process to finish"
+				/>
+			)}
 			{updateFailed && (
 				<div className="message-container">
 					<Message
@@ -82,13 +120,12 @@ export default function EditAccommodationForm({ accommodation }) {
 				</div>
 			)}
 			{updated && (
-				<div className="message-container">
-					<Message
-						heading="Successfully updated 🥳"
-						message="Redirection you to the admin page now…"
-						variant="success"
-					/>
-				</div>
+				<FullPageMessage
+					loader
+					variant="success"
+					heading="Successfully updated 🥳"
+					message="Redirection you to the admin page now…"
+				/>
 			)}
 			<form onSubmit={handleSubmit(onSubmit)}>
 				<div className="form__field">
@@ -98,7 +135,6 @@ export default function EditAccommodationForm({ accommodation }) {
 						defaultValue={accommodation.title}
 						placeholder="Enter your title"
 						id="title"
-						errors={errors}
 						{...register("title")}
 						className={
 							errors.title || updateFailed ? "hasError" : ""
@@ -110,13 +146,43 @@ export default function EditAccommodationForm({ accommodation }) {
 				</div>
 
 				<div className="form__field">
+					<label htmlFor="type">Accommodation type (required)</label>
+					<select
+						name="type"
+						defaultValue={accommodation.type.id}
+						id="type"
+						className={
+							errors.type || updateFailed ? "hasError" : ""
+						}
+						{...register("type")}
+					>
+						<option defaultValue="">
+							Select an accommodation type
+						</option>
+						{types.map((type) => {
+							return (
+								<option
+									key={type.id}
+									value={type.id}
+									selected={checkIfTypeExists(type.id)}
+								>
+									{type.accommodation_type}
+								</option>
+							);
+						})}
+					</select>
+					{errors.type && (
+						<p className="form__error">{errors.type.message}</p>
+					)}
+				</div>
+
+				<div className="form__field">
 					<label htmlFor="km_from_city">Kilometers (required)</label>
 					<input
 						type="number"
-						defaultValue={accommodation.km_from_city}
 						placeholder="Kilometers from city centre"
+						defaultValue={accommodation.km_from_city}
 						id="km_from_city"
-						errors={errors}
 						{...register("km_from_city")}
 						className={
 							errors.km_from_city || updateFailed
@@ -135,10 +201,9 @@ export default function EditAccommodationForm({ accommodation }) {
 					<label htmlFor="price">Price in USD (required)</label>
 					<input
 						type="number"
-						defaultValue={accommodation.price}
 						placeholder="Enter a price in USD"
 						id="price"
-						errors={errors}
+						defaultValue={accommodation.price}
 						{...register("price")}
 						className={
 							errors.price || updateFailed ? "hasError" : ""
@@ -153,10 +218,9 @@ export default function EditAccommodationForm({ accommodation }) {
 					<label htmlFor="bedrooms">Bedrooms (required)</label>
 					<input
 						type="number"
-						defaultValue={accommodation.bedrooms}
 						placeholder="Enter number of bedrooms"
 						id="bedrooms"
-						errors={errors}
+						defaultValue={accommodation.bedrooms}
 						{...register("bedrooms")}
 						className={
 							errors.bedrooms || updateFailed ? "hasError" : ""
@@ -171,10 +235,9 @@ export default function EditAccommodationForm({ accommodation }) {
 					<label htmlFor="bathrooms">Bathrooms (required)</label>
 					<input
 						type="number"
-						defaultValue={accommodation.bathrooms}
 						placeholder="Enter number of bathrooms"
 						id="bathrooms"
-						errors={errors}
+						defaultValue={accommodation.bathrooms}
 						{...register("bathrooms")}
 						className={
 							errors.bathrooms || updateFailed ? "hasError" : ""
@@ -191,10 +254,9 @@ export default function EditAccommodationForm({ accommodation }) {
 					<label htmlFor="description">Description (required)</label>
 					<textarea
 						rows="8"
-						defaultValue={accommodation.description}
 						placeholder="Enter a description"
 						id="description"
-						errors={errors}
+						defaultValue={accommodation.description}
 						{...register("description")}
 						className={
 							errors.description || updateFailed ? "hasError" : ""
@@ -207,9 +269,60 @@ export default function EditAccommodationForm({ accommodation }) {
 					)}
 				</div>
 
+				<div className="form__field">
+					<label htmlFor="amenities">Amenities</label>
+					<div className="form__checkbox__grid">
+						{amenities.map((amenity) => {
+							return (
+								<div
+									className="form__checkbox__field"
+									key={amenity.id}
+								>
+									<input
+										type="checkbox"
+										defaultChecked={checkIfAmenityExists(
+											amenity.id
+										)}
+										name={amenity.amenity}
+										id={amenity.amenity}
+										value={amenity.id}
+										{...register("amenities")}
+									/>
+									<label htmlFor={amenity.amenity}>
+										{amenity.amenity}
+									</label>
+								</div>
+							);
+						})}
+					</div>
+					{errors.amenities && (
+						<p className="form__error">
+							{errors.amenities.message}
+						</p>
+					)}
+				</div>
+
+				<div className="form__field">
+					<label htmlFor="main_image">Main image</label>
+					<input
+						className={
+							errors.main_image || updateFailed ? "hasError" : ""
+						}
+						type="file"
+						name="main_image"
+						id="main_image"
+						{...register("main_image")}
+					/>
+					{errors.main_image && (
+						<p className="form__error">
+							{errors.main_image.message}
+						</p>
+					)}
+				</div>
+
 				<div className="button-group">
 					<Button variant="filled" color="dark" fullwidth={false}>
-						Submit changes
+						Submit new accommodation
 					</Button>
 				</div>
 			</form>

@@ -33,9 +33,9 @@ export const StyledLoginForm = styled.section`
 
 	.form__checkbox__grid {
 		margin-top: 0.25rem;
-		display: grid;
-		grid-template-columns: repeat(3, 1fr);
-		grid-gap: 0.75rem;
+		display: flex;
+		flex-wrap: wrap;
+		gap: 1rem;
 	}
 
 	.form__checkbox__field {
@@ -45,7 +45,7 @@ export const StyledLoginForm = styled.section`
 		input,
 		label {
 			margin: 0;
-			line-height: 1;
+			line-height: 1.618;
 		}
 
 		input {
