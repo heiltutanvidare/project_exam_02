@@ -11,7 +11,6 @@ import AuthContext from "../../../global/contexts/AuthContext";
 import submitUpdate from "../../../global/functions/submitUpdate";
 import FullPageMessage from "../../ui/Message/FullPageMessage";
 import { StyledLoginForm } from "../LoginForm/loginForm.styles";
-import { type } from "os";
 
 const schema = yup.object().shape({
 	title: yup.string().required("Please enter a title"),

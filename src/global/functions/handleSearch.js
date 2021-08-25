@@ -14,6 +14,6 @@ export default function handleSearch(e) {
 		guests: guests,
 		checkIn,
 		checkOut,
-		days: differenceInDays,
+		days: differenceInDays || 1,
 	};
 }

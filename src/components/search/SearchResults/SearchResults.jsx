@@ -15,7 +15,7 @@ export default function SearchResults() {
 	const [search] = useContext(SearchContext);
 
 	let numberOfDays = 1;
-	if (search) {
+	if (search && search.days > 0) {
 		numberOfDays = search.days;
 	}
 
