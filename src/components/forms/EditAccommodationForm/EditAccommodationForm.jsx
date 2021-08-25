@@ -45,7 +45,6 @@ export default function EditAccommodationForm({ accommodation }) {
 	const [auth] = useContext(AuthContext);
 	const { data: types } = useFetch(`${API_BASE_URL}/types`);
 	const { data: amenities } = useFetch(`${API_BASE_URL}/amenities`);
-	console.log(types);
 	const history = useHistory();
 
 	function checkIfAmenityExists(id) {
@@ -307,7 +306,7 @@ export default function EditAccommodationForm({ accommodation }) {
 
 				<div className="button-group">
 					<Button variant="filled" color="dark" fullwidth={false}>
-						Submit new accommodation
+						Update accommodation
 					</Button>
 				</div>
 			</form>

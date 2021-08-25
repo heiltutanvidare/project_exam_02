@@ -1,10 +1,11 @@
 import PropTypes from "prop-types";
+import search from "../../../assets/graphics/Search.svg";
 import {
 	StyledButtonOutline,
 	StyledButtonFilled,
 	StyledButtonForm,
+	StyledButtonDanger,
 } from "./button.styles";
-import search from "../../../assets/graphics/Search.svg";
 
 export default function Button({
 	fullwidth,
@@ -37,6 +38,17 @@ export default function Button({
 				<img src={search} alt="Search icon" />
 				{children}
 			</StyledButtonForm>
+		);
+	} else if (variant === "danger") {
+		return (
+			<StyledButtonDanger
+				color={color}
+				fullwidth={fullwidth}
+				align={align}
+				onClick={event}
+			>
+				{children}
+			</StyledButtonDanger>
 		);
 	} else {
 		return (

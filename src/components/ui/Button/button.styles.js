@@ -63,3 +63,18 @@ export const StyledButtonForm = styled(StyledButtonFilled)`
 		transform: scale(1);
 	}
 `;
+
+export const StyledButtonDanger = styled(StyledButtonOutline)`
+	font-size: 0.75rem;
+	color: var(--clr-danger);
+	border-color: transparent;
+	border-bottom-color: var(--clr-danger);
+	border-radius: 0;
+
+	&:hover {
+		border: 1px solid var(--clr-danger);
+		color: var(--clr-white);
+		background-color: var(--clr-danger-hover);
+		border-color: var(--clr-danger-hover);
+	}
+`;

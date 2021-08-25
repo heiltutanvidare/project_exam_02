@@ -5,6 +5,8 @@ import { API_BASE_URL } from "../../../../global/constants/api";
 import Container from "../../../layout/Container/Container";
 import { StyledEditAccommodationPage } from "./editAccommodationPage.styles";
 import EditAccommodationForm from "../../../forms/EditAccommodationForm/EditAccommodationForm";
+import DeleteAccommodation from "./DeleteAccommodation";
+import Message from "../../../ui/Message/Message";
 
 export default function EditAccommodationPage() {
 	// get the accommodation id from the URL search params
@@ -27,7 +29,11 @@ export default function EditAccommodationPage() {
 		return (
 			// TODO: Use the message component here
 			<Container>
-				<p>An error occured 😔</p>
+				<Message
+					variant="danger"
+					heading="An error occured"
+					message="Failed while loading the data. We are sorry for the inconveniance, and hope to have the issue sorted out soon."
+				/>
 			</Container>
 		);
 	}
@@ -37,6 +43,7 @@ export default function EditAccommodationPage() {
 			<Container>
 				<h2>Edit your accommodation</h2>
 				<EditAccommodationForm accommodation={data} />
+				<DeleteAccommodation id={data.id} />
 			</Container>
 		</StyledEditAccommodationPage>
 	);
