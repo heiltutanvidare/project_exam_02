@@ -8,11 +8,11 @@ export const StyledHeader = styled.header`
 	right: 0;
 	border-bottom: 1px solid
 		${(props) => (props.filled ? "var(--clr-drk-50)" : "transparent")};
-	background: ${(props) => (props.filled ? "var(--clr-drk-900)" : "none")};
+	background: ${(props) => (props.filled ? "var(--clr-drk-900-08)" : "none")};
 	transition: all 0.5s linear;
 
 	&.filled {
-		background: var(--clr-drk-900);
+		background: var(--clr-drk-900-08);
 		border-color: var(--clr-drk-50);
 	}
 
