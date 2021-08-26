@@ -14,7 +14,7 @@ import {
 } from "./searchBox.styles";
 
 export default function SearchBox() {
-	const [, setSearch] = useContext(SearchContext);
+	const [search, setSearch] = useContext(SearchContext);
 	const { data } = useFetch(`${API_BASE_URL}/establishments`);
 
 	const history = useHistory();
@@ -70,15 +70,15 @@ export default function SearchBox() {
 		<StyledForm onSubmit={handleSubmit} autoComplete="off">
 			<StyledFormGrid>
 				<StyledField span="all" className="suggestion" ref={inputRef}>
-					<StyledLabel htmlFor="location">
+					<StyledLabel htmlFor="title">
 						How would you like to stay?
 					</StyledLabel>
 					<StyledInput
 						placeholder="Search for accommodations"
-						id="location"
-						name="location"
+						id="title"
+						name="title"
 						onClick={() => setDisplay(!display)}
-						value={input}
+						defaultValue={search?.title || input}
 						onChange={(event) => setInput(event.target.value)}
 					/>
 					{display && (
@@ -116,7 +116,7 @@ export default function SearchBox() {
 						type="date"
 						id="checkin"
 						name="checkin"
-						defaultValue={setMinDate()}
+						defaultValue={search?.checkIn || setMinDate()}
 						min={setMinDate()}
 					/>
 				</StyledField>
@@ -126,7 +126,7 @@ export default function SearchBox() {
 						type="date"
 						id="checkout"
 						name="checkout"
-						defaultValue={setMinDate()}
+						defaultValue={search?.checkOut || setMinDate()}
 						min={setMinDate()}
 					/>
 				</StyledField>

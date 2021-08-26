@@ -1,5 +1,5 @@
 export default function handleSearch(e) {
-	const location = e.target[0].value;
+	const title = e.target[0].value;
 	const checkIn = e.target[1].value;
 	const checkOut = e.target[2].value;
 
@@ -9,7 +9,7 @@ export default function handleSearch(e) {
 	const differenceInDays = differenceInTime / (1000 * 3600 * 24);
 
 	return {
-		location: location,
+		title,
 		checkIn,
 		checkOut,
 		days: differenceInDays || 1,
