@@ -1,8 +1,10 @@
-import { useContext } from "react";
+import { useContext, useRef, useState, useEffect } from "react";
 import { useHistory } from "react-router-dom";
 import SearchContext from "../../../global/contexts/SearchContext";
 import handleSearch from "../../../global/functions/handleSearch";
 import Button from "../../ui/Button/Button";
+import useFetch from "../../../hooks/useFetch";
+import { API_BASE_URL } from "../../../global/constants/api";
 import {
 	StyledForm,
 	StyledField,
@@ -13,6 +15,12 @@ import {
 
 export default function SearchBox() {
 	const [, setSearch] = useContext(SearchContext);
+	const { data, fetching, error } = useFetch(
+		`${API_BASE_URL}/establishments`
+	);
+	console.log(data, fetching, error);
+
+	const history = useHistory();
 
 	// Make sure user cannot select a date in the past
 	function setMinDate() {
@@ -24,11 +32,8 @@ export default function SearchBox() {
 		if (month.length < 2) month = "0" + month;
 		if (day.length < 2) day = "0" + day;
 
-		console.log([year, month, day].join("-"));
 		return [year, month, day].join("-");
 	}
-
-	const history = useHistory();
 
 	function handleSubmit(e) {
 		e.preventDefault();
@@ -39,25 +44,74 @@ export default function SearchBox() {
 		}
 	}
 
+	// Handle the autocomplete / typeahead
+	const [display, setDisplay] = useState(false);
+	const [input, setInput] = useState("");
+	const wrapperRef = useRef(null);
+	// const [options, setOptions] = useState([]);
+
+	const setSearchValue = (title) => {
+		setInput(title);
+		setDisplay(false);
+	};
+
+	useEffect(() => {
+		document.addEventListener("mousedown", handleClickOutside);
+
+		return () => {
+			document.removeEventListener("mousedown", handleClickOutside);
+		};
+	}, []);
+
+	const handleClickOutside = (event) => {
+		const { current: wrap } = wrapperRef;
+		if (wrap && !wrap.contains(event.target)) {
+			setDisplay(false);
+		}
+	};
+
 	return (
-		<StyledForm onSubmit={handleSubmit}>
+		<StyledForm onSubmit={handleSubmit} autocomplete="off">
 			<StyledFormGrid>
-				<StyledField>
-					<StyledLabel htmlFor="location">Location</StyledLabel>
+				<StyledField span="all" className="suggestion" ref={wrapperRef}>
+					<StyledLabel htmlFor="location">
+						How would you like to stay?
+					</StyledLabel>
 					<StyledInput
-						placeholder="Bergen"
+						placeholder="Search for accommodations"
 						id="location"
 						name="location"
+						onClick={() => setDisplay(!display)}
+						autocomplete="off"
+						value={input}
+						onChange={(event) => setInput(event.target.value)}
 					/>
-				</StyledField>
-				<StyledField>
-					<StyledLabel htmlFor="guests">Guests</StyledLabel>
-					<StyledInput
-						placeholder="2"
-						id="guests"
-						name="guests"
-						type="number"
-					/>
+					{display && (
+						<div className="suggestion__container">
+							{data
+								.filter(
+									({ title }) =>
+										title.indexOf(input.toLowerCase()) > -1
+								)
+								.map((value) => {
+									return (
+										<div
+											className="suggestion__option"
+											key={value.id}
+											onClick={() =>
+												setSearchValue(value.title)
+											}
+										>
+											<span>{value.title}</span>
+											<img
+												src={value.main_image.url}
+												alt={value.title}
+											/>
+										</div>
+									);
+								})}
+						</div>
+					)}
 				</StyledField>
 				<StyledField>
 					<StyledLabel htmlFor="checkin">Check in</StyledLabel>
