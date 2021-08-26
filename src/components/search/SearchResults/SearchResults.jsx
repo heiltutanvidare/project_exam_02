@@ -58,7 +58,7 @@ export default function SearchResults() {
 						title={topResult[0].title}
 						type={topResult[0].type.accommodation_type}
 						image={topResult[0].main_image.url}
-						total={topResult[0].price * numberOfDays}
+						total={Math.floor(topResult[0].price * numberOfDays)}
 						to={`accommodation/${topResult[0].id}`}
 					/>
 					<h3>Other accommodations you might enjoy</h3>
@@ -73,7 +73,9 @@ export default function SearchResults() {
 							title={accommodation.title}
 							type={accommodation.type.accommodation_type}
 							image={accommodation.main_image.url}
-							total={accommodation.price * numberOfDays}
+							total={Math.floor(
+								accommodation.price * numberOfDays
+							)}
 							to={`accommodation/${accommodation.id}`}
 						/>
 					);
