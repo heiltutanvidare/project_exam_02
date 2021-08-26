@@ -1,8 +1,7 @@
 export default function handleSearch(e) {
 	const location = e.target[0].value;
-	const guests = e.target[1].value;
-	const checkIn = e.target[2].value;
-	const checkOut = e.target[3].value;
+	const checkIn = e.target[1].value;
+	const checkOut = e.target[2].value;
 
 	const checkInDate = new Date(checkIn);
 	const checkOutDate = new Date(checkOut);
@@ -11,7 +10,6 @@ export default function handleSearch(e) {
 
 	return {
 		location: location,
-		guests: guests,
 		checkIn,
 		checkOut,
 		days: differenceInDays || 1,

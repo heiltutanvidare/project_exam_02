@@ -15,10 +15,7 @@ import {
 
 export default function SearchBox() {
 	const [, setSearch] = useContext(SearchContext);
-	const { data, fetching, error } = useFetch(
-		`${API_BASE_URL}/establishments`
-	);
-	console.log(data, fetching, error);
+	const { data } = useFetch(`${API_BASE_URL}/establishments`);
 
 	const history = useHistory();
 
@@ -47,7 +44,7 @@ export default function SearchBox() {
 	// Handle the autocomplete / typeahead
 	const [display, setDisplay] = useState(false);
 	const [input, setInput] = useState("");
-	const wrapperRef = useRef(null);
+	const inputRef = useRef(null);
 	// const [options, setOptions] = useState([]);
 
 	const setSearchValue = (title) => {
@@ -64,16 +61,15 @@ export default function SearchBox() {
 	}, []);
 
 	const handleClickOutside = (event) => {
-		const { current: wrap } = wrapperRef;
-		if (wrap && !wrap.contains(event.target)) {
+		if (inputRef.current && !inputRef.current.contains(event.target)) {
 			setDisplay(false);
 		}
 	};
 
 	return (
-		<StyledForm onSubmit={handleSubmit} autocomplete="off">
+		<StyledForm onSubmit={handleSubmit} autoComplete="off">
 			<StyledFormGrid>
-				<StyledField span="all" className="suggestion" ref={wrapperRef}>
+				<StyledField span="all" className="suggestion" ref={inputRef}>
 					<StyledLabel htmlFor="location">
 						How would you like to stay?
 					</StyledLabel>
@@ -82,7 +78,6 @@ export default function SearchBox() {
 						id="location"
 						name="location"
 						onClick={() => setDisplay(!display)}
-						autocomplete="off"
 						value={input}
 						onChange={(event) => setInput(event.target.value)}
 					/>
@@ -91,7 +86,9 @@ export default function SearchBox() {
 							{data
 								.filter(
 									({ title }) =>
-										title.indexOf(input.toLowerCase()) > -1
+										title
+											.toLowerCase()
+											.indexOf(input.toLowerCase()) > -1
 								)
 								.map((value) => {
 									return (
