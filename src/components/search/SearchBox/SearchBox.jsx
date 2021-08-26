@@ -93,6 +93,7 @@ export default function SearchBox() {
 									return (
 										<div
 											className="suggestion__option"
+											tabIndex="0"
 											key={value.id}
 											onClick={() =>
 												setSearchValue(value.title)
