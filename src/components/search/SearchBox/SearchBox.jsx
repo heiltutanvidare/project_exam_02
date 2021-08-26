@@ -14,9 +14,8 @@ import {
 } from "./searchBox.styles";
 
 export default function SearchBox() {
-	const [search, setSearch] = useContext(SearchContext);
 	const { data } = useFetch(`${API_BASE_URL}/establishments`);
-
+	const [search, setSearch] = useContext(SearchContext);
 	const history = useHistory();
 
 	// Make sure user cannot select a date in the past
@@ -77,8 +76,8 @@ export default function SearchBox() {
 						placeholder="Search for accommodations"
 						id="title"
 						name="title"
-						onClick={() => setDisplay(!display)}
-						defaultValue={search?.title || input}
+						onClick={() => setDisplay(true)}
+						value={input}
 						onChange={(event) => setInput(event.target.value)}
 					/>
 					{display && (
