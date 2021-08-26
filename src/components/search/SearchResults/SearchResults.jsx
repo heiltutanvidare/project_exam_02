@@ -1,11 +1,12 @@
 import { useContext } from "react";
 import SearchContext from "../../../global/contexts/SearchContext";
 import Accommodation from "../../accommodations/Accommodation/Accommodation";
+import DecorativeDivider from "../../ui/DecorativeDivider/DecorativeDivider";
 import Container from "../../layout/Container/Container";
-import { StyledSearchResults } from "./searchResults.styles";
 import { API_BASE_URL } from "../../../global/constants/api";
 import useFetch from "../../../hooks/useFetch";
 import Loader from "../../ui/Loader/Loader";
+import { StyledSearchResults } from "./searchResults.styles";
 
 export default function SearchResults() {
 	const { data, fetching, error } = useFetch(
@@ -17,6 +18,18 @@ export default function SearchResults() {
 	let numberOfDays = 1;
 	if (search && search.days > 0) {
 		numberOfDays = search.days;
+	}
+
+	let topResult = [];
+	let restResults = data;
+
+	if (search) {
+		topResult = data.filter(
+			({ title }) => title.toLowerCase() === search.title.toLowerCase()
+		);
+		restResults = data.filter(
+			({ title }) => title.toLowerCase() !== search.title.toLowerCase()
+		);
 	}
 
 	if (fetching) {
@@ -37,8 +50,22 @@ export default function SearchResults() {
 
 	return (
 		<StyledSearchResults>
-			{data.length > 0 &&
-				data.map((accommodation) => {
+			{topResult.length > 0 && (
+				<>
+					<h2>Place matching your search:</h2>
+					<Accommodation
+						price={topResult[0].price}
+						title={topResult[0].title}
+						type={topResult[0].type.accommodation_type}
+						image={topResult[0].main_image.url}
+						total={topResult[0].price * numberOfDays}
+						to={`accommodation/${topResult[0].id}`}
+					/>
+					<h3>Other accommodations you might enjoy</h3>
+				</>
+			)}
+			{restResults.length > 0 &&
+				restResults.map((accommodation) => {
 					return (
 						<Accommodation
 							key={accommodation.id}
