@@ -10,6 +10,34 @@ export const StyledTestemonials = styled.div`
 	.pullup--lg {
 		margin-bottom: -6rem;
 	}
+
+	.testemonial__name {
+		color: var(--clr-drk-600);
+		font-size: 0.75rem;
+		margin-top: var(--space-xxsm);
+		text-align: center;
+		position: relative;
+
+		::after,
+		::before {
+			position: absolute;
+			left: 50%;
+			right: 0;
+			transform: translateX(-50%);
+			content: "";
+			background: var(--clr-primary-500);
+			height: 1px;
+			width: 1rem;
+		}
+
+		::before {
+			top: -6px;
+		}
+
+		::after {
+			bottom: -6px;
+		}
+	}
 `;
 
 export const StyledQuotationMarks = styled.p`
@@ -20,4 +48,5 @@ export const StyledQuotationMarks = styled.p`
 	line-height: 1;
 	margin-bottom: -3.5rem;
 	text-align: center;
+	color: var(--clr-primary-500);
 `;

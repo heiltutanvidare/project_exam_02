@@ -1,7 +1,6 @@
 import { useContext } from "react";
 import SearchContext from "../../../global/contexts/SearchContext";
 import Accommodation from "../../accommodations/Accommodation/Accommodation";
-import DecorativeDivider from "../../ui/DecorativeDivider/DecorativeDivider";
 import Container from "../../layout/Container/Container";
 import { API_BASE_URL } from "../../../global/constants/api";
 import useFetch from "../../../hooks/useFetch";

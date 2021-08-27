@@ -17,8 +17,8 @@ export const StyledHeader = styled.header`
 	}
 
 	.inner {
-		padding-top: 1.25rem;
-		padding-bottom: 1.25rem;
+		padding-top: 1.125rem;
+		padding-bottom: 1.125rem;
 		display: flex;
 		align-items: center;
 		justify-content: space-between;

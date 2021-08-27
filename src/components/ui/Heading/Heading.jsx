@@ -1,6 +1,6 @@
 import PropTypes from "prop-types";
-import { StyledHeading } from "./heading.styles";
 import Pretitle from "../Pretitle/Pretitle";
+import { StyledHeading } from "./heading.styles";
 
 export default function Heading({
 	content,

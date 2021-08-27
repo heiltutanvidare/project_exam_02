@@ -1,4 +1,4 @@
-import { useContext } from "react";
+import { useContext, useRef } from "react";
 import MenuContext from "../../../global/contexts/menuContext";
 import Container from "../../layout/Container/Container";
 import Button from "../../ui/Button/Button";
@@ -10,12 +10,18 @@ import Contact from "./Contact/Contact";
 import Imagebox from "./Imagebox/Imagebox";
 import ImageGrid from "./ImageGrid/ImageGrid";
 import Testemonials from "./Testemonials/Testemonials";
+import scrollToElement from "../../../global/functions/scrollToElement";
 
 export default function About() {
 	const [, setMenuIsOpen] = useContext(MenuContext);
+
+	// Function to open the menu overlay
 	function openEnquiry() {
 		setMenuIsOpen(true);
 	}
+
+	// Set up the contact form container as a ref
+	const contactRef = useRef(null);
 
 	return (
 		<StyledAbout>
@@ -26,14 +32,13 @@ export default function About() {
 					content="Rooms for rent on the Norewgian coast – safe and affordable"
 				/>
 				<p>
-					Lorem ipsum, dolor sit amet consectetur adipisicing elit.
-					Quo, culpa reiciendis quibusdam dolorem accusamus
-					praesentium quia quos molestiae iure asperiores voluptates
-					iusto maiores assumenda officia voluptatem alias cupiditate
-					cum facilis explicabo debitis. Vero neque maiores natus
-					corporis delectus a consequuntur tenetur sapiente cumque
-					nulla totam, odit odio perferendis quae omnis accusantium
-					est!
+					Holidaze are here to help visitors to «Vestlandet» (Western
+					Norway) find accommodations that suit their budget and their
+					needs. If you are travelin to the area of Bergen and its
+					surroundings, you can get the chance to experience the best
+					of the area – while stayig at one of the many greate hotels,
+					apartments, cabins etc, provided by our great and passionate
+					comunity of accommodation owners.
 				</p>
 				<Button event={openEnquiry} variant="filled">
 					Send an inquiry
@@ -45,16 +50,21 @@ export default function About() {
 					content="We help you stay comfortable while you explore"
 				/>
 				<p>
-					Lorem ipsum, dolor sit amet consectetur adipisicing elit.
-					Quo, culpa reiciendis quibusdam dolorem accusamus
-					praesentium quia quos molestiae iure asperiores voluptates
-					iusto maiores assumenda officia voluptatem alias cupiditate
-					cum facilis explicabo debitis. Vero neque maiores natus
-					corporis delectus a consequuntur tenetur sapiente cumque
-					nulla totam, odit odio perferendis quae omnis accusantium
-					est!
+					Bergen is the gateway to Norway, with its fjords and
+					mountains, its fairytale colour, and a close proximity to
+					some of the world's most beautiful attractions. Bergen
+					offers fantastic hiking trails through the majestic nature,
+					opportunities for more active holidays like biking or
+					kayaking, cozy cafés on every corner with good scones and
+					coffee, and of course the city centre, where you can find
+					museums like Bryggens Museum or Marine-Museum.
 				</p>
-				<Button variant="outlined">Contact us</Button>
+				<Button
+					variant="outlined"
+					event={() => scrollToElement(contactRef)}
+				>
+					Contact us
+				</Button>
 
 				<Carousel />
 
@@ -64,18 +74,25 @@ export default function About() {
 					content="Just enjoy it!"
 				/>
 				<Paragraph align="center">
-					Snackwave vinyl post-ironic jean shorts ugh brunch organic
-					tofu. Kinfolk forage biodiesel cornhole austin pinterest.
-					Brooklyn fashion axe kinfolk live-edge leggings 3 wolf moon.
+					Superb geographical location, picture-book fjords, wonderful
+					mountains, a thousand lakes and countless islands. We love
+					this peninsula amidst all of nature's splendour. And we're
+					looking forward to welcoming you here!
 				</Paragraph>
-				<Button variant="filled" align="center">
+				<Button
+					variant="filled"
+					align="center"
+					event={() => scrollToElement(null)}
+				>
 					Find a place to stay
 				</Button>
 				<ImageGrid />
 			</Container>
 			<Testemonials />
 			<Container>
-				<Contact />
+				<div className="contactRef--container" ref={contactRef}>
+					<Contact />
+				</div>
 			</Container>
 		</StyledAbout>
 	);

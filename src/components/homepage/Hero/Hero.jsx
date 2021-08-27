@@ -1,18 +1,20 @@
-import { StyledHero } from "./hero.styles";
 import Heading from "../../ui/Heading/Heading";
 import Pretitle from "../../ui/Pretitle/Pretitle";
 import SearchBox from "../../search/SearchBox/SearchBox";
+import { StyledHero } from "./hero.styles";
 
 export default function Hero() {
 	return (
 		<StyledHero>
 			<div className="overlay"></div>
 			<div className="inner max-width">
-				<Heading
-					align="center"
-					content="Rest a bit before your next amazing adventure"
-					heroTitle
-				></Heading>
+				<div>
+					<Heading
+						align="center"
+						content={`Experience «Vestlandet»`}
+						heroTitle
+					/>
+				</div>
 				<div>
 					<Pretitle align="center" color="var(--clr-drk-50)">
 						Find a place to stay
