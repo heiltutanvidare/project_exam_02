@@ -64,7 +64,7 @@ export default function MenuOverlay() {
 							<div className="menu__icon__container">
 								<PhoneIcon />
 							</div>
-							+47 916 07 947
+							+47 222 25 555
 						</a>
 					</div>
 					<p>Opening hours</p>

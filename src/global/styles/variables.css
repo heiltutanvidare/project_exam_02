@@ -34,6 +34,7 @@
 
 	--clr-primary-900: #051524;
 	--clr-primary-500: #032d51;
+	--clr-primary-500-transp: #032d51ec;
 
 	/* Border-radius */
 	--br-xsm: 0.25rem;
