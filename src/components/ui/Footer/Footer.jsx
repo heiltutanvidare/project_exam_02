@@ -65,7 +65,7 @@ export default function Footer() {
 							target="_blank"
 							rel="noreferrer"
 						>
-							Noroff School of technology and digital media
+							Noroff School of technology and digital media.
 						</a>
 					</p>
 				</div>

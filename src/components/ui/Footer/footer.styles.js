@@ -79,6 +79,7 @@ export const StyledFooter = styled.footer`
 					color: inherit;
 					font-weight: 700;
 					cursor: pointer;
+					text-decoration: none;
 
 					:hover {
 						color: var(--clr-drk-100);
