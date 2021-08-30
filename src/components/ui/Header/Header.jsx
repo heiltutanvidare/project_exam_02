@@ -1,7 +1,8 @@
 import { useRef, useEffect } from "react";
 import PropTypes from "prop-types";
 import Hamburger from "../Hamburger/Hamburger";
-import Logo from "../Logo/Logo";
+// import Logo from "../Logo/Logo";
+import HolidazeLogo from "../../../assets/graphics/HolidazeLogo/HolidazeLogo";
 import { StyledHeader } from "./header.styles";
 
 export default function Header({ filled = true }) {
@@ -27,7 +28,8 @@ export default function Header({ filled = true }) {
 	return (
 		<StyledHeader ref={headerRef} filled={filled}>
 			<div className="inner max-width">
-				<Logo content="Holidaze" href="/" />
+				{/* <Logo content="Holidaze" href="/" /> */}
+				<HolidazeLogo />
 				<Hamburger />
 			</div>
 		</StyledHeader>
