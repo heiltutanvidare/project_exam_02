@@ -66,7 +66,7 @@ export default function DeleteAccommodation({ id }) {
 				/>
 			)}
 			<Button event={handleDelete} variant="danger">
-				Delete the stuff
+				Delete this accommodation
 			</Button>
 		</>
 	);

@@ -31,5 +31,8 @@ body {
 
 .layout__wrapper {
 	position: relative;
+}
+
+section {
 	padding-bottom: 3rem;
 }
