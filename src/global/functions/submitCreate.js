@@ -2,9 +2,17 @@ import { API_BASE_URL } from "../constants/api";
 
 async function submitCreate(uploadData, token) {
 	console.log(uploadData);
-	const mainImage = uploadData.main_image[0];
 	const formData = new FormData();
+
+	// Handeling the main image and appending it to the formData
+	const mainImage = uploadData.main_image[0];
 	formData.append("files.main_image", mainImage, mainImage.name);
+
+	// Handling the additional images and appending them to the formData
+	const images = Array.from(uploadData.images);
+	images.forEach((image) =>
+		formData.append(`files.images`, image, image.name)
+	);
 
 	const data = {
 		amenities: uploadData.amenities,

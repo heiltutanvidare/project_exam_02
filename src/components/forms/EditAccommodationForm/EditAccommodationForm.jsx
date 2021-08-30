@@ -10,6 +10,7 @@ import useFetch from "../../../hooks/useFetch";
 import AuthContext from "../../../global/contexts/AuthContext";
 import submitUpdate from "../../../global/functions/submitUpdate";
 import FullPageMessage from "../../ui/Message/FullPageMessage";
+import { MAX_FILE_SIZE } from "../../../global/constants/formValidation";
 import { StyledLoginForm } from "../LoginForm/loginForm.styles";
 
 const schema = yup.object().shape({
@@ -36,6 +37,42 @@ const schema = yup.object().shape({
 		.typeError("Please enter a number"),
 	description: yup.string().required("Please enter a description"),
 	amenities: yup.array().nullable(),
+	main_image: yup
+		.mixed()
+		.test(
+			"fileName",
+			"Please select a main image for your accommodation",
+			(value) => {
+				return value[0] && value[0].fileName !== "";
+			}
+		)
+		.test("fileSize", "The selected image file is too large", (value) => {
+			return value[0] && value[0].size <= MAX_FILE_SIZE;
+		})
+		.test("type", "Only image files are supported", (value) => {
+			return value[0] && value[0].type.includes("image");
+		}),
+	images: yup
+		.mixed()
+		.test("numberOfFiles", "Please select exactly 4 images", (value) => {
+			return value && value.length === 4;
+		})
+		.test("fileSize", "The images are too large", (value) => {
+			let arr = Array.from(value);
+			let approvedImages = [];
+			arr.forEach((item) => {
+				item.size <= MAX_FILE_SIZE && approvedImages.push(item);
+			});
+			return value && approvedImages.length === 4;
+		})
+		.test("type", "Only image files are supported", (value) => {
+			let arr = Array.from(value);
+			let approvedImages = [];
+			arr.forEach((item) => {
+				item.type.includes("image") && approvedImages.push(item);
+			});
+			return value && approvedImages.length === 4;
+		}),
 });
 
 export default function EditAccommodationForm({ accommodation }) {
@@ -116,6 +153,7 @@ export default function EditAccommodationForm({ accommodation }) {
 				/>
 			)}
 			<form onSubmit={handleSubmit(onSubmit)}>
+				{/* Title */}
 				<div className="form__field">
 					<label htmlFor="title">Title (required)</label>
 					<input
@@ -133,11 +171,12 @@ export default function EditAccommodationForm({ accommodation }) {
 					)}
 				</div>
 
+				{/* Type */}
 				<div className="form__field">
 					<label htmlFor="type">Accommodation type (required)</label>
 					<select
 						name="type"
-						defaultValue=""
+						value={accommodation.type.id}
 						id="type"
 						className={
 							errors.type || updateFailed ? "hasError" : ""
@@ -160,6 +199,7 @@ export default function EditAccommodationForm({ accommodation }) {
 					)}
 				</div>
 
+				{/* Kilometeres */}
 				<div className="form__field">
 					<label htmlFor="km_from_city">Kilometers (required)</label>
 					<input
@@ -181,6 +221,7 @@ export default function EditAccommodationForm({ accommodation }) {
 					)}
 				</div>
 
+				{/* Price */}
 				<div className="form__field">
 					<label htmlFor="price">Price in USD (required)</label>
 					<input
@@ -198,6 +239,7 @@ export default function EditAccommodationForm({ accommodation }) {
 					)}
 				</div>
 
+				{/* Bedrooms */}
 				<div className="form__field">
 					<label htmlFor="bedrooms">Bedrooms (required)</label>
 					<input
@@ -215,6 +257,7 @@ export default function EditAccommodationForm({ accommodation }) {
 					)}
 				</div>
 
+				{/* Bathrooms */}
 				<div className="form__field">
 					<label htmlFor="bathrooms">Bathrooms (required)</label>
 					<input
@@ -234,6 +277,7 @@ export default function EditAccommodationForm({ accommodation }) {
 					)}
 				</div>
 
+				{/* Description */}
 				<div className="form__field">
 					<label htmlFor="description">Description (required)</label>
 					<textarea
@@ -253,6 +297,7 @@ export default function EditAccommodationForm({ accommodation }) {
 					)}
 				</div>
 
+				{/* Amenities */}
 				<div className="form__field">
 					<label htmlFor="amenities">Amenities</label>
 					<div className="form__checkbox__grid">
@@ -286,6 +331,7 @@ export default function EditAccommodationForm({ accommodation }) {
 					)}
 				</div>
 
+				{/* Main image */}
 				<div className="form__field">
 					<label htmlFor="main_image">Main image</label>
 					<input
@@ -301,6 +347,24 @@ export default function EditAccommodationForm({ accommodation }) {
 						<p className="form__error">
 							{errors.main_image.message}
 						</p>
+					)}
+				</div>
+
+				{/* Additional images */}
+				<div className="form__field">
+					<label htmlFor="images">Additional images</label>
+					<input
+						className={
+							errors.images || updateFailed ? "hasError" : ""
+						}
+						{...register("images")}
+						type="file"
+						name="images"
+						id="images"
+						multiple
+					/>
+					{errors.images && (
+						<p className="form__error">{errors.images.message}</p>
 					)}
 				</div>
 

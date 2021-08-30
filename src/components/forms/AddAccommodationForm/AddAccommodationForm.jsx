@@ -9,8 +9,9 @@ import Message from "../../ui/Message/Message";
 import useFetch from "../../../hooks/useFetch";
 import AuthContext from "../../../global/contexts/AuthContext";
 import submitCreate from "../../../global/functions/submitCreate";
-import { StyledLoginForm } from "../LoginForm/loginForm.styles";
 import FullPageMessage from "../../ui/Message/FullPageMessage";
+import { MAX_FILE_SIZE } from "../../../global/constants/formValidation";
+import { StyledLoginForm } from "../LoginForm/loginForm.styles";
 
 const schema = yup.object().shape({
 	title: yup.string().required("Please enter a title"),
@@ -36,6 +37,42 @@ const schema = yup.object().shape({
 		.typeError("Please enter a number"),
 	description: yup.string().required("Please enter a description"),
 	amenities: yup.array().nullable(),
+	main_image: yup
+		.mixed()
+		.test(
+			"fileName",
+			"Please select a main image for your accommodation",
+			(value) => {
+				return value[0] && value[0].fileName !== "";
+			}
+		)
+		.test("fileSize", "The selected image file is too large", (value) => {
+			return value[0] && value[0].size <= MAX_FILE_SIZE;
+		})
+		.test("type", "Only image files are supported", (value) => {
+			return value[0] && value[0].type.includes("image");
+		}),
+	images: yup
+		.mixed()
+		.test("numberOfFiles", "Please select exactly 4 images", (value) => {
+			return value && value.length === 4;
+		})
+		.test("fileSize", "The images are too large", (value) => {
+			let arr = Array.from(value);
+			let approvedImages = [];
+			arr.forEach((item) => {
+				item.size <= MAX_FILE_SIZE && approvedImages.push(item);
+			});
+			return value && approvedImages.length === 4;
+		})
+		.test("type", "Only image files are supported", (value) => {
+			let arr = Array.from(value);
+			let approvedImages = [];
+			arr.forEach((item) => {
+				item.type.includes("image") && approvedImages.push(item);
+			});
+			return value && approvedImages.length === 4;
+		}),
 });
 
 export default function AddAccommodationForm() {
@@ -93,7 +130,7 @@ export default function AddAccommodationForm() {
 					loader
 					variant="waiting"
 					heading="Creating accommodation"
-					message="Please wait for the process to finish"
+					message="It may take a few seconds to upload the images, but please wait for the process to finish."
 				/>
 			)}
 			{creatingFailed && (
@@ -114,6 +151,7 @@ export default function AddAccommodationForm() {
 				/>
 			)}
 			<form onSubmit={handleSubmit(onSubmit)}>
+				{/* Title */}
 				<div className="form__field">
 					<label htmlFor="title">Title (required)</label>
 					<input
@@ -130,6 +168,7 @@ export default function AddAccommodationForm() {
 					)}
 				</div>
 
+				{/* Type */}
 				<div className="form__field">
 					<label htmlFor="type">Accommodation type (required)</label>
 					<select
@@ -154,6 +193,7 @@ export default function AddAccommodationForm() {
 					)}
 				</div>
 
+				{/* Kilometers */}
 				<div className="form__field">
 					<label htmlFor="km_from_city">Kilometers (required)</label>
 					<input
@@ -174,6 +214,7 @@ export default function AddAccommodationForm() {
 					)}
 				</div>
 
+				{/* Price */}
 				<div className="form__field">
 					<label htmlFor="price">Price in USD (required)</label>
 					<input
@@ -190,6 +231,7 @@ export default function AddAccommodationForm() {
 					)}
 				</div>
 
+				{/* Bedrooms */}
 				<div className="form__field">
 					<label htmlFor="bedrooms">Bedrooms (required)</label>
 					<input
@@ -206,6 +248,7 @@ export default function AddAccommodationForm() {
 					)}
 				</div>
 
+				{/* Bathrooms */}
 				<div className="form__field">
 					<label htmlFor="bathrooms">Bathrooms (required)</label>
 					<input
@@ -224,6 +267,7 @@ export default function AddAccommodationForm() {
 					)}
 				</div>
 
+				{/* Description */}
 				<div className="form__field">
 					<label htmlFor="description">Description (required)</label>
 					<textarea
@@ -244,8 +288,9 @@ export default function AddAccommodationForm() {
 					)}
 				</div>
 
+				{/* Amenities */}
 				<div className="form__field">
-					<label htmlFor="amenities">Amenities</label>
+					<label htmlFor="amenities">Amenities (optional)</label>
 					<div className="form__checkbox__grid">
 						{amenities.map((amenity) => {
 							return (
@@ -274,9 +319,11 @@ export default function AddAccommodationForm() {
 					)}
 				</div>
 
+				{/* Main image */}
 				<div className="form__field">
-					<label htmlFor="main_image">Main image</label>
+					<label htmlFor="main_image">Main image (required)</label>
 					<input
+						{...register("main_image")}
 						className={
 							errors.main_image || creatingFailed
 								? "hasError"
@@ -285,12 +332,31 @@ export default function AddAccommodationForm() {
 						type="file"
 						name="main_image"
 						id="main_image"
-						{...register("main_image")}
 					/>
 					{errors.main_image && (
 						<p className="form__error">
 							{errors.main_image.message}
 						</p>
+					)}
+				</div>
+
+				{/* Additional images */}
+				<div className="form__field">
+					<label htmlFor="images">
+						Additional images (4 images are required)
+					</label>
+					<input
+						className={
+							errors.images || creatingFailed ? "hasError" : ""
+						}
+						{...register("images")}
+						type="file"
+						name="images"
+						id="images"
+						multiple
+					/>
+					{errors.images && (
+						<p className="form__error">{errors.images.message}</p>
 					)}
 				</div>
 

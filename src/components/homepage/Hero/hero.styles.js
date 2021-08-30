@@ -1,7 +1,7 @@
 import styled from "styled-components";
 import herobg from "../../../assets/photos/herobg.jpg";
 
-export const StyledHero = styled.section`
+export const StyledHero = styled.div`
 	height: 100vh;
 	max-height: 1024px;
 	color: white;
