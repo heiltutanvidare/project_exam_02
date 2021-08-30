@@ -1,10 +1,21 @@
-import React from "react";
+import { useHistory } from "react-router-dom";
 import { StyledHolidazeLogo } from "./holidazeLogo.styles";
 
 export default function HolidazeLogo() {
+	const history = useHistory();
+
+	function handleClick() {
+		if (history.location.pathname !== "/") {
+			history.push("/");
+		} else {
+			window.scrollTo(0, 0);
+		}
+	}
+
 	return (
 		<StyledHolidazeLogo>
 			<svg
+				onClick={handleClick}
 				version="1.1"
 				id="Layer_1"
 				xmlns="http://www.w3.org/2000/svg"
