@@ -5,6 +5,7 @@ import handleSearch from "../../../global/functions/handleSearch";
 import Button from "../../ui/Button/Button";
 import useFetch from "../../../hooks/useFetch";
 import { API_BASE_URL } from "../../../global/constants/api";
+import setMinDate from "../../../global/functions/setMinDate";
 import {
 	StyledForm,
 	StyledField,
@@ -18,19 +19,6 @@ export default function SearchBox() {
 	const [search, setSearch] = useContext(SearchContext);
 	const history = useHistory();
 	const [minCheckOut, setMinCheckOut] = useState(setMinDate);
-
-	// Make sure user cannot select a date in the past
-	function setMinDate() {
-		let d = new Date();
-		let month = "" + (d.getMonth() + 1);
-		let day = "" + d.getDate();
-		let year = d.getFullYear();
-
-		if (month.length < 2) month = "0" + month;
-		if (day.length < 2) day = "0" + day;
-
-		return [year, month, day].join("-");
-	}
 
 	function handleSubmit(e) {
 		e.preventDefault();

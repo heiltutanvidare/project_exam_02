@@ -1,7 +1,7 @@
 import styled from "styled-components";
 
 export const StyledPriceBox = styled.div`
-	position: sticky;
+	position: ${(props) => (props.sticky ? "sticky" : "static")};
 	top: 0;
 	left: 0;
 	right: 0;
@@ -10,14 +10,13 @@ export const StyledPriceBox = styled.div`
 	flex-direction: column;
 	justify-content: flex-end;
 	overflow: hidden;
+	box-shadow: var(--box-shadow-md);
 
 	.priceBox {
 		background-color: var(--clr-white);
 		padding: var(--space-xxxsm) 0;
-		box-shadow: 0 -3px 6px rgba(0, 0, 0, 0.16),
-			0 -3px 6px rgba(0, 0, 0, 0.23), 0 -3px 6px rgba(0, 0, 0, 0.23);
+
 		position: relative;
-		z-index: 1;
 
 		&__dates {
 			display: flex;

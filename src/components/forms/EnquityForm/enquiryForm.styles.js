@@ -37,8 +37,17 @@ export const StyledEnquiryForm = styled.div`
 
 	#checkin::-webkit-calendar-picker-indicator,
 	#checkout::-webkit-calendar-picker-indicator {
-		filter: invert(1);
-		opacity: 0.75;
+		display: none;
+	}
+
+	.date-flex {
+		display: flex;
+		gap: 0.5rem;
+		justify-content: space-between;
+
+		* {
+			flex: 1;
+		}
 	}
 
 	textarea {

@@ -29,7 +29,9 @@ export default function AccommodationPage() {
 	if (fetching) {
 		return (
 			<Container>
-				<Loader />
+				<div className="pushDown">
+					<Loader />
+				</div>
 			</Container>
 		);
 	}
@@ -85,19 +87,20 @@ export default function AccommodationPage() {
 				</ul>
 			</Container>
 
-			<div
-				className={
-					bookingIsVisible
-						? "booking-container visible"
-						: "booking-container"
-				}
-			>
-				<h2 className="booking__heading">Book accommodation</h2>
-				<p className="booking__title">{data.title}</p>
-				<EnquiryForm asBooking={true} title={data.title} />
-			</div>
+			{bookingIsVisible && (
+				<div className="booking-container">
+					<div className="pricebox-container">
+						<PriceBox data={data} search={search} />
+					</div>
+					<Container>
+						<h2 className="booking__heading">Book accommodation</h2>
+						<p className="booking__title">{data.title}</p>
+						<EnquiryForm asBooking={true} title={data.title} />
+					</Container>
+				</div>
+			)}
 
-			<PriceBox data={data} search={search} />
+			{!bookingIsVisible && <PriceBox data={data} search={search} />}
 		</StyledAccommodationPage>
 	);
 }

@@ -33,6 +33,10 @@ body {
 	position: relative;
 }
 
+.pushDown {
+	margin-top: 8rem;
+}
+
 section {
 	padding-bottom: 3rem;
 }

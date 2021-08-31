@@ -1,12 +1,14 @@
-import { useContext } from "react";
+import { useContext, useRef } from "react";
 import PropTypes from "prop-types";
 import Container from "../../layout/Container/Container";
-import { StyledPriceBox } from "./priceBox.styles";
 import BookingContext from "../../../global/contexts/bookingContext";
 import scrollToElement from "../../../global/functions/scrollToElement";
+import { StyledPriceBox } from "./priceBox.styles";
 
 export default function PriceBox({ data, search }) {
 	const [bookingIsVisible, setBookingIsVisible] = useContext(BookingContext);
+
+	const priceBoxRef = useRef(null);
 
 	function showBookingForm() {
 		if (bookingIsVisible) {
@@ -18,8 +20,8 @@ export default function PriceBox({ data, search }) {
 	}
 
 	return (
-		<StyledPriceBox>
-			<div className="priceBox">
+		<StyledPriceBox sticky={bookingIsVisible ? false : true}>
+			<div className="priceBox" ref={priceBoxRef}>
 				<Container>
 					<div className="priceBox__dates">
 						<p className="priceBox__checkin">

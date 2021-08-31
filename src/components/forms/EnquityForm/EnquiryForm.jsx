@@ -8,8 +8,7 @@ import Button from "../../ui/Button/Button";
 import Message from "../../ui/Message/Message";
 import submitEnquiry from "../../../global/functions/submitEnquiry";
 import SearchContext from "../../../global/contexts/SearchContext";
-import BookingContext from "../../../global/contexts/bookingContext";
-import scrollToElement from "../../../global/functions/scrollToElement";
+import setMinDate from "../../../global/functions/setMinDate";
 import { StyledEnquiryForm } from "./enquiryForm.styles";
 
 // Yup schema
@@ -43,7 +42,6 @@ const schema = yup.object().shape({
 
 export default function EnquiryForm({ asBooking, title }) {
 	const [search] = useContext(SearchContext);
-	const [, setBookingIsVisible] = useContext(BookingContext);
 
 	// Initiate state for the form submission
 	const [submitted, setSubmitted] = useState(false);
@@ -129,33 +127,43 @@ export default function EnquiryForm({ asBooking, title }) {
 					)}
 				</div>
 
-				<div className="form__field">
-					<label htmlFor="checkin">Check in (required)</label>
-					<input
-						type="date"
-						placeholder="Select a check in date"
-						id="checkin"
-						defaultValue={asBooking ? search.checkIn : ""}
-						{...register("checkin")}
-						className={errors.checkin ? "hasError" : ""}
-					/>
-					{errors.checkin && (
-						<p className="form__error">{errors.checkin.message}</p>
-					)}
-				</div>
-				<div className="form__field">
-					<label htmlFor="checkout">Check out (required)</label>
-					<input
-						type="date"
-						placeholder="Select a check out date"
-						id="checkout"
-						defaultValue={asBooking ? search.checkOut : ""}
-						{...register("checkout")}
-						className={errors.checkout ? "hasError" : ""}
-					/>
-					{errors.checkout && (
-						<p className="form__error">{errors.checkout.message}</p>
-					)}
+				<div className="date-flex">
+					<div className="form__field">
+						<label htmlFor="checkin">Check in (required)</label>
+						<input
+							type="date"
+							placeholder="Select a check in date"
+							id="checkin"
+							defaultValue={
+								asBooking ? search.checkIn : setMinDate()
+							}
+							{...register("checkin")}
+							className={errors.checkin ? "hasError" : ""}
+						/>
+						{errors.checkin && (
+							<p className="form__error">
+								{errors.checkin.message}
+							</p>
+						)}
+					</div>
+					<div className="form__field">
+						<label htmlFor="checkout">Check out (required)</label>
+						<input
+							type="date"
+							placeholder="Select a check out date"
+							id="checkout"
+							defaultValue={
+								asBooking ? search.checkOut : setMinDate()
+							}
+							{...register("checkout")}
+							className={errors.checkout ? "hasError" : ""}
+						/>
+						{errors.checkout && (
+							<p className="form__error">
+								{errors.checkout.message}
+							</p>
+						)}
+					</div>
 				</div>
 
 				<div className="form__field">
@@ -185,18 +193,6 @@ export default function EnquiryForm({ asBooking, title }) {
 					{asBooking ? "Send booking enquiry" : "Send enquiry"}
 				</Button>
 			</form>
-			{asBooking && (
-				<Button
-					variant="danger"
-					fullwidth
-					event={() => {
-						setBookingIsVisible(false);
-						scrollToElement(null);
-					}}
-				>
-					Close the booking form
-				</Button>
-			)}
 
 			{/* Render a success message if form is submitted */}
 			{submitted && (
