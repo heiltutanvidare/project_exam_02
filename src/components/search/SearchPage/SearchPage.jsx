@@ -9,7 +9,6 @@ import DecorativeDivider from "../../ui/DecorativeDivider/DecorativeDivider";
 
 export default function SearchPage() {
 	const [search] = useContext(SearchContext);
-	console.log(search);
 
 	if (search?.days) {
 		return (

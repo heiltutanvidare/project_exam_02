@@ -1,32 +1,20 @@
-import { useState, useRef } from "react";
+import { useContext } from "react";
 import PropTypes from "prop-types";
 import Container from "../../layout/Container/Container";
-import EnquiryForm from "../../forms/EnquityForm/EnquiryForm";
 import { StyledPriceBox } from "./priceBox.styles";
+import BookingContext from "../../../global/contexts/bookingContext";
+import scrollToElement from "../../../global/functions/scrollToElement";
 
 export default function PriceBox({ data, search }) {
-	const [showBookingForm, setShowBookingForm] = useState(false);
+	const [bookingIsVisible, setBookingIsVisible] = useContext(BookingContext);
 
-	const scrollPoint = useRef(null);
-
-	function handleBookNow() {
-		if (showBookingForm === false) {
-			setShowBookingForm(true);
-			window.scrollTo({
-				top: scrollPoint?.current.offsetTop
-					? scrollPoint.current.offsetTop + 800
-					: 0,
-				behavior: "smooth",
-			});
+	function showBookingForm() {
+		if (bookingIsVisible) {
+			setBookingIsVisible(false);
 		} else {
-			setShowBookingForm(false);
-			window.scrollTo({
-				top: scrollPoint?.current.offsetTop
-					? scrollPoint.current.offsetTop
-					: 0,
-				behavior: "smooth",
-			});
+			setBookingIsVisible(true);
 		}
+		scrollToElement(null);
 	}
 
 	return (
@@ -54,26 +42,15 @@ export default function PriceBox({ data, search }) {
 						</div>
 						<button
 							className="priceBox__button"
-							onClick={handleBookNow}
-							ref={scrollPoint}
+							onClick={showBookingForm}
 						>
-							{showBookingForm ? "Close booking" : "Book now"}
+							{bookingIsVisible
+								? "Close booking form"
+								: "Book now"}
 						</button>
 					</div>
 				</Container>
 			</div>
-
-			{showBookingForm && (
-				<div
-					className={
-						showBookingForm
-							? "booking-container visible"
-							: "booking-container"
-					}
-				>
-					<EnquiryForm asBooking={true} title={data.title} />
-				</div>
-			)}
 		</StyledPriceBox>
 	);
 }

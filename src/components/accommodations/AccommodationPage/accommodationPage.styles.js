@@ -2,6 +2,7 @@ import styled from "styled-components";
 
 export const StyledAccommodationPage = styled.main`
 	margin-top: 5rem;
+	position: relative;
 
 	.place {
 		&__image {
@@ -72,5 +73,32 @@ export const StyledAccommodationPage = styled.main`
 				margin-right: 0.5rem;
 			}
 		}
+	}
+
+	.booking-container {
+		position: absolute;
+		top: -1.15rem;
+		left: 0;
+		right: 0;
+
+		background-color: var(--clr-primary-500);
+		padding: 2rem 1rem;
+		/* opacity: 0; */
+		transform: translateY(-1100px);
+		transition: all 0.25s ease-out;
+	}
+
+	.visible {
+		/* opacity: 1; */
+		transform: translateY(0);
+	}
+
+	.booking__heading,
+	.booking__title {
+		color: var(--clr-drk-50);
+	}
+
+	.booking__title {
+		margin-bottom: var(--space-xxsm);
 	}
 `;

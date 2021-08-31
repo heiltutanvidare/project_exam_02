@@ -1,5 +1,4 @@
-import { useContext, useRef } from "react";
-import MenuContext from "../../../global/contexts/menuContext";
+import { useRef } from "react";
 import Container from "../../layout/Container/Container";
 import Button from "../../ui/Button/Button";
 import Heading from "../../ui/Heading/Heading";
@@ -13,13 +12,6 @@ import Testemonials from "./Testemonials/Testemonials";
 import scrollToElement from "../../../global/functions/scrollToElement";
 
 export default function About() {
-	const [, setMenuIsOpen] = useContext(MenuContext);
-
-	// Function to open the menu overlay
-	function openEnquiry() {
-		setMenuIsOpen(true);
-	}
-
 	// Set up the contact form container as a ref
 	const contactRef = useRef(null);
 
@@ -40,9 +32,6 @@ export default function About() {
 					apartments, cabins etc, provided by our great and passionate
 					comunity of accommodation owners.
 				</p>
-				<Button event={openEnquiry} variant="filled">
-					Send an inquiry
-				</Button>
 				<Imagebox />
 				<Heading
 					align="left"

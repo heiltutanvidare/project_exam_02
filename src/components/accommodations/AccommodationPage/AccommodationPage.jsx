@@ -7,8 +7,10 @@ import Container from "../../layout/Container/Container";
 import Loader from "../../ui/Loader/Loader";
 import PriceBox from "../../ui/PriceBox/PriceBox";
 import BreadCrumbs from "../../ui/BreadCrumbs/BreadCrumbs";
-import { StyledAccommodationPage } from "./accommodationPage.styles";
 import AccommodationImages from "./AccommodationImages/AccommodationImages";
+import BookingContext from "../../../global/contexts/bookingContext";
+import EnquiryForm from "../../forms/EnquityForm/EnquiryForm";
+import { StyledAccommodationPage } from "./accommodationPage.styles";
 
 export default function AccommodationPage() {
 	// get the accommodation id from the URL search params
@@ -21,6 +23,8 @@ export default function AccommodationPage() {
 
 	// Get the search context
 	const [search] = useContext(SearchContext);
+
+	const [bookingIsVisible] = useContext(BookingContext);
 
 	if (fetching) {
 		return (
@@ -43,7 +47,6 @@ export default function AccommodationPage() {
 		// TODO: Create and use a breadcrumb component
 		<StyledAccommodationPage>
 			<BreadCrumbs />
-
 			<AccommodationImages data={data} />
 			<Container>
 				<div className="place__flex">
@@ -81,6 +84,19 @@ export default function AccommodationPage() {
 					})}
 				</ul>
 			</Container>
+
+			<div
+				className={
+					bookingIsVisible
+						? "booking-container visible"
+						: "booking-container"
+				}
+			>
+				<h2 className="booking__heading">Book accommodation</h2>
+				<p className="booking__title">{data.title}</p>
+				<EnquiryForm asBooking={true} title={data.title} />
+			</div>
+
 			<PriceBox data={data} search={search} />
 		</StyledAccommodationPage>
 	);

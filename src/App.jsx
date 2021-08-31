@@ -7,6 +7,7 @@ import Header from "./components/ui/Header/Header";
 import EditAccommodationPage from "./components/admin/AdminPage/EditAccommodationPage/EditAccommodationPage";
 import { SearchProvider } from "./global/contexts/SearchContext";
 import { MenuContextProvider } from "./global/contexts/menuContext";
+import { BookingContextProvider } from "./global/contexts/bookingContext";
 import { AuthProvider } from "./global/contexts/AuthContext";
 import MenuOverlay from "./components/ui/MenuOverlay/MenuOverlay";
 import AccommodationPage from "./components/accommodations/AccommodationPage/AccommodationPage";
@@ -38,7 +39,9 @@ function App() {
 									</Route>
 									<Route path="/accommodation/:id">
 										<Header filled={true} />
-										<AccommodationPage />
+										<BookingContextProvider>
+											<AccommodationPage />
+										</BookingContextProvider>
 									</Route>
 									<Route path="/admin">
 										<Header filled={true} />

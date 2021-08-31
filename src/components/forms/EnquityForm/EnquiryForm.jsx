@@ -8,6 +8,8 @@ import Button from "../../ui/Button/Button";
 import Message from "../../ui/Message/Message";
 import submitEnquiry from "../../../global/functions/submitEnquiry";
 import SearchContext from "../../../global/contexts/SearchContext";
+import BookingContext from "../../../global/contexts/bookingContext";
+import scrollToElement from "../../../global/functions/scrollToElement";
 import { StyledEnquiryForm } from "./enquiryForm.styles";
 
 // Yup schema
@@ -41,6 +43,7 @@ const schema = yup.object().shape({
 
 export default function EnquiryForm({ asBooking, title }) {
 	const [search] = useContext(SearchContext);
+	const [, setBookingIsVisible] = useContext(BookingContext);
 
 	// Initiate state for the form submission
 	const [submitted, setSubmitted] = useState(false);
@@ -182,6 +185,19 @@ export default function EnquiryForm({ asBooking, title }) {
 					{asBooking ? "Send booking enquiry" : "Send enquiry"}
 				</Button>
 			</form>
+			{asBooking && (
+				<Button
+					variant="danger"
+					fullwidth
+					event={() => {
+						setBookingIsVisible(false);
+						scrollToElement(null);
+					}}
+				>
+					Close the booking form
+				</Button>
+			)}
+
 			{/* Render a success message if form is submitted */}
 			{submitted && (
 				<Message

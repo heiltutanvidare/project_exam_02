@@ -4,9 +4,7 @@ import ChevronRight from "../../../../assets/graphics/ChevronRight";
 import { StyledAccommodationImages } from "./accommodationImages.styles";
 
 function AccommodationImages({ data: accommodation }) {
-	console.log(accommodation);
 	let images = [accommodation.main_image, ...accommodation.images];
-	console.log(images);
 
 	const [activeIndex, setActiveIndex] = useState(0);
 

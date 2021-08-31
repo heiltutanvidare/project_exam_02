@@ -79,17 +79,4 @@ export const StyledPriceBox = styled.div`
 			}
 		}
 	}
-
-	.booking-container {
-		background-color: var(--clr-primary-500);
-		padding: 2rem 1rem;
-		opacity: 0;
-		transform: translateY(-1000px);
-		transition: all var(--transition-slow);
-	}
-
-	.visible {
-		opacity: 1;
-		transform: translateY(0);
-	}
 `;
