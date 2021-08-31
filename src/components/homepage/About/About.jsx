@@ -54,9 +54,9 @@ export default function About() {
 				>
 					Contact us
 				</Button>
-
-				<Carousel />
-
+			</Container>
+			<Carousel />
+			<Container>
 				<Heading
 					align="center"
 					pretitle="Experiences"

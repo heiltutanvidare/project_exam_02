@@ -1,18 +1,20 @@
 import styled from "styled-components";
 
 export const StyledCarouselNav = styled.nav`
-	display: flex;
-	flex-direction: column;
-
 	svg {
-		width: 3rem;
-		height: 3rem;
-		stroke: var(--clr-drk-600);
-		cursor: pointer;
+		width: 1.25rem;
+		fill: var(--clr-drk-200);
 		transition: stroke var(--transition-fast);
+		transform-origin: bottom center;
+		animation: swipe 1s ease-in-out alternate infinite;
 
-		&:hover {
-			stroke: var(--clr-drk-900);
+		@keyframes swipe {
+			from {
+				transform: rotate(-11deg);
+			}
+			to {
+				transform: rotate(11deg);
+			}
 		}
 	}
 `;

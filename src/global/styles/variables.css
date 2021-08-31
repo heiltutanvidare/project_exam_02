@@ -19,6 +19,7 @@
 	--clr-danger-transp: #ef5d7822;
 	--clr-white: #ffffff;
 	--clr-body-bg: #faf9f6;
+	--clr-body-bg-00: #faf9f600;
 	--clr-drk-900-transp: #20212200;
 	--clr-drk-900-08: #202122db;
 	--clr-drk-900: #202122;
@@ -31,10 +32,14 @@
 	--clr-drk-200: #c6cbcf;
 	--clr-drk-100: #dde3e8;
 	--clr-drk-50: #f4faff;
-
 	--clr-primary-900: #051524;
 	--clr-primary-500: #032d51;
 	--clr-primary-500-transp: #032d51ec;
+
+	/* Gradients */
+	--gradient-bg: linear-gradient(
+		var(to right, --clr-body-bg, --clr-body-bg-00)
+	);
 
 	/* Border-radius */
 	--br-xsm: 0.25rem;
