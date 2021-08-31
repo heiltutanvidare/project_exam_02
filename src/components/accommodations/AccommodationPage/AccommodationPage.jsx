@@ -5,8 +5,10 @@ import useFetch from "../../../hooks/useFetch";
 import { API_BASE_URL } from "../../../global/constants/api";
 import Container from "../../layout/Container/Container";
 import Loader from "../../ui/Loader/Loader";
-import { StyledAccommodationPage } from "./accommodationPage.styles";
 import PriceBox from "../../ui/PriceBox/PriceBox";
+import BreadCrumbs from "../../ui/BreadCrumbs/BreadCrumbs";
+import { StyledAccommodationPage } from "./accommodationPage.styles";
+import AccommodationImages from "./AccommodationImages/AccommodationImages";
 
 export default function AccommodationPage() {
 	// get the accommodation id from the URL search params
@@ -40,14 +42,9 @@ export default function AccommodationPage() {
 	return (
 		// TODO: Create and use a breadcrumb component
 		<StyledAccommodationPage>
-			<Container>
-				<div className="breadCrumbs">&lsaquo; Home • Holidaze</div>
-			</Container>
-			<img
-				src={data.main_image.url}
-				alt={data.title}
-				className="place__image"
-			/>
+			<BreadCrumbs />
+
+			<AccommodationImages data={data} />
 			<Container>
 				<div className="place__flex">
 					<p className="place__type">

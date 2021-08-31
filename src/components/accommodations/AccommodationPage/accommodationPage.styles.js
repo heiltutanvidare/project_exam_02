@@ -3,12 +3,6 @@ import styled from "styled-components";
 export const StyledAccommodationPage = styled.main`
 	margin-top: 5rem;
 
-	.breadCrumbs {
-		font-size: 0.75rem;
-		color: var(--clr-drk-500);
-		margin: var(--space-xxxsm) 0;
-	}
-
 	.place {
 		&__image {
 			margin-bottom: var(--space-xxxsm);

@@ -1,9 +1,10 @@
-import React, { useState } from "react";
+import React from "react";
+import useLocalStorage from "../../hooks/useLocalStorage";
 
 const SearchContext = React.createContext([null, () => {}]);
 
 export const SearchProvider = ({ children }) => {
-	const [search, setSearch] = useState(null);
+	const [search, setSearch] = useLocalStorage("holidazeSearch", null);
 	return (
 		<SearchContext.Provider value={[search, setSearch]}>
 			{children}
