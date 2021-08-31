@@ -4,6 +4,7 @@ export const StyledForm = styled.form`
 	margin: var(--space-xsm) 0;
 	border-radius: var(--br-sm);
 	box-shadow: var(--box-shadow-md);
+	background: none;
 
 	#checkin,
 	#checkout {
@@ -30,6 +31,7 @@ export const StyledForm = styled.form`
 
 	.suggestion {
 		position: relative;
+		border-radius: var(--br-sm) var(--br-sm) 0 0;
 
 		&__container {
 			position: absolute;
@@ -67,13 +69,16 @@ export const StyledForm = styled.form`
 			}
 		}
 	}
+
+	button {
+		border-radius: 0 0 var(--br-sm) var(--br-sm);
+	}
 `;
 
 export const StyledFormGrid = styled.div`
 	display: grid;
 	grid-template-columns: 1fr 1fr;
 	grid-gap: 1px;
-	background: var(--clr-drk-100);
 `;
 
 export const StyledField = styled.div`
