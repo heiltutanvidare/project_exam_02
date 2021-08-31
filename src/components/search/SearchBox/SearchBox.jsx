@@ -17,13 +17,14 @@ export default function SearchBox() {
 	const { data } = useFetch(`${API_BASE_URL}/establishments`);
 	const [search, setSearch] = useContext(SearchContext);
 	const history = useHistory();
+	const [minCheckOut, setMinCheckOut] = useState(setMinDate);
 
 	// Make sure user cannot select a date in the past
 	function setMinDate() {
-		let d = new Date(),
-			month = "" + (d.getMonth() + 1),
-			day = "" + d.getDate(),
-			year = d.getFullYear();
+		let d = new Date();
+		let month = "" + (d.getMonth() + 1);
+		let day = "" + d.getDate();
+		let year = d.getFullYear();
 
 		if (month.length < 2) month = "0" + month;
 		if (day.length < 2) day = "0" + day;
@@ -118,6 +119,9 @@ export default function SearchBox() {
 						name="checkin"
 						defaultValue={search?.checkIn || setMinDate()}
 						min={setMinDate()}
+						onChange={(e) => {
+							setMinCheckOut(e.target.value);
+						}}
 					/>
 				</StyledField>
 				<StyledField>
@@ -126,8 +130,8 @@ export default function SearchBox() {
 						type="date"
 						id="checkout"
 						name="checkout"
-						defaultValue={search?.checkOut || setMinDate()}
-						min={setMinDate()}
+						defaultValue={search?.checkOut || minCheckOut}
+						min={minCheckOut}
 					/>
 				</StyledField>
 			</StyledFormGrid>

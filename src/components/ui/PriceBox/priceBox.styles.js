@@ -9,12 +9,16 @@ export const StyledPriceBox = styled.div`
 	display: flex;
 	flex-direction: column;
 	justify-content: flex-end;
+	overflow: hidden;
 
 	.priceBox {
 		background-color: var(--clr-white);
 		padding: var(--space-xxxsm) 0;
 		box-shadow: 0 -3px 6px rgba(0, 0, 0, 0.16),
-			0 -3px 6px rgba(0, 0, 0, 0.23);
+			0 -3px 6px rgba(0, 0, 0, 0.23), 0 -3px 6px rgba(0, 0, 0, 0.23);
+		position: relative;
+		z-index: 1;
+
 		&__dates {
 			display: flex;
 			justify-content: space-between;
@@ -74,5 +78,18 @@ export const StyledPriceBox = styled.div`
 				border-color: var(--clr-drk-600);
 			}
 		}
+	}
+
+	.booking-container {
+		background-color: var(--clr-primary-500);
+		padding: 2rem 1rem;
+		opacity: 0;
+		transform: translateY(-1000px);
+		transition: all var(--transition-slow);
+	}
+
+	.visible {
+		opacity: 1;
+		transform: translateY(0);
 	}
 `;

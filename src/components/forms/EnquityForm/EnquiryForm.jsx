@@ -1,12 +1,14 @@
-import { useState } from "react";
+import PropTypes from "prop-types";
+import { useState, useContext } from "react";
 import { useForm } from "react-hook-form";
 import * as yup from "yup";
 import { yupResolver } from "@hookform/resolvers/yup";
 import { MIN_NAME_LENGTH } from "../../../global/constants/formValidation";
 import Button from "../../ui/Button/Button";
-import { StyledEnquiryForm } from "./enquiryForm.styles";
 import Message from "../../ui/Message/Message";
 import submitEnquiry from "../../../global/functions/submitEnquiry";
+import SearchContext from "../../../global/contexts/SearchContext";
+import { StyledEnquiryForm } from "./enquiryForm.styles";
 
 // Yup schema
 const schema = yup.object().shape({
@@ -37,7 +39,9 @@ const schema = yup.object().shape({
 	wantsAndNeeds: yup.string(),
 });
 
-export default function EnquiryForm() {
+export default function EnquiryForm({ asBooking, title }) {
+	const [search] = useContext(SearchContext);
+
 	// Initiate state for the form submission
 	const [submitted, setSubmitted] = useState(false);
 
@@ -128,6 +132,7 @@ export default function EnquiryForm() {
 						type="date"
 						placeholder="Select a check in date"
 						id="checkin"
+						defaultValue={asBooking ? search.checkIn : ""}
 						{...register("checkin")}
 						className={errors.checkin ? "hasError" : ""}
 					/>
@@ -135,13 +140,13 @@ export default function EnquiryForm() {
 						<p className="form__error">{errors.checkin.message}</p>
 					)}
 				</div>
-
 				<div className="form__field">
 					<label htmlFor="checkout">Check out (required)</label>
 					<input
 						type="date"
 						placeholder="Select a check out date"
 						id="checkout"
+						defaultValue={asBooking ? search.checkOut : ""}
 						{...register("checkout")}
 						className={errors.checkout ? "hasError" : ""}
 					/>
@@ -158,6 +163,11 @@ export default function EnquiryForm() {
 						rows="4"
 						placeholder="Enter any wants, needs and interests here"
 						id="wantsAndNeeds"
+						defaultValue={
+							title
+								? `Enquiry about the following accommodation: ${title}.`
+								: ""
+						}
 						{...register("wantsAndNeeds")}
 						className={errors.wantsAndNeeds ? "hasError" : ""}
 					/>
@@ -169,7 +179,7 @@ export default function EnquiryForm() {
 				</div>
 
 				<Button variant="outlined" color="light" fullwidth>
-					Send it
+					{asBooking ? "Send booking enquiry" : "Send enquiry"}
 				</Button>
 			</form>
 			{/* Render a success message if form is submitted */}
@@ -183,3 +193,12 @@ export default function EnquiryForm() {
 		</StyledEnquiryForm>
 	);
 }
+
+EnquiryForm.propTypes = {
+	asBooking: PropTypes.bool,
+	title: PropTypes.string,
+};
+
+EnquiryForm.defaultProps = {
+	asBooking: false,
+};

@@ -22,6 +22,7 @@ export const StyledEnquiryForm = styled.div`
 		padding: 0.4rem;
 		border-radius: 0;
 		margin: 0;
+		width: 100%;
 
 		&::placeholder {
 			color: var(--clr-drk-500);
