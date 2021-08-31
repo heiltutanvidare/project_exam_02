@@ -5,8 +5,8 @@ export const StyledCarouselItem = styled.div`
 	background-repeat: no-repeat;
 	background-size: cover;
 	background-position: center center;
-	min-width: 8.9rem;
-	height: 15.6rem;
+	min-width: 11rem;
+	height: 17rem;
 	position: relative;
 
 	.overlay {
@@ -25,14 +25,14 @@ export const StyledCarouselItem = styled.div`
 		font-family: Viaoda Libre;
 		font-weight: normal;
 		font-variant-ligatures: common-ligatures;
-		font-size: 1rem;
-		line-height: 1.0625rem;
+		font-size: 1.2rem;
+		line-height: 1.4rem;
 		text-align: center;
 		color: #ffffff;
 		position: absolute;
 		bottom: 0;
 		left: 0;
 		right: 0;
-		padding: 0 0.5em 0.75em 0.5em;
+		padding: 0 0.75em 0.75em 0.75em;
 	}
 `;

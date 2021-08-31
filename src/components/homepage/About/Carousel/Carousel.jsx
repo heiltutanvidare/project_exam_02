@@ -16,27 +16,21 @@ export default function Carousel() {
 			<StyledCarousel>
 				<CarouselItem
 					image={article01}
-					heading="Some title about amazing experiences goes here"
+					heading="See the seven mountains"
 				/>
 				<CarouselItem
 					image={article02}
-					heading="Some title about amazing experiences goes here"
+					heading="Oceanic delicacies at Bergen Fish Market"
 				/>
-				<CarouselItem
-					image={article03}
-					heading="Some title about amazing experiences goes here"
-				/>
-				<CarouselItem
-					image={article04}
-					heading="Some title about amazing experiences goes here"
-				/>
+				<CarouselItem image={article03} heading="An amazing view" />
+				<CarouselItem image={article04} heading="Seaside tranquility" />
 				<CarouselItem
 					image={article05}
-					heading="Some title about amazing experiences goes here"
+					heading="Group discounts to save you time and money"
 				/>
 				<CarouselItem
 					image={article06}
-					heading="Some title about amazing experiences goes here"
+					heading="How to get to around"
 				/>
 			</StyledCarousel>
 		</StyledCarouselContainer>
