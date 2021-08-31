@@ -4,9 +4,18 @@ async function submitUpdate(updateData, token, id) {
 	console.log(updateData);
 	const formData = new FormData();
 
-	if (updateData.main_image[0]) {
+	// Handeling the main image and appending it to the formData
+	if (updateData.main_image) {
 		const mainImage = updateData.main_image[0];
 		formData.append("files.main_image", mainImage, mainImage.name);
+	}
+
+	// Handling the additional images and appending them to the formData
+	if (updateData.images) {
+		const images = Array.from(updateData.images);
+		images.forEach((image) =>
+			formData.append(`files.images`, image, image.name)
+		);
 	}
 
 	const data = {

@@ -1,6 +1,6 @@
 import styled from "styled-components";
 
-export const StyledLoginForm = styled.section`
+export const StyledLoginForm = styled.div`
 	margin-top: var(--space-xxsm);
 
 	.message-container {

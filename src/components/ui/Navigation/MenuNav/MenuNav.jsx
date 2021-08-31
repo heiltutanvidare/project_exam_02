@@ -54,8 +54,13 @@ export default function MenuNav() {
 								Admin
 							</Link>
 						</li>
-						<li onClick={handleLogOut}>
-							<Button color="light" variant="outlined">
+						<li>
+							<Button
+								color="light"
+								variant="outlined"
+								fullwidth={false}
+								event={handleLogOut}
+							>
 								Log out
 							</Button>
 						</li>

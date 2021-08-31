@@ -23,5 +23,10 @@ export const StyledHeader = styled.header`
 		display: flex;
 		align-items: center;
 		justify-content: space-between;
+
+		svg {
+			max-width: 5rem;
+			max-height: 2rem;
+		}
 	}
 `;

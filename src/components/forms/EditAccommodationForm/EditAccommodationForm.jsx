@@ -15,10 +15,7 @@ import { StyledLoginForm } from "../LoginForm/loginForm.styles";
 
 const schema = yup.object().shape({
 	title: yup.string().required("Please enter a title"),
-	type: yup
-		.number()
-		.required("Please select an accommodation type")
-		.typeError("Please select an accommodation type"),
+	type: yup.string().required("Please select an accommodation type"),
 	km_from_city: yup
 		.number()
 		.required("Please enter how far the place is from the city center")
@@ -37,6 +34,9 @@ const schema = yup.object().shape({
 		.typeError("Please enter a number"),
 	description: yup.string().required("Please enter a description"),
 	amenities: yup.array().nullable(),
+});
+
+const mainImageSelectSchema = yup.object().shape({
 	main_image: yup
 		.mixed()
 		.test(
@@ -52,11 +52,11 @@ const schema = yup.object().shape({
 		.test("type", "Only image files are supported", (value) => {
 			return value[0] && value[0].type.includes("image");
 		}),
+});
+
+const imagesSelectSchema = yup.object().shape({
 	images: yup
 		.mixed()
-		.test("numberOfFiles", "Please select exactly 4 images", (value) => {
-			return value && value.length === 4;
-		})
 		.test("fileSize", "The images are too large", (value) => {
 			let arr = Array.from(value);
 			let approvedImages = [];
@@ -94,6 +94,22 @@ export default function EditAccommodationForm({ accommodation }) {
 		reset,
 		formState: { errors },
 	} = useForm({ resolver: yupResolver(schema) });
+
+	const {
+		register: regMainImage,
+		formState: { errors: errorsMainImage },
+	} = useForm({
+		mode: "onChange",
+		resolver: yupResolver(mainImageSelectSchema),
+	});
+
+	const {
+		register: regImages,
+		formState: { errors: errorsImages },
+	} = useForm({
+		mode: "onChange",
+		resolver: yupResolver(imagesSelectSchema),
+	});
 
 	async function onSubmit(data) {
 		const doUpdate = window.confirm(
@@ -152,6 +168,8 @@ export default function EditAccommodationForm({ accommodation }) {
 					message="Redirection you to the admin page now…"
 				/>
 			)}
+
+			{/* The form */}
 			<form onSubmit={handleSubmit(onSubmit)}>
 				{/* Title */}
 				<div className="form__field">
@@ -176,8 +194,8 @@ export default function EditAccommodationForm({ accommodation }) {
 					<label htmlFor="type">Accommodation type (required)</label>
 					<select
 						name="type"
-						value={accommodation.type.id}
 						id="type"
+						defaultValue=""
 						className={
 							errors.type || updateFailed ? "hasError" : ""
 						}
@@ -336,16 +354,19 @@ export default function EditAccommodationForm({ accommodation }) {
 					<label htmlFor="main_image">Main image</label>
 					<input
 						className={
-							errors.main_image || updateFailed ? "hasError" : ""
+							errorsMainImage.main_image || updateFailed
+								? "hasError"
+								: ""
 						}
 						type="file"
 						name="main_image"
 						id="main_image"
+						{...regMainImage("main_image")}
 						{...register("main_image")}
 					/>
-					{errors.main_image && (
+					{errorsMainImage.main_image && (
 						<p className="form__error">
-							{errors.main_image.message}
+							{errorsMainImage.main_image.message}
 						</p>
 					)}
 				</div>
@@ -355,16 +376,21 @@ export default function EditAccommodationForm({ accommodation }) {
 					<label htmlFor="images">Additional images</label>
 					<input
 						className={
-							errors.images || updateFailed ? "hasError" : ""
+							errorsImages.images || updateFailed
+								? "hasError"
+								: ""
 						}
+						{...regImages("images")}
 						{...register("images")}
 						type="file"
 						name="images"
 						id="images"
 						multiple
 					/>
-					{errors.images && (
-						<p className="form__error">{errors.images.message}</p>
+					{errorsImages.images && (
+						<p className="form__error">
+							{errorsImages.images.message}
+						</p>
 					)}
 				</div>
 
