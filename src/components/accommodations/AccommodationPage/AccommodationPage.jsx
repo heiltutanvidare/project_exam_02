@@ -1,4 +1,5 @@
 import { useContext } from "react";
+import { Helmet } from "react-helmet-async";
 import SearchContext from "../../../global/contexts/SearchContext";
 import { useParams } from "react-router-dom";
 import useFetch from "../../../hooks/useFetch";
@@ -48,6 +49,10 @@ export default function AccommodationPage() {
 	return (
 		// TODO: Create and use a breadcrumb component
 		<StyledAccommodationPage>
+			<Helmet>
+				<title>Holidaze | {data.title}</title>
+				<meta name="description" content={data.description} />
+			</Helmet>
 			<BreadCrumbs />
 			<AccommodationImages data={data} />
 			<Container>

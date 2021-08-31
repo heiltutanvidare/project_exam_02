@@ -1,31 +1,11 @@
-import { useRef, useEffect } from "react";
 import PropTypes from "prop-types";
 import Hamburger from "../Hamburger/Hamburger";
 import HolidazeLogo from "../../../assets/graphics/HolidazeLogo/HolidazeLogo";
 import { StyledHeader } from "./header.styles";
 
 export default function Header({ filled = true }) {
-	const headerRef = useRef();
-
-	useEffect(() => {
-		if (!filled) {
-			headerRef.current.classList.remove("filled");
-			window.addEventListener("scroll", () => {
-				let scrollDistance = window.scrollY;
-				if (scrollDistance > headerRef.current.offsetHeight / 2) {
-					headerRef.current.classList.add("filled");
-				} else if (
-					scrollDistance <
-					headerRef.current.offsetHeight / 2
-				) {
-					headerRef.current.classList.remove("filled");
-				}
-			});
-		}
-	}, [filled]);
-
 	return (
-		<StyledHeader ref={headerRef} filled={filled}>
+		<StyledHeader filled={filled}>
 			<div className="inner max-width">
 				<HolidazeLogo />
 				<Hamburger />

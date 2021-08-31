@@ -10,6 +10,8 @@ import EnquiryList from "./EnquiryList/EnquiryList";
 import { useHistory } from "react-router-dom";
 import AccommodationList from "./AccommodationList/AccommodationList";
 import { Link } from "react-router-dom";
+import { Helmet } from "react-helmet-async";
+
 import Button from "../../ui/Button/Button";
 import { StyledAdminPage } from "./adminPage.styles";
 
@@ -28,6 +30,10 @@ export default function AdminPage() {
 
 	return (
 		<StyledAdminPage>
+			<Helmet>
+				<title>Holidaze | Admin</title>
+				<meta name="description" content="The Holidaze admin panel" />
+			</Helmet>
 			<AdminHero />
 			{auth && (
 				<Container>

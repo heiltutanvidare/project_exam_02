@@ -1,3 +1,4 @@
+import { Helmet } from "react-helmet-async";
 import { useParams } from "react-router-dom";
 import useFetch from "../../../../hooks/useFetch";
 import Loader from "../../../ui/Loader/Loader";
@@ -40,6 +41,9 @@ export default function EditAccommodationPage() {
 
 	return (
 		<StyledEditAccommodationPage>
+			<Helmet>
+				<title>Holidaze | Edit {data.title}</title>
+			</Helmet>
 			<Container>
 				<h2>Edit your accommodation</h2>
 				<EditAccommodationForm accommodation={data} />

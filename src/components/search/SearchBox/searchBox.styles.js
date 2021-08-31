@@ -2,8 +2,7 @@ import styled from "styled-components";
 
 export const StyledForm = styled.form`
 	margin: var(--space-xsm) 0;
-	border-radius: var(--br-xsm);
-	/* overflow: hidden; */
+	border-radius: var(--br-sm);
 	box-shadow: var(--box-shadow-md);
 
 	#checkin,
