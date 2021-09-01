@@ -1,4 +1,5 @@
 import styled from "styled-components";
+import breakpoints from "../../../global/styles/breakpoints";
 
 export const StyledFooter = styled.footer`
 	background-color: var(--clr-drk-900);
@@ -60,17 +61,19 @@ export const StyledFooter = styled.footer`
 			margin-top: -20rem;
 
 			svg {
-				transform: scale(7) translateX(30%) translateY(40%);
+				transform: scale(1.5) translateX(-20%) translateY(0);
 			}
 		}
 
 		&__logo-container--02 {
 			svg {
-				transform: scale(7) translateX(48%) translateY(36%);
+				transform: scale(1.5) translateX(60%) translateY(-1.25rem);
 			}
 		}
 
 		&__acknowledgement {
+			margin-top: var(--space-xxsm);
+			max-width: 72ch;
 			p {
 				font-size: 0.75rem;
 				color: var(--clr-drk-600);
@@ -89,6 +92,38 @@ export const StyledFooter = styled.footer`
 				span {
 					font-weight: 700;
 				}
+			}
+		}
+
+		@media screen and (${breakpoints.sm}) {
+			.footer__logo-container--02 {
+				display: none;
+			}
+		}
+
+		@media screen and (${breakpoints.md}) {
+			display: grid;
+			grid-gap: 1rem;
+			grid-template-columns: repeat(3, 1fr);
+
+			.footer__logo {
+				grid-column: -2 / -1;
+			}
+
+			.footer__logo-container--01 {
+				margin-top: 0;
+
+				svg {
+					transform: scale(1) translateX(0) translateY(0);
+				}
+			}
+		}
+
+		@media screen and (${breakpoints.xlg}) {
+			grid-template-columns: repeat(5, 1fr);
+
+			.footer__logo {
+				grid-column: 3 / -1;
 			}
 		}
 	}

@@ -1,9 +1,10 @@
 import styled from "styled-components";
 
 export const StyledHolidazeLogo = styled.div`
-	fill: var(--clr-drk-50);
-	max-height: 2.25rem;
-	transform: translateY(-10%);
+	svg {
+		fill: var(--clr-drk-50);
+		min-height: 2rem;
+	}
 
 	#z01,
 	#z02 {

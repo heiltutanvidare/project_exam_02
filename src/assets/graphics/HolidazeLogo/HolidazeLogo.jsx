@@ -15,12 +15,13 @@ export default function HolidazeLogo() {
 	return (
 		<StyledHolidazeLogo>
 			<svg
+				onClick={handleClick}
 				version="1.1"
 				id="Layer_1"
 				xmlns="http://www.w3.org/2000/svg"
 				x="0"
 				y="0"
-				onClick={handleClick}
+				viewBox="0 0 74.1 29"
 			>
 				<g id="holidaze">
 					<path
