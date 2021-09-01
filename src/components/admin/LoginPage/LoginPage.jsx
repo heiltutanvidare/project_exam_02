@@ -14,16 +14,24 @@ export default function LoginPage() {
 					content="If you are Holidaze partner, this is where you log in to the Holidaze admin panel"
 				/>
 			</Helmet>
-			<section>
-				<img className="login__image" src={calendar} alt="A calendar" />
-				<Container>
-					<h1 className="login__title">Admin dashboard</h1>
-					<p className="login__text">
-						Log in to add accommodations and manage messages and
-						enquiries
-					</p>
-					<LoginForm />
-				</Container>
+			<section className="login__grid">
+				<div className="login__grid--left">
+					<img
+						className="login__image"
+						src={calendar}
+						alt="A calendar"
+					/>
+				</div>
+				<div className="login__grid--right">
+					<Container>
+						<h1 className="login__title">Admin dashboard</h1>
+						<p className="login__text">
+							Log in to add accommodations and manage messages and
+							enquiries
+						</p>
+						<LoginForm />
+					</Container>
+				</div>
 			</section>
 		</StyledLoginPage>
 	);
