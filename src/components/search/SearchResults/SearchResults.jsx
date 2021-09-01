@@ -12,8 +12,6 @@ export default function SearchResults() {
 		`${API_BASE_URL}/establishments`
 	);
 
-	console.log(data);
-
 	const [search] = useContext(SearchContext);
 
 	let numberOfDays = 1;

@@ -57,7 +57,6 @@ export default function Contact() {
 
 	// Function that will run when form is submitted
 	function onSubmit(data) {
-		console.log(data);
 		setSubmitted(true);
 		submitContactMessage(data);
 		reset();

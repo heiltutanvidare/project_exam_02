@@ -93,7 +93,6 @@ export default function AddAccommodationForm() {
 	} = useForm({ resolver: yupResolver(schema) });
 
 	async function onSubmit(data) {
-		console.log(data);
 		const doUpdate = window.confirm(
 			"This will create this accommodation. Are you sure you want to to that?"
 		);

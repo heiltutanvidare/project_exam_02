@@ -1,7 +1,6 @@
 import { API_BASE_URL } from "../constants/api";
 
 async function submitCreate(uploadData, token) {
-	console.log(uploadData);
 	const formData = new FormData();
 
 	// Handeling the main image and appending it to the formData

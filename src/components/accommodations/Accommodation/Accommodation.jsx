@@ -10,7 +10,6 @@ export default function Accommodation({
 	to,
 	amenities,
 }) {
-	console.log(amenities);
 	return (
 		<StyledAccommodation to={to}>
 			<img className="accommodation__image" src={image} alt={title} />
