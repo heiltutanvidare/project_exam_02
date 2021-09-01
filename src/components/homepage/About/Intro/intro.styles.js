@@ -23,6 +23,7 @@ export const StyledIntro = styled.div`
 			&--secondary {
 				grid-column: 2 / -1;
 				margin-top: -5rem;
+				box-shadow: var(--box-shadow-sm);
 			}
 		}
 	}
@@ -42,6 +43,7 @@ export const StyledIntro = styled.div`
 				grid-column: 4 / -1;
 				grid-row: 1 / 4;
 				align-self: center;
+				padding: 3vmin;
 			}
 			&__images {
 				&--main {

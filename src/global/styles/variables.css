@@ -48,6 +48,7 @@
 	--br-lg: 1.5rem;
 
 	/* Box shadow */
+	--box-shadow-sm: 0px 0px 28px -4px rgba(0, 0, 0, 0.2);
 	--box-shadow-md: 0px 0px 28px -4px rgba(0, 0, 0, 0.45);
 	--box-shadow-lg: 0px 0px 28px -4px rgba(0, 0, 0, 0.45),
 		0px 0px 28px -4px rgba(0, 0, 0, 0.45),

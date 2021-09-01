@@ -1,4 +1,3 @@
-import DecorativeImage from "../../../ui/DecorativeImage/DecorativeImage";
 import Heading from "../../../ui/Heading/Heading";
 import Paragraph from "../../../ui/Paragraph/Paragraph";
 import hiker from "../../../../assets/photos/hiker.png";
