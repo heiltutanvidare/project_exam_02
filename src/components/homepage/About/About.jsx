@@ -6,7 +6,6 @@ import Paragraph from "../../ui/Paragraph/Paragraph";
 import { StyledAbout } from "./about.styles";
 import Carousel from "./Carousel/Carousel";
 import Contact from "./Contact/Contact";
-import Imagebox from "./Imagebox/Imagebox";
 import ImageGrid from "./ImageGrid/ImageGrid";
 import Testemonials from "./Testemonials/Testemonials";
 import scrollToElement from "../../../global/functions/scrollToElement";
@@ -22,27 +21,6 @@ export default function About() {
 			<Container>
 				<Intro />
 				<Bergen scrollTarget={contactRef} />
-				{/* <Heading
-					align="left"
-					pretitle="base of operations"
-					content="We help you stay comfortable while you explore"
-				/>
-				<p>
-					Bergen is the gateway to Norway, with its fjords and
-					mountains, its fairytale colour, and a close proximity to
-					some of the world's most beautiful attractions. Bergen
-					offers fantastic hiking trails through the majestic nature,
-					opportunities for more active holidays like biking or
-					kayaking, cozy cafés on every corner with good scones and
-					coffee, and of course the city centre, where you can find
-					museums like Bryggens Museum or Marine-Museum.
-				</p>
-				<Button
-					variant="outlined"
-					event={() => scrollToElement(contactRef)}
-				>
-					Contact us
-				</Button> */}
 			</Container>
 			<Carousel />
 			<Container>
