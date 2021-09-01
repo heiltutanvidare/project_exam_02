@@ -1,4 +1,5 @@
 import styled from "styled-components";
+import breakpoints from "../../../../../global/styles/breakpoints";
 
 export const StyledCarouselNav = styled.nav`
 	svg {
@@ -16,5 +17,9 @@ export const StyledCarouselNav = styled.nav`
 				transform: rotate(11deg);
 			}
 		}
+	}
+
+	@media screen and (${breakpoints.lg}) {
+		display: none;
 	}
 `;

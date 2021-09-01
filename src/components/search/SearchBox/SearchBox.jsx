@@ -122,10 +122,10 @@ export default function SearchBox() {
 						min={minCheckOut}
 					/>
 				</StyledField>
+				<Button variant="form" fullwidth>
+					Search
+				</Button>
 			</StyledFormGrid>
-			<Button variant="form" fullwidth>
-				Search
-			</Button>
 		</StyledForm>
 	);
 }

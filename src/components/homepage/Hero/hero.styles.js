@@ -1,5 +1,6 @@
 import styled from "styled-components";
 import herobg from "../../../assets/photos/herobg.jpg";
+import breakpoints from "../../../global/styles/breakpoints";
 
 export const StyledHero = styled.div`
 	height: 100vh;
@@ -28,6 +29,10 @@ export const StyledHero = styled.div`
 		height: 110%;
 		position: relative;
 		z-index: 1;
+
+		@media screen and (${breakpoints.lg}) {
+			height: 117%;
+		}
 	}
 
 	.pullup {

@@ -1,6 +1,9 @@
 import styled from "styled-components";
 
 export const StyledContact = styled.div`
+	margin-left: auto;
+	margin-right: auto;
+	max-width: 576px;
 	.form__field {
 		margin-bottom: var(--space-xxsm);
 		display: flex;

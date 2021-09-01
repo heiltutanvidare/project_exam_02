@@ -1,15 +1,8 @@
 import styled from "styled-components";
+import breakpoints from "../../../../global/styles/breakpoints";
 
 export const StyledTestemonials = styled.div`
-	margin-bottom: var(--space-lg);
-
-	.pullup--xl {
-		margin-bottom: -12rem;
-	}
-
-	.pullup--lg {
-		margin-bottom: -6rem;
-	}
+	margin-bottom: var(--space-sm);
 
 	.testemonial__name {
 		color: var(--clr-drk-600);
@@ -36,6 +29,29 @@ export const StyledTestemonials = styled.div`
 
 		::after {
 			bottom: -6px;
+		}
+	}
+
+	img {
+		width: 100%;
+		position: relative;
+		z-index: -1;
+		margin-top: -5rem;
+
+		@media screen and (${breakpoints.md}) {
+			margin-top: -15rem;
+		}
+
+		@media screen and (${breakpoints.lg}) {
+			margin-top: -17rem;
+		}
+
+		@media screen and (${breakpoints.xlg}) {
+			margin-top: -25rem;
+		}
+
+		@media screen and (${breakpoints.xxlg}) {
+			margin-top: -30rem;
 		}
 	}
 `;

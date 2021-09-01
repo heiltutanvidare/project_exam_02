@@ -8,6 +8,11 @@ export const StyledCarouselItem = styled.div`
 	min-width: 11rem;
 	height: 17rem;
 	position: relative;
+	cursor: pointer;
+
+	&:hover .overlay {
+		opacity: 0.5;
+	}
 
 	.overlay {
 		position: absolute;
@@ -19,6 +24,7 @@ export const StyledCarouselItem = styled.div`
 			var(--clr-drk-900-transp),
 			var(--clr-drk-900)
 		);
+		transition: opacity 0.25s linear;
 	}
 
 	h2 {

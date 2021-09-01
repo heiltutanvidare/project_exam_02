@@ -10,6 +10,8 @@ import Imagebox from "./Imagebox/Imagebox";
 import ImageGrid from "./ImageGrid/ImageGrid";
 import Testemonials from "./Testemonials/Testemonials";
 import scrollToElement from "../../../global/functions/scrollToElement";
+import Intro from "./Intro/Intro";
+import Bergen from "./Bergen/Bergen";
 
 export default function About() {
 	// Set up the contact form container as a ref
@@ -18,22 +20,9 @@ export default function About() {
 	return (
 		<StyledAbout>
 			<Container>
-				<Heading
-					align="left"
-					pretitle="We are Holidaze"
-					content="Rooms for rent on the Norewgian coast – safe and affordable"
-				/>
-				<p>
-					Holidaze are here to help visitors to «Vestlandet» (Western
-					Norway) find accommodations that suit their budget and their
-					needs. If you are travelin to the area of Bergen and its
-					surroundings, you can get the chance to experience the best
-					of the area – while stayig at one of the many greate hotels,
-					apartments, cabins etc, provided by our great and passionate
-					comunity of accommodation owners.
-				</p>
-				<Imagebox />
-				<Heading
+				<Intro />
+				<Bergen scrollTarget={contactRef} />
+				{/* <Heading
 					align="left"
 					pretitle="base of operations"
 					content="We help you stay comfortable while you explore"
@@ -53,7 +42,7 @@ export default function About() {
 					event={() => scrollToElement(contactRef)}
 				>
 					Contact us
-				</Button>
+				</Button> */}
 			</Container>
 			<Carousel />
 			<Container>

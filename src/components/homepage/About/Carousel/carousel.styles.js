@@ -1,4 +1,5 @@
 import styled from "styled-components";
+import breakpoints from "../../../../global/styles/breakpoints";
 
 export const StyledCarousel = styled.div`
 	display: flex;
@@ -10,6 +11,15 @@ export const StyledCarousel = styled.div`
 	> * {
 		scroll-snap-align: start;
 	}
+	@media screen and (${breakpoints.lg}) {
+		display: grid;
+		grid-template-columns: repeat(3, 1fr);
+
+		> * {
+			height: 25rem;
+			width: 15rem;
+		}
+	}
 `;
 
 export const StyledCarouselContainer = styled.div`
@@ -20,4 +30,9 @@ export const StyledCarouselContainer = styled.div`
 	margin-bottom: var(--space-lg);
 	width: 92.5%;
 	margin-left: auto;
+
+	@media screen and (${breakpoints.lg}) {
+		justify-content: center;
+		margin: var(--space-sm) auto var(--space-lg) auto;
+	}
 `;

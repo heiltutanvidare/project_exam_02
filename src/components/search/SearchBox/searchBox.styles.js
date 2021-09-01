@@ -1,10 +1,16 @@
 import styled from "styled-components";
+import breakpoints from "../../../global/styles/breakpoints";
 
 export const StyledForm = styled.form`
 	margin: var(--space-xsm) 0;
 	border-radius: var(--br-sm);
 	box-shadow: var(--box-shadow-md);
 	background: none;
+
+	@media screen and (${breakpoints.lg}) {
+		background: var(--clr-white);
+		padding: 0.5rem 1rem;
+	}
 
 	#checkin,
 	#checkout {
@@ -32,6 +38,12 @@ export const StyledForm = styled.form`
 	.suggestion {
 		position: relative;
 		border-radius: var(--br-sm) var(--br-sm) 0 0;
+
+		@media screen and (${breakpoints.lg}) {
+			border-radius: 0;
+			border-left: none;
+			padding-left: 1rem;
+		}
 
 		&__container {
 			position: absolute;
@@ -72,6 +84,12 @@ export const StyledForm = styled.form`
 
 	button {
 		border-radius: 0 0 var(--br-sm) var(--br-sm);
+		grid-column: 1 / -1;
+
+		@media screen and (${breakpoints.lg}) {
+			grid-column: span 1;
+			border-radius: var(--br-sm);
+		}
 	}
 `;
 
@@ -79,6 +97,11 @@ export const StyledFormGrid = styled.div`
 	display: grid;
 	grid-template-columns: 1fr 1fr;
 	grid-gap: 1px;
+
+	@media screen and (${breakpoints.lg}) {
+		grid-template-columns: repeat(5, 1fr);
+		grid-gap: 1.5rem;
+	}
 `;
 
 export const StyledField = styled.div`
@@ -86,6 +109,12 @@ export const StyledField = styled.div`
 	display: grid;
 	padding: 0.5rem 0.5rem 0.5rem 0.75rem;
 	grid-column: ${(props) => (props.span === "all" ? "1 / -1" : "")};
+
+	@media screen and (${breakpoints.lg}) {
+		grid-column: ${(props) => (props.span === "all" ? "1 / 3" : "")};
+		border-left: 1px solid var(--clr-drk-100);
+		padding-left: 2rem;
+	}
 `;
 
 export const StyledLabel = styled.label`
