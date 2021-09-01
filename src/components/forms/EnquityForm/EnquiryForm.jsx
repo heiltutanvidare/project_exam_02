@@ -56,7 +56,6 @@ export default function EnquiryForm({ asBooking, title }) {
 
 	// Function that will run when form is submitted
 	function onSubmit(data) {
-		console.log(data);
 		setSubmitted(true);
 		submitEnquiry(data);
 		reset();

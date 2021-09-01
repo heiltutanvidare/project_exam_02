@@ -1,7 +1,16 @@
 import styled from "styled-components";
+import breakpoints from "../../../global/styles/breakpoints";
 
 export const StyledEnquiryForm = styled.div`
 	color: var(--clr-drk-200);
+
+	form {
+		@media screen and (${breakpoints.lg}) {
+			display: grid;
+			grid-template-columns: repeat(2, 1fr);
+			grid-gap: 1rem;
+		}
+	}
 
 	.form__field {
 		margin-bottom: var(--space-xxsm);
@@ -37,17 +46,9 @@ export const StyledEnquiryForm = styled.div`
 
 	#checkin::-webkit-calendar-picker-indicator,
 	#checkout::-webkit-calendar-picker-indicator {
-		display: none;
-	}
-
-	.date-flex {
-		display: flex;
-		gap: 0.5rem;
-		justify-content: space-between;
-
-		* {
-			flex: 1;
-		}
+		/* display: none; */
+		filter: invert(1);
+		opacity: 0.5;
 	}
 
 	textarea {
@@ -59,6 +60,7 @@ export const StyledEnquiryForm = styled.div`
 		padding: 0.4rem;
 		border-radius: 0;
 		margin: 0;
+		height: 100%;
 
 		&::placeholder {
 			color: var(--clr-drk-500);

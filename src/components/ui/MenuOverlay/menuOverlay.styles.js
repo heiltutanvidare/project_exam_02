@@ -1,4 +1,5 @@
 import styled from "styled-components";
+import breakpoints from "../../../global/styles/breakpoints";
 
 export const StyledMenuOverlay = styled.div`
 	position: fixed;
@@ -111,6 +112,19 @@ export const StyledMenuOverlay = styled.div`
 
 		&__opening-hours {
 			font-weight: 300;
+		}
+
+		&__grid {
+			display: grid;
+
+			@media screen and (${breakpoints.md}) {
+				grid-template-columns: repeat(3, 1fr);
+				grid-gap: 1rem;
+
+				&__item--enquiry {
+					grid-column: 2 / -1;
+				}
+			}
 		}
 	}
 `;
