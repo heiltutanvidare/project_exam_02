@@ -29,35 +29,58 @@ export default function EnquiryList() {
 					return (
 						<div className="message" key={enquiry.id}>
 							<div className="message__grid">
-								<p className="message__label">Name</p>
-								<p className="message__value">{enquiry.name}</p>
-								<p className="message__label">Email</p>
-								<p className="message__value">
-									{enquiry.email}
-								</p>
-								<p className="message__label">Phone</p>
-								<p className="message__value">
-									{enquiry.telephone
-										? enquiry.telephone
-										: "Not provided"}
-								</p>
-								<p className="message__label">Check in</p>
-								<p className="message__value">
-									{enquiry.checkin}
-								</p>
-								<p className="message__label">Check out</p>
-								<p className="message__value">
-									{enquiry.checkout}
-								</p>
+								<div className="message__grid--col01">
+									<div className="message__grid__item">
+										<p className="message__label">Name</p>
+										<p className="message__value">
+											{enquiry.name}
+										</p>
+									</div>
+									<div className="message__grid__item">
+										<p className="message__label">Email</p>
+										<p className="message__value">
+											{enquiry.email}
+										</p>
+									</div>
+									<div className="message__grid__item">
+										<p className="message__label">
+											Check in
+										</p>
+										<p className="message__value">
+											{enquiry.checkin}
+										</p>
+									</div>
+									<div className="message__grid__item">
+										<p className="message__label">
+											Check out
+										</p>
+										<p className="message__value">
+											{enquiry.checkout}
+										</p>
+									</div>
+									<div className="message__grid__item">
+										<p className="message__label">Phone</p>
+										<p className="message__value">
+											{enquiry.telephone
+												? enquiry.telephone
+												: "Not provided"}
+										</p>
+									</div>
+								</div>
+
+								<div className="message__grid--col02">
+									<div className="message__grid__item message__grid__item--span-all">
+										<p className="message__label">
+											Interest, wants and needs
+										</p>
+										<p className="message__value">
+											{enquiry.message
+												? enquiry.message
+												: "Not provided"}
+										</p>
+									</div>
+								</div>
 							</div>
-							<p className="message__label message__label--nonGrid">
-								Interest, wants and needs
-							</p>
-							<p className="message__value message__value--nonGrid">
-								{enquiry.message
-									? enquiry.message
-									: "Not provided"}
-							</p>
 						</div>
 					);
 				})}

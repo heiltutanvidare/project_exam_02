@@ -1,4 +1,5 @@
 import styled from "styled-components";
+import breakpoints from "../../../global/styles/breakpoints";
 
 export const StyledAdminPage = styled.section`
 	margin: 4rem 0;
@@ -6,6 +7,11 @@ export const StyledAdminPage = styled.section`
 	.nav {
 		margin-bottom: var(--space-xxsm);
 		width: 100%;
+
+		@media screen and (${breakpoints.md}) {
+			margin-top: var(--space-sm);
+			margin-bottom: var(--space-xsm);
+		}
 
 		&__list {
 			display: flex;
@@ -48,5 +54,18 @@ export const StyledAdminPage = styled.section`
 
 	.visible {
 		display: block;
+	}
+
+	.admin__section__intro {
+		max-width: 62ch;
+
+		@media screen and (${breakpoints.md}) {
+			text-align: center;
+			margin: 0 auto;
+
+			button {
+				margin: 1rem auto;
+			}
+		}
 	}
 `;

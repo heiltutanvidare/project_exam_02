@@ -76,8 +76,10 @@ export default function AdminPage() {
 							activeView === "enquiries" ? "visible" : "hidden"
 						}
 					>
-						<h2>Enquiries</h2>
-						<p>Enquiries from interested visitors</p>
+						<div className="admin__section__intro">
+							<h2>Enquiries</h2>
+							<p>Enquiries from interested visitors</p>
+						</div>
 						<EnquiryList />
 					</div>
 
@@ -86,11 +88,13 @@ export default function AdminPage() {
 							activeView === "messages" ? "visible" : "hidden"
 						}
 					>
-						<h2>Latest messages</h2>
-						<p>
-							List of messages sent by visitors using the contact
-							form on the site
-						</p>
+						<div className="admin__section__intro">
+							<h2>Latest messages</h2>
+							<p>
+								List of messages sent by visitors using the
+								contact form on the site
+							</p>
+						</div>
 						<MessageList />
 					</div>
 
@@ -101,16 +105,19 @@ export default function AdminPage() {
 								: "hidden"
 						}
 					>
-						<h2>Your accommodations</h2>
-						<p>
-							The list shows the properties you currently have
-							made available for rent. The preview is identical to
-							how the travelers visiting the site will see them.
-							Click on a property to open edit mode.
-						</p>
-						<Button variant="outlined">
-							<Link to="/add">+ Add new accommodation</Link>
-						</Button>
+						<div className="admin__section__intro">
+							<h2>Your accommodations</h2>
+							<p>
+								The list shows the properties you currently have
+								made available for rent. The preview is
+								identical to how the travelers visiting the site
+								will see them. Click on a property to open edit
+								mode.
+							</p>
+							<Button variant="outlined">
+								<Link to="/add">+ Add new accommodation</Link>
+							</Button>
+						</div>
 						<AccommodationList />
 					</div>
 				</Container>

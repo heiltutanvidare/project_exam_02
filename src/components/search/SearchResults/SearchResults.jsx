@@ -12,6 +12,8 @@ export default function SearchResults() {
 		`${API_BASE_URL}/establishments`
 	);
 
+	console.log(data);
+
 	const [search] = useContext(SearchContext);
 
 	let numberOfDays = 1;
@@ -72,6 +74,7 @@ export default function SearchResults() {
 							title={accommodation.title}
 							type={accommodation.type.accommodation_type}
 							image={accommodation.main_image.url}
+							amenities={accommodation.amenities}
 							total={Math.floor(
 								accommodation.price * numberOfDays
 							)}

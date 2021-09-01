@@ -28,29 +28,48 @@ export default function MessageList() {
 					return (
 						<div className="message" key={message.id}>
 							<div className="message__grid">
-								<p className="message__label">Name</p>
-								<p className="message__value">{message.name}</p>
-								<p className="message__label">Email</p>
-								<p className="message__value">
-									{message.email}
-								</p>
-								<p className="message__label">Phone</p>
-								<p className="message__value">
-									{message.telephone
-										? message.telephone
-										: "Not provided"}
-								</p>
-								<p className="message__label">Subject</p>
-								<p className="message__value">
-									{message.subject}
-								</p>
+								<div className="message__grid--col01">
+									<div className="message__grid__item">
+										<p className="message__label">Name</p>
+										<p className="message__value">
+											{message.name}
+										</p>
+									</div>
+									<div className="message__grid__item">
+										<p className="message__label">Email</p>
+										<p className="message__value">
+											{message.email}
+										</p>
+									</div>
+									<div className="message__grid__item">
+										<p className="message__label">Phone</p>
+										<p className="message__value">
+											{message.telephone
+												? message.telephone
+												: "Not provided"}
+										</p>
+									</div>
+									<div className="message__grid__item">
+										<p className="message__label">
+											Subject
+										</p>
+										<p className="message__value">
+											{message.subject}
+										</p>
+									</div>
+								</div>
+
+								<div className="message__grid--col02">
+									<div className="message__grid__item message__grid__item--span-all">
+										<p className="message__label">
+											Message
+										</p>
+										<p className="message__value">
+											{message.message}
+										</p>
+									</div>
+								</div>
 							</div>
-							<p className="message__label message__label--nonGrid">
-								Message
-							</p>
-							<p className="message__value message__value--nonGrid">
-								{message.message}
-							</p>
 						</div>
 					);
 				})}

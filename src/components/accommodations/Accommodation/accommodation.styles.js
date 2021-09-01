@@ -1,5 +1,6 @@
 import styled from "styled-components";
 import { Link } from "react-router-dom";
+import breakpoints from "../../../global/styles/breakpoints";
 
 export const StyledAccommodation = styled(Link)`
 	display: grid;
@@ -19,9 +20,14 @@ export const StyledAccommodation = styled(Link)`
 		color: var(--clr-drk-300);
 		font-size: 0.875rem;
 	}
-	.accommodation__description {
+	.accommodation__title {
 		font-size: 1.125rem;
 	}
+
+	.accommodation__amenities {
+		display: none;
+	}
+
 	.accommodation__price {
 		font-size: 1.125rem;
 
@@ -32,5 +38,41 @@ export const StyledAccommodation = styled(Link)`
 	.accommodation__price--total {
 		font-size: 0.875rem;
 		color: var(--clr-drk-300);
+	}
+
+	@media screen and (${breakpoints.lg}) {
+		background-color: var(--clr-white);
+		grid-template-columns: 1fr 2fr;
+		grid-template-rows: 1fr;
+		border-radius: var(--br-md);
+
+		.accommodation__image {
+			height: 100%;
+		}
+
+		.content {
+			padding: var(--space-xxxsm);
+			display: flex;
+			flex-direction: column;
+			justify-content: space-between;
+		}
+
+		.accommodation__title {
+			border-bottom: 1px solid var(--clr-drk-100);
+			margin: 0.5rem 0;
+		}
+
+		.accommodation__amenities {
+			margin: 0.75rem 0;
+			display: flex;
+			flex-wrap: wrap;
+			gap: 0.5em;
+
+			small {
+				color: var(--clr-drk-500);
+				font-size: 0.875rem;
+				line-height: 1;
+			}
+		}
 	}
 `;

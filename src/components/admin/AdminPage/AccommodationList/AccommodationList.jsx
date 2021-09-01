@@ -41,6 +41,7 @@ export default function AccommodationList() {
 									key={accommodation.id}
 									price={accommodation.price}
 									title={accommodation.title}
+									amenities={accommodation.amenities}
 									type={
 										accommodation.type?.accommodation_type
 											? accommodation.type
