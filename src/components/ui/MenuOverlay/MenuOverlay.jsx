@@ -39,7 +39,7 @@ export default function MenuOverlay() {
 						Close <img src={close} alt="Close the overlay meny" />
 					</button>
 
-					<MenuNav />
+					<MenuNav inOverlay={true} />
 
 					<div className="menu__grid">
 						<div className="menu__grid__item menu__grid__item--info">

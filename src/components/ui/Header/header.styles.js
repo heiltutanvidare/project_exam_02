@@ -24,6 +24,12 @@ export const StyledHeader = styled.header`
 		align-items: center;
 		justify-content: space-between;
 
+		.left {
+			display: flex;
+			align-items: center;
+			margin-left: 2rem;
+		}
+
 		svg {
 			width: 100%;
 			height: 100%;

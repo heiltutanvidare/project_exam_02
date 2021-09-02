@@ -23,6 +23,10 @@ export const StyledLoginPage = styled.main`
 				&--right {
 					display: grid;
 					place-items: center;
+
+					> * {
+						max-width: 48ch;
+					}
 				}
 			}
 		}
