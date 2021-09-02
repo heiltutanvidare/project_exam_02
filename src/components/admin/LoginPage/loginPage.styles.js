@@ -18,8 +18,7 @@ export const StyledLoginPage = styled.main`
 
 				&--left {
 					img {
-						max-height: unset;
-						margin-bottom: 0;
+						max-height: 9rem;
 					}
 				}
 
@@ -37,16 +36,15 @@ export const StyledLoginPage = styled.main`
 		&__image-container {
 			height: 100%;
 			display: grid;
-			place-items: center;
-			max-height: 280px;
-			padding: 3rem;
+			padding: 2rem 2rem 1rem 1.5rem;
 			@media screen and (${breakpoints.md}) {
-				max-height: 380px;
+				place-items: center;
+				padding: 0;
 			}
 		}
 
 		&__image {
-			max-height: 6rem;
+			max-height: 4rem;
 		}
 
 		&__title {
