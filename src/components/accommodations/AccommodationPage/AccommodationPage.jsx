@@ -54,42 +54,58 @@ export default function AccommodationPage() {
 				<meta name="description" content={data.description} />
 			</Helmet>
 			<BreadCrumbs />
-			<AccommodationImages data={data} />
+			<div className="place__images__mobile">
+				<AccommodationImages data={data} asCarousel={true} />
+			</div>
+			<div className="place__images__desktop">
+				<AccommodationImages data={data} asCarousel={false} />
+			</div>
 			<Container>
-				<div className="place__flex">
-					<p className="place__type">
-						{data.type.accommodation_type}
-					</p>
-					<p className="place__distance">
-						<span>{data.km_from_city} km</span> from city centre
-					</p>
+				<div className="place__top__grid">
+					<h1 className="place__title">{data.title}</h1>
+					<div className="place__details">
+						<p className="place__type">
+							{data.type.accommodation_type}
+						</p>
+						<p className="place__distance">
+							<span>{data.km_from_city} km</span> from city centre
+						</p>
+						<p className="place__bedrooms">
+							<span>{data.bedrooms} </span>
+							{data.bedrooms.length > 1 ? "bedroom" : "bedrooms"}
+						</p>
+						<p className="place__bathrooms">
+							<span>{data.bathrooms} </span>
+							{data.bathrooms.length > 1
+								? "bathroom"
+								: "bathrooms"}
+						</p>
+					</div>
 				</div>
-				<h1 className="place__title">{data.title}</h1>
-				<div className="place__room-details">
-					<p className="place__bedrooms">
-						<span>{data.bedrooms} </span>
-						{data.bedrooms.length > 1 ? "bedroom" : "bedrooms"}
-					</p>
-					<p className="place__bathrooms">
-						<span>{data.bathrooms} </span>
-						{data.bathrooms.length > 1 ? "bathroom" : "bathrooms"}
-					</p>
+				<div className="place__bottom__grid">
+					<p className="place__description">{data.description}</p>
+					<h2 className="place__amenities-title">Amenities</h2>
+					<ul className="place__amenities">
+						{data.amenities.map((amenity) => {
+							return (
+								<li className="place__amenity" key={amenity.id}>
+									<div className="place__amenity__image">
+										<img
+											src={amenity.icon.url}
+											alt={amenity.amenity}
+										/>
+									</div>
+									<p>{amenity.amenity}</p>
+								</li>
+							);
+						})}
+					</ul>
+					{!bookingIsVisible && (
+						<div className="place__priceBox--desktop">
+							<PriceBox data={data} search={search} />
+						</div>
+					)}
 				</div>
-				<p className="place__description">{data.description}</p>
-				<h2 className="place__amenities-title">Amenities</h2>
-				<ul className="place__amenities">
-					{data.amenities.map((amenity) => {
-						return (
-							<li className="place__amenity" key={amenity.id}>
-								<img
-									src={amenity.icon.url}
-									alt={amenity.amenity}
-								/>
-								<p>{amenity.amenity}</p>
-							</li>
-						);
-					})}
-				</ul>
 			</Container>
 
 			{bookingIsVisible && (
@@ -105,7 +121,11 @@ export default function AccommodationPage() {
 				</div>
 			)}
 
-			{!bookingIsVisible && <PriceBox data={data} search={search} />}
+			{!bookingIsVisible && (
+				<div className="place__priceBox--mobile">
+					<PriceBox data={data} search={search} />
+				</div>
+			)}
 		</StyledAccommodationPage>
 	);
 }

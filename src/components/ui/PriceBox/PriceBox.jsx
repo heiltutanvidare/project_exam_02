@@ -26,11 +26,11 @@ export default function PriceBox({ data, search }) {
 					<div className="priceBox__dates">
 						<p className="priceBox__checkin">
 							<span>Check in </span>
-							{search.checkIn}
+							{search?.checkIn ? search.checkIn : ""}
 						</p>
 						<p className="priceBox__checkout">
 							<span>Check out </span>
-							{search.checkOut}
+							{search?.checkOut ? search.checkOut : ""}
 						</p>
 					</div>
 					<div className="priceBox__bottom">
@@ -39,7 +39,10 @@ export default function PriceBox({ data, search }) {
 								<span>{data.price}$</span> / night
 							</p>
 							<p className="priceBox__total">
-								{data.price * search.days}$ total
+								{search?.days
+									? data.price * search?.days
+									: data.price}
+								$ total
 							</p>
 						</div>
 						<button

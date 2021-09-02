@@ -15,7 +15,6 @@ export const StyledPriceBox = styled.div`
 	.priceBox {
 		background-color: var(--clr-white);
 		padding: var(--space-xxxsm) 0;
-
 		position: relative;
 
 		&__dates {

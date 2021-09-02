@@ -12,7 +12,9 @@ export default function Accommodation({
 }) {
 	return (
 		<StyledAccommodation to={to}>
-			<img className="accommodation__image" src={image} alt={title} />
+			<div className="accommodation__image">
+				<img src={image} alt={title} />
+			</div>
 			<div className="content">
 				<div className="details">
 					<p className="accommodation__type">{type}</p>
@@ -21,7 +23,6 @@ export default function Accommodation({
 						{amenities.map((amenity) => {
 							return (
 								<small key={amenity.id}>
-									{" • "}
 									{amenity.amenity}
 								</small>
 							);

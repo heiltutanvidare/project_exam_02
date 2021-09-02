@@ -1,26 +1,42 @@
 import styled from "styled-components";
+import breakpoints from "../../../global/styles/breakpoints";
 
 export const StyledAccommodationPage = styled.main`
 	margin-top: 5rem;
 	position: relative;
 
 	.place {
+		&__top__grid {
+			display: grid;
+		}
+
 		&__image {
 			margin-bottom: var(--space-xxxsm);
 		}
 
-		&__flex {
-			display: flex;
-			justify-content: space-between;
+		&__images__desktop {
+			display: none;
+		}
+
+		&__details {
+			display: grid;
+			grid-template-columns: repeat(2, max-content);
+			grid-gap: 0.125rem 1rem;
+			margin-bottom: var(--space-xxxsm);
 		}
 
 		&__type,
-		&__distance {
+		&__distance,
+		&__bedrooms,
+		&__bathrooms {
 			font-size: 0.875rem;
 			color: var(--clr-drk-700);
 		}
 
-		&__distance span {
+		&__type span,
+		&__distance span,
+		&__bedrooms span,
+		&__bathrooms span {
 			font-weight: 700;
 		}
 
@@ -29,24 +45,6 @@ export const StyledAccommodationPage = styled.main`
 			font-weight: bold;
 			font-size: 1.125rem;
 			line-height: 1.625rem;
-		}
-
-		&__room-details {
-			color: var(--clr-drk-450);
-			display: flex;
-			margin-bottom: var(--space-xxxsm);
-			font-size: 0.875rem;
-		}
-
-		&__bedrooms {
-			margin-right: 0.5rem;
-			padding-right: 0.5rem;
-			border-right: 1px solid var(--clr-drk-300);
-		}
-
-		&__bedrooms span,
-		&__bathrooms span {
-			font-weight: 700;
 		}
 
 		&__description {
@@ -71,6 +69,104 @@ export const StyledAccommodationPage = styled.main`
 			img {
 				height: 1rem;
 				margin-right: 0.5rem;
+			}
+		}
+
+		&__priceBox--desktop {
+			display: none;
+		}
+
+		@media screen and (${breakpoints.md}) {
+			&__images__mobile {
+				display: none;
+			}
+			&__images__desktop {
+				display: grid;
+			}
+			&__title {
+				grid-row: 1;
+				font-size: 1.75rem;
+				line-height: 1.2;
+			}
+
+			&__details {
+				grid-template-columns: repeat(4, max-content);
+				grid-gap: 0.125rem 1.5rem;
+				border-top: 1px solid var(--clr-drk-100);
+				border-bottom: 1px solid var(--clr-drk-100);
+				padding: 0.5rem 0;
+			}
+
+			&__bottom__grid {
+				display: grid;
+				grid-template-columns: repeat(12, 1fr);
+				grid-gap: 1rem;
+				margin-bottom: var(--space-md);
+			}
+
+			&__description,
+			&__amenities-title,
+			&__amenities {
+				grid-column: 2 / 11;
+			}
+
+			&__amenities {
+				display: grid;
+				grid-template-columns: repeat(6, 1fr);
+				grid-gap: 0.5rem;
+				align-items: start;
+			}
+
+			&__amenity {
+				display: grid;
+				place-items: center;
+
+				&__image {
+					border: 2px solid var(--clr-drk-800);
+					border-radius: 50%;
+					padding: 0.65rem;
+					width: 3rem;
+					height: 3rem;
+					margin-right: 0;
+					margin-bottom: 0.45rem;
+					display: grid;
+					place-items: center;
+				}
+
+				img {
+					margin: 0;
+					width: 100%;
+					height: 100%;
+				}
+
+				p {
+					font-size: 0.875rem;
+					text-align: center;
+				}
+			}
+		}
+
+		@media screen and (${breakpoints.lg}) {
+			&__bottom__grid {
+				grid-template-columns: repeat(12, 1fr);
+			}
+
+			&__description,
+			&__amenities-title,
+			&__amenities {
+				grid-column: 2 / 8;
+			}
+
+			&__priceBox--mobile {
+				display: none;
+			}
+
+			&__priceBox--desktop {
+				grid-column: 9 / -1;
+				grid-row: 1 / -1;
+				display: grid;
+				justify-items: stretch;
+				align-items: center;
 			}
 		}
 	}

@@ -10,11 +10,15 @@ export const StyledAccommodation = styled(Link)`
 	color: inherit;
 
 	.accommodation__image {
-		border-radius: var(--br-sm);
 		height: 100%;
-		width: 100%;
-		object-fit: cover;
-		object-position: center center;
+
+		img {
+			border-radius: var(--br-sm);
+			height: 100%;
+			width: 100%;
+			object-fit: cover;
+			object-position: center center;
+		}
 	}
 	.accommodation__type {
 		color: var(--clr-drk-300);
@@ -66,7 +70,7 @@ export const StyledAccommodation = styled(Link)`
 			margin: 0.75rem 0;
 			display: flex;
 			flex-wrap: wrap;
-			gap: 0.5em;
+			gap: 1em;
 
 			small {
 				color: var(--clr-drk-500);

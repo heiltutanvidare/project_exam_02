@@ -1,9 +1,10 @@
 import { useState } from "react";
+import PropTypes from "prop-types";
 import ChevronLeft from "../../../../assets/graphics/ChevronLeft";
 import ChevronRight from "../../../../assets/graphics/ChevronRight";
 import { StyledAccommodationImages } from "./accommodationImages.styles";
 
-function AccommodationImages({ data: accommodation }) {
+function AccommodationImages({ data: accommodation, asCarousel }) {
 	let images = [accommodation.main_image, ...accommodation.images];
 
 	const [activeIndex, setActiveIndex] = useState(0);
@@ -24,34 +25,73 @@ function AccommodationImages({ data: accommodation }) {
 		}
 	}
 
-	return (
-		<StyledAccommodationImages>
-			<img
-				src={images[activeIndex].url}
-				alt={accommodation.title}
-				className="image"
-			/>
-			<div className="image__navigation">
-				<div
-					className="image__navigation__prev"
-					onClick={viewPrevImage}
-				>
-					<ChevronLeft />
+	if (asCarousel) {
+		return (
+			<StyledAccommodationImages>
+				<img
+					src={images[activeIndex].url}
+					alt={accommodation.title}
+					className="image"
+				/>
+				<div className="image__navigation">
+					<div
+						className="image__navigation__prev"
+						onClick={viewPrevImage}
+					>
+						<ChevronLeft />
+					</div>
+					<div
+						className="image__navigation__next"
+						onClick={viewNextImage}
+					>
+						<ChevronRight />
+					</div>
 				</div>
-				<div
-					className="image__navigation__next"
-					onClick={viewNextImage}
-				>
-					<ChevronRight />
+				<div className="image__numbering">
+					<small>
+						{activeIndex + 1}/{images.length}
+					</small>
 				</div>
-			</div>
-			<div className="image__numbering">
-				<small>
-					{activeIndex + 1}/{images.length}
-				</small>
-			</div>
-		</StyledAccommodationImages>
-	);
+			</StyledAccommodationImages>
+		);
+	} else {
+		return (
+			<StyledAccommodationImages>
+				<div className="image__grid">
+					<div className="image__grid__image-container">
+						{/* Container needed to prevent images from stretching in Safari*/}
+						<img
+							src={images[0].url}
+							alt={accommodation.title}
+							className="image__grid__image image__grid__image--main"
+						/>
+					</div>
+					<div className="image__grid__secondary__images">
+						{accommodation.images.map((img) => {
+							return (
+								<div
+									key={img.id}
+									className="image__grid__image-container"
+								>
+									{/* Container needed to prevent images from stretching in Safari*/}
+									<img
+										src={img.url}
+										alt={`The interior of ${accommodation.title}`}
+										className="image__grid__image image__grid__image--secondary"
+									/>
+								</div>
+							);
+						})}
+					</div>
+				</div>
+			</StyledAccommodationImages>
+		);
+	}
 }
 
 export default AccommodationImages;
+
+AccommodationImages.propTypes = {
+	data: PropTypes.object.isRequired,
+	asCarousel: PropTypes.bool.isRequired,
+};

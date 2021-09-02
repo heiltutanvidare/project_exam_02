@@ -1,4 +1,5 @@
 import styled from "styled-components";
+import breakpoints from "../../../../global/styles/breakpoints";
 
 export const StyledAccommodationImages = styled.div`
 	position: relative;
@@ -8,6 +9,10 @@ export const StyledAccommodationImages = styled.div`
 		object-fit: cover;
 		height: 250px;
 		width: 100%;
+
+		@media screen and (${breakpoints.sm}) {
+			height: 450px;
+		}
 
 		&__navigation {
 			position: absolute;
@@ -42,6 +47,33 @@ export const StyledAccommodationImages = styled.div`
 			position: absolute;
 			bottom: 0;
 			right: 0;
+		}
+	}
+
+	.image__grid {
+		display: grid;
+		grid-template-columns: repeat(2, 1fr);
+		grid-gap: 1rem;
+		margin: 0 auto var(--space-xsm) auto;
+		max-width: var(--max-width);
+		min-height: 450px;
+
+		&__image-container {
+			height: 100%;
+		}
+
+		&__secondary__images {
+			display: grid;
+			grid-template-columns: repeat(2, 1fr);
+			grid-gap: 1rem;
+			height: 100%;
+			object-fit: cover;
+		}
+
+		&__image {
+			height: 100%;
+			width: 100%;
+			object-fit: cover;
 		}
 	}
 `;
