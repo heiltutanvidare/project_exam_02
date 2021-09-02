@@ -1,5 +1,4 @@
 import styled from "styled-components";
-import breakpoints from "../../../../global/styles/breakpoints";
 
 export const StyledMenuNav = styled.nav`
 	ul {
@@ -18,9 +17,5 @@ export const StyledMenuNav = styled.nav`
 				border-bottom: 0.5px solid var(--clr-drk-500);
 			}
 		}
-	}
-
-	@media screen and (${breakpoints.md}) {
-		display: none;
 	}
 `;

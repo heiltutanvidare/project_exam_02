@@ -130,4 +130,10 @@ export const StyledMenuOverlay = styled.div`
 			}
 		}
 	}
+
+	.mobile-only {
+		@media screen and (${breakpoints.md}) {
+			display: none;
+		}
+	}
 `;

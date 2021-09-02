@@ -1,13 +1,13 @@
 import { useContext } from "react";
 import MenuContext from "../../../global/contexts/menuContext";
 import Container from "../../layout/Container/Container";
-import { StyledMenuOverlay } from "./menuOverlay.styles";
 import close from "../../../assets/graphics/Close.svg";
 import MailIcon from "../../../assets/graphics/MailIcon";
 import PhoneIcon from "../../../assets/graphics/PhoneIcon";
 import EnquiryForm from "../../forms/EnquityForm/EnquiryForm";
 import MenuNav from "../Navigation/MenuNav/MenuNav";
 import DecorativeDivider from "../DecorativeDivider/DecorativeDivider";
+import { StyledMenuOverlay } from "./menuOverlay.styles";
 
 export default function MenuOverlay() {
 	const [menuIsOpen, setMenuIsOpen] = useContext(MenuContext);
@@ -39,7 +39,9 @@ export default function MenuOverlay() {
 						Close <img src={close} alt="Close the overlay meny" />
 					</button>
 
-					<MenuNav />
+					<div className="mobile-only">
+						<MenuNav />
+					</div>
 
 					<div className="menu__grid">
 						<div className="menu__grid__item menu__grid__item--info">

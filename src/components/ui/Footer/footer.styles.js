@@ -72,7 +72,7 @@ export const StyledFooter = styled.footer`
 		}
 
 		&__acknowledgement {
-			margin-top: var(--space-xxsm);
+			margin-top: var(--space-md);
 			max-width: 72ch;
 			p {
 				font-size: 0.75rem;
@@ -93,6 +93,9 @@ export const StyledFooter = styled.footer`
 					font-weight: 700;
 				}
 			}
+			@media screen and (${breakpoints.md}) {
+				margin-top: var(--space-xxxsm);
+			}
 		}
 
 		@media screen and (${breakpoints.sm}) {
@@ -103,8 +106,18 @@ export const StyledFooter = styled.footer`
 
 		@media screen and (${breakpoints.md}) {
 			display: grid;
-			grid-gap: 1rem;
+			grid-gap: 3rem;
 			grid-template-columns: repeat(3, 1fr);
+
+			.footer__part {
+				&--nav {
+					width: max-content;
+					ul,
+					li:first-of-type {
+						margin-top: 0;
+					}
+				}
+			}
 
 			.footer__logo {
 				grid-column: -2 / -1;
@@ -119,7 +132,7 @@ export const StyledFooter = styled.footer`
 			}
 		}
 
-		@media screen and (${breakpoints.xlg}) {
+		@media screen and (${breakpoints.lg}) {
 			grid-template-columns: repeat(5, 1fr);
 
 			.footer__logo {

@@ -2,8 +2,8 @@ import Container from "../../layout/Container/Container";
 import MailIcon from "../../../assets/graphics/MailIcon";
 import PhoneIcon from "../../../assets/graphics/PhoneIcon";
 import DecorativeDivider from "../DecorativeDivider/DecorativeDivider";
-import MenuNav from "../Navigation/MenuNav/MenuNav";
 import HolidazeLogo from "../../../assets/graphics/HolidazeLogo/HolidazeLogo";
+import MenuNav from "../Navigation/MenuNav/MenuNav";
 import { StyledFooter } from "./footer.styles";
 
 export default function Footer() {
@@ -43,7 +43,7 @@ export default function Footer() {
 						</p>
 						<DecorativeDivider bg="var(--clr-drk-50)" width="10%" />
 					</div>
-					<div className="footer__part">
+					<div className="footer__part footer__part--nav">
 						<MenuNav />
 					</div>
 					<div className="footer__logo">
