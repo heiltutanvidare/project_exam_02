@@ -11,7 +11,7 @@ import AuthContext from "../../../global/contexts/AuthContext";
 import submitCreate from "../../../global/functions/submitCreate";
 import FullPageMessage from "../../ui/Message/FullPageMessage";
 import { MAX_FILE_SIZE } from "../../../global/constants/formValidation";
-import { StyledLoginForm } from "../LoginForm/loginForm.styles";
+import { StyledForm } from "../form.styles";
 
 const schema = yup.object().shape({
 	title: yup.string().required("Please enter a title"),
@@ -123,7 +123,7 @@ export default function AddAccommodationForm() {
 	}
 
 	return (
-		<StyledLoginForm>
+		<StyledForm>
 			{loading && (
 				<FullPageMessage
 					loader
@@ -384,6 +384,6 @@ export default function AddAccommodationForm() {
 					</Button>
 				</div>
 			</form>
-		</StyledLoginForm>
+		</StyledForm>
 	);
 }

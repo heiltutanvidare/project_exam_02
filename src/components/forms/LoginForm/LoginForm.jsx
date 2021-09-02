@@ -11,7 +11,7 @@ import AuthContext from "../../../global/contexts/AuthContext";
 import monkeyPassword from "../../../assets/graphics/monkey-password.png";
 import monkeyError from "../../../assets/graphics/monkey-error.png";
 import monkeyHello from "../../../assets/graphics/monkey-hello.png";
-import { StyledLoginForm } from "./loginForm.styles";
+import { StyledForm } from "../form.styles";
 
 const schema = yup.object().shape({
 	username: yup.string().required("Please enter your username"),
@@ -63,7 +63,7 @@ export default function LoginForm({ setEmoji }) {
 	}
 
 	return (
-		<StyledLoginForm>
+		<StyledForm>
 			{loading && (
 				<FullPageMessage
 					loader
@@ -133,6 +133,6 @@ export default function LoginForm({ setEmoji }) {
 					<p className="form__forgot-password">Forgot password</p>
 				</div>
 			</form>
-		</StyledLoginForm>
+		</StyledForm>
 	);
 }

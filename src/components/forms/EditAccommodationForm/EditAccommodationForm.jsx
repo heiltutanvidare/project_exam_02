@@ -11,8 +11,8 @@ import AuthContext from "../../../global/contexts/AuthContext";
 import submitUpdate from "../../../global/functions/submitUpdate";
 import FullPageMessage from "../../ui/Message/FullPageMessage";
 import { MAX_FILE_SIZE } from "../../../global/constants/formValidation";
-import { StyledLoginForm } from "../LoginForm/loginForm.styles";
 import DeleteAccommodation from "../../admin/AdminPage/EditAccommodationPage/DeleteAccommodation";
+import { StyledForm } from "../form.styles";
 
 const schema = yup.object().shape({
 	title: yup.string().required("Please enter a title"),
@@ -143,7 +143,7 @@ export default function EditAccommodationForm({ accommodation }) {
 	}
 
 	return (
-		<StyledLoginForm>
+		<StyledForm>
 			{loading && (
 				<FullPageMessage
 					loader
@@ -412,6 +412,6 @@ export default function EditAccommodationForm({ accommodation }) {
 					<DeleteAccommodation id={accommodation.id} />
 				</div>
 			</form>
-		</StyledLoginForm>
+		</StyledForm>
 	);
 }

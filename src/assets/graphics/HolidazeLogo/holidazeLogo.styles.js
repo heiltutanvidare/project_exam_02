@@ -1,6 +1,8 @@
 import styled from "styled-components";
 
 export const StyledHolidazeLogo = styled.div`
+	cursor: pointer;
+	transition: opacity 0.125s linear;
 	svg {
 		fill: var(--clr-drk-50);
 		min-height: 2rem;
@@ -24,5 +26,9 @@ export const StyledHolidazeLogo = styled.div`
 			transform: translate(70px, 0px) scale(0);
 			opacity: 1;
 		}
+	}
+
+	:hover {
+		opacity: 0.5;
 	}
 `;

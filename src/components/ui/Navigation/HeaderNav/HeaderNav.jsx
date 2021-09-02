@@ -2,12 +2,10 @@ import { useContext } from "react";
 import AuthContext from "../../../../global/contexts/AuthContext";
 import Button from "../../Button/Button";
 import { HashLink as Link } from "react-router-hash-link";
-import MenuContext from "../../../../global/contexts/menuContext";
 import { useHistory } from "react-router-dom";
 import { StyledHeaderNav } from "./headerNav.styles";
 
 export default function HeaderNav() {
-	const [, setMenuIsOpen] = useContext(MenuContext);
 	const [auth, setAuth] = useContext(AuthContext);
 
 	const history = useHistory();
@@ -16,7 +14,6 @@ export default function HeaderNav() {
 		const doLogOut = window.confirm("Are you sure you want to log out?");
 		if (doLogOut) {
 			setAuth(null);
-			setMenuIsOpen(false);
 			history.push("/");
 		}
 	}
@@ -29,17 +26,10 @@ export default function HeaderNav() {
 						history.location.pathname === "/" ? "active" : ""
 					}
 				>
-					<Link onClick={() => setMenuIsOpen(false)} to="/">
-						Home
-					</Link>
+					<Link to="/">Home</Link>
 				</li>
 				<li>
-					<Link
-						onClick={() => setMenuIsOpen(false)}
-						to="/#scrollToContactUs"
-					>
-						Contact us
-					</Link>
+					<Link to="/#scrollToContactUs">Contact us</Link>
 				</li>
 				{!auth && (
 					<li
@@ -49,9 +39,7 @@ export default function HeaderNav() {
 								: ""
 						}
 					>
-						<Link onClick={() => setMenuIsOpen(false)} to="/login">
-							Log in
-						</Link>
+						<Link to="/login">Log in</Link>
 					</li>
 				)}
 				{auth && (
@@ -63,12 +51,7 @@ export default function HeaderNav() {
 									: ""
 							}
 						>
-							<Link
-								onClick={() => setMenuIsOpen(false)}
-								to="/admin"
-							>
-								Admin
-							</Link>
+							<Link to="/admin">Admin</Link>
 						</li>
 						<li>
 							<Button

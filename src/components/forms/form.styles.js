@@ -1,7 +1,7 @@
 import styled from "styled-components";
-import breakpoints from "../../../global/styles/breakpoints";
+import breakpoints from "../../global/styles/breakpoints";
 
-export const StyledLoginForm = styled.div`
+export const StyledForm = styled.div`
 	margin-top: var(--space-xxsm);
 
 	.message-container {
@@ -81,10 +81,11 @@ export const StyledLoginForm = styled.div`
 			margin: 0 0 2rem 0;
 		}
 
-		@media screen and (${breakpoints.sm}) {
+		@media screen and (${breakpoints.md}) {
 			display: flex;
 			gap: 2rem;
 			justify-content: space-between;
+			align-items: center;
 
 			button {
 				margin: 0;
@@ -92,13 +93,13 @@ export const StyledLoginForm = styled.div`
 		}
 
 		.form__forgot-password {
-			margin-left: 1rem;
 			font-size: 0.625rem;
 			line-height: 1;
 			padding-bottom: 0.35rem;
 			font-weight: 700;
 			color: var(--clr-drk-600);
 			border-bottom: 1px solid var(--clr-drk-600);
+			width: max-content;
 		}
 	}
 

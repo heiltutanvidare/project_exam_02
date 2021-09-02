@@ -3,9 +3,14 @@ import breakpoints from "../../../global/styles/breakpoints";
 
 export const StyledLoginPage = styled.main`
 	margin-top: 4rem;
+	@media screen and (${breakpoints.md}) {
+		margin-top: 7rem;
+	}
 	@media screen and (${breakpoints.lg}) {
-		margin-top: 15vw;
+		margin-top: 11rem;
 		max-width: 960px;
+		margin-left: auto;
+		margin-right: auto;
 	}
 
 	.login {
@@ -23,9 +28,6 @@ export const StyledLoginPage = styled.main`
 				}
 
 				&--right {
-					display: grid;
-					place-items: center;
-
 					> * {
 						max-width: 48ch;
 					}
@@ -36,10 +38,9 @@ export const StyledLoginPage = styled.main`
 		&__image-container {
 			height: 100%;
 			display: grid;
-			padding: 2rem 2rem 1rem 1.5rem;
-			@media screen and (${breakpoints.md}) {
+			padding: 2rem 0 1rem 0;
+			@media screen and (${breakpoints.lg}) {
 				place-items: center;
-				padding: 0;
 			}
 		}
 
