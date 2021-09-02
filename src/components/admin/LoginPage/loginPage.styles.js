@@ -3,6 +3,11 @@ import breakpoints from "../../../global/styles/breakpoints";
 
 export const StyledLoginPage = styled.main`
 	margin-top: 4rem;
+	@media screen and (${breakpoints.lg}) {
+		margin-top: 15vw;
+		max-width: 960px;
+	}
+
 	.login {
 		&__grid {
 			display: grid;
@@ -13,8 +18,6 @@ export const StyledLoginPage = styled.main`
 
 				&--left {
 					img {
-						height: 100%;
-						object-fit: cover;
 						max-height: unset;
 						margin-bottom: 0;
 					}
@@ -31,16 +34,19 @@ export const StyledLoginPage = styled.main`
 			}
 		}
 
-		&__image {
+		&__image-container {
+			height: 100%;
+			display: grid;
+			place-items: center;
 			max-height: 280px;
-			object-fit: cover;
-			width: 100%;
-			object-position: center center;
-			margin-bottom: var(--space-xsm);
-
+			padding: 3rem;
 			@media screen and (${breakpoints.md}) {
 				max-height: 380px;
 			}
+		}
+
+		&__image {
+			max-height: 6rem;
 		}
 
 		&__title {

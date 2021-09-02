@@ -1,10 +1,13 @@
+import { useState } from "react";
 import { Helmet } from "react-helmet-async";
-import calendar from "../../../assets/photos/calendar.jpg";
+import monkeyHello from "../../../assets/graphics/monkey-hello.png";
 import Container from "../../layout/Container/Container";
 import LoginForm from "../../forms/LoginForm/LoginForm";
 import { StyledLoginPage } from "./loginPage.styles";
 
 export default function LoginPage() {
+	const [emoji, setEmoji] = useState(monkeyHello);
+
 	return (
 		<StyledLoginPage className="login">
 			<Helmet>
@@ -16,11 +19,13 @@ export default function LoginPage() {
 			</Helmet>
 			<section className="login__grid">
 				<div className="login__grid--left">
-					<img
-						className="login__image"
-						src={calendar}
-						alt="A calendar"
-					/>
+					<div className="login__image-container">
+						<img
+							className="login__image"
+							src={emoji}
+							alt="A monkey welcomming you"
+						/>
+					</div>
 				</div>
 				<div className="login__grid--right">
 					<Container>
@@ -29,7 +34,7 @@ export default function LoginPage() {
 							Log in to add accommodations and manage messages and
 							enquiries
 						</p>
-						<LoginForm />
+						<LoginForm setEmoji={setEmoji} />
 					</Container>
 				</div>
 			</section>

@@ -8,6 +8,9 @@ import Message from "../../ui/Message/Message";
 import FullPageMessage from "../../ui/Message/FullPageMessage";
 import submitLogin from "../../../global/functions/submitLogin";
 import AuthContext from "../../../global/contexts/AuthContext";
+import monkeyPassword from "../../../assets/graphics/monkey-password.png";
+import monkeyError from "../../../assets/graphics/monkey-error.png";
+import monkeyHello from "../../../assets/graphics/monkey-hello.png";
 import { StyledLoginForm } from "./loginForm.styles";
 
 const schema = yup.object().shape({
@@ -15,7 +18,7 @@ const schema = yup.object().shape({
 	password: yup.string().required("Please enter your password"),
 });
 
-export default function LoginForm() {
+export default function LoginForm({ setEmoji }) {
 	const [loading, setLoading] = useState(false);
 	const [loggedIn, setLoggedIn] = useState(false);
 	const [logInFailed, setLogInFailed] = useState(false);
@@ -33,6 +36,7 @@ export default function LoginForm() {
 	async function onSubmit(data) {
 		window.scrollTo(0, 0);
 		setLoading(true);
+		setEmoji(monkeyHello);
 		const login = await submitLogin(data.username, data.password);
 		if (login.success) {
 			setLoading(false);
@@ -45,6 +49,7 @@ export default function LoginForm() {
 			}, 2000);
 		}
 		if (login.json.error) {
+			setEmoji(monkeyError);
 			setLoading(false);
 			setLoggedIn(false);
 			setLogInFailed(true);
@@ -88,6 +93,7 @@ export default function LoginForm() {
 				<div className="form__field">
 					<label htmlFor="username">Username (required)</label>
 					<input
+						onFocus={() => setEmoji(monkeyHello)}
 						type="text"
 						placeholder="Enter your username"
 						id="username"
@@ -105,6 +111,7 @@ export default function LoginForm() {
 				<div className="form__field">
 					<label htmlFor="username">Password (required)</label>
 					<input
+						onFocus={() => setEmoji(monkeyPassword)}
 						type="password"
 						placeholder="Enter your password"
 						id="password"
