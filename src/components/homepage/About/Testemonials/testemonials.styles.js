@@ -32,8 +32,38 @@ export const StyledTestemonials = styled.div`
 		}
 	}
 
+	.img-container {
+		position: relative;
+		width: 100%;
+		max-width: 1920px;
+		margin-left: auto;
+		margin-right: auto;
+
+		@media screen and (min-width: 1920px) {
+			&::after,
+			&::before {
+				content: "";
+				position: absolute;
+				top: 0;
+				bottom: 0;
+				width: 12rem;
+			}
+
+			&::before {
+				left: 0;
+				background-image: var(--gradient-bg-to-right);
+			}
+
+			&::after {
+				background-image: var(--gradient-bg-to-left);
+				right: 0;
+			}
+		}
+	}
+
 	img {
 		width: 100%;
+
 		position: relative;
 		z-index: -1;
 		margin-top: -5rem;

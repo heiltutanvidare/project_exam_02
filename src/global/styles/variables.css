@@ -37,8 +37,16 @@
 	--clr-primary-500-transp: #032d51ec;
 
 	/* Gradients */
-	--gradient-bg: linear-gradient(
-		var(to right, --clr-body-bg, --clr-body-bg-00)
+	--gradient-bg-to-right: linear-gradient(
+		to right,
+		var(--clr-body-bg),
+		var(--clr-body-bg-00)
+	);
+
+	--gradient-bg-to-left: linear-gradient(
+		to left,
+		var(--clr-body-bg),
+		var(--clr-body-bg-00)
 	);
 
 	/* Border-radius */

@@ -24,8 +24,9 @@ export default function Testemonials() {
 				</Paragraph>
 				<div className="testemonial__name">Chrissy McLaughalot</div>
 			</Container>
-			{/* <DecorativeImage image={hiker} height="69rem" /> */}
-			<img src={hiker} alt="A hiker in the mountains above Bergen" />
+			<div className="img-container">
+				<img src={hiker} alt="A hiker in the mountains above Bergen" />
+			</div>
 		</StyledTestemonials>
 	);
 }
