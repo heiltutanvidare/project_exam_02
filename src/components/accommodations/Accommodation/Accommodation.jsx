@@ -51,5 +51,5 @@ Accommodation.propTypes = {
 	image: PropTypes.string.isRequired,
 	total: PropTypes.number,
 	to: PropTypes.string.isRequired,
-	amenities: PropTypes.array,
+	amenities: PropTypes.array.isRequired,
 };

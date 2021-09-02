@@ -11,7 +11,6 @@ export default function HeaderNav() {
 	const [auth, setAuth] = useContext(AuthContext);
 
 	const history = useHistory();
-	console.log(history);
 
 	function handleLogOut() {
 		const doLogOut = window.confirm("Are you sure you want to log out?");
