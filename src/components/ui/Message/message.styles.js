@@ -11,6 +11,7 @@ export const StyledMessage = styled.div`
 
 export const StyledFullPageContainer = styled.div`
 	position: absolute;
+	min-height: 100vh;
 	top: 0;
 	left: 0;
 	right: 0;
