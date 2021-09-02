@@ -4,7 +4,7 @@ async function submitUpdate(updateData, token, id) {
 	const formData = new FormData();
 
 	// Handeling the main image and appending it to the formData
-	if (updateData.main_image) {
+	if (updateData.main_image.length === 1) {
 		const mainImage = updateData.main_image[0];
 		formData.append("files.main_image", mainImage, mainImage.name);
 	}
