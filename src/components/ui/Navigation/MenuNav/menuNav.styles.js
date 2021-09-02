@@ -7,6 +7,7 @@ export const StyledMenuNav = styled.nav`
 
 		li {
 			margin: 1.5rem 0;
+			transition: opacity 0.125s linear;
 
 			a {
 				color: var(--clr-drk-50);
@@ -15,6 +16,10 @@ export const StyledMenuNav = styled.nav`
 				text-transform: uppercase;
 				padding: 0.75rem 0;
 				border-bottom: 0.5px solid var(--clr-drk-500);
+			}
+
+			&:hover {
+				opacity: 0.5;
 			}
 		}
 	}
