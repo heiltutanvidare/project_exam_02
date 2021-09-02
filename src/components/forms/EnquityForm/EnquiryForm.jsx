@@ -5,6 +5,7 @@ import * as yup from "yup";
 import { yupResolver } from "@hookform/resolvers/yup";
 import { MIN_NAME_LENGTH } from "../../../global/constants/formValidation";
 import Button from "../../ui/Button/Button";
+import FullPageMessage from "../../ui/Message/FullPageMessage";
 import Message from "../../ui/Message/Message";
 import submitEnquiry from "../../../global/functions/submitEnquiry";
 import SearchContext from "../../../global/contexts/SearchContext";
@@ -40,11 +41,13 @@ const schema = yup.object().shape({
 	wantsAndNeeds: yup.string(),
 });
 
-export default function EnquiryForm({ asBooking, title }) {
+export default function EnquiryForm({ asBooking, title, action }) {
 	const [search] = useContext(SearchContext);
 
 	// Initiate state for the form submission
 	const [submitted, setSubmitted] = useState(false);
+	const [loading, setLoading] = useState(false);
+	const [submittingFailed, setSubmittedFailed] = useState(false);
 
 	// Set upe useForm to use the yup shcema
 	const {
@@ -55,10 +58,19 @@ export default function EnquiryForm({ asBooking, title }) {
 	} = useForm({ resolver: yupResolver(schema) });
 
 	// Function that will run when form is submitted
-	function onSubmit(data) {
-		setSubmitted(true);
-		submitEnquiry(data);
-		reset();
+	async function onSubmit(data) {
+		setLoading(true);
+		const enquire = await submitEnquiry(data);
+		if (enquire.success) {
+			setSubmittedFailed(false);
+			setLoading(false);
+			setSubmitted(true);
+			reset();
+		} else {
+			setLoading(false);
+			setSubmitted(false);
+			setSubmittedFailed(true);
+		}
 	}
 
 	// Log any form validation errors
@@ -192,9 +204,46 @@ export default function EnquiryForm({ asBooking, title }) {
 					{asBooking ? "Send booking enquiry" : "Send enquiry"}
 				</Button>
 			</form>
-
+			{loading && asBooking && (
+				<FullPageMessage
+					loader
+					variant="waiting"
+					heading="Sending"
+					message="Please wait while the booking enquiry is being sent"
+				/>
+			)}
+			{loading && !asBooking && (
+				<Message
+					loader
+					variant="waiting"
+					heading="Sending"
+					message="Please wait while the enquiry is being sent"
+				/>
+			)}
+			{submittingFailed && (
+				<div className="message-container">
+					<Message
+						heading="Could not send the enquiry"
+						message="Something went wrong when sending the enquiry. We are investigating what might have happened."
+						variant="danger"
+					/>
+				</div>
+			)}
 			{/* Render a success message if form is submitted */}
-			{submitted && (
+			{submitted && asBooking && (
+				<FullPageMessage
+					variant="success"
+					heading="Enquiry was sendt"
+					message="Thank you for enquiring about booking this accomodations. We will get back to you shortly."
+					button={{
+						action,
+						text: `${
+							asBooking ? "Close booking form" : "Close menu"
+						}`,
+					}}
+				/>
+			)}
+			{submitted && !asBooking && (
 				<Message
 					variant="success"
 					heading="Enquiry was sendt"
@@ -208,6 +257,7 @@ export default function EnquiryForm({ asBooking, title }) {
 EnquiryForm.propTypes = {
 	asBooking: PropTypes.bool,
 	title: PropTypes.string,
+	action: PropTypes.func,
 };
 
 EnquiryForm.defaultProps = {

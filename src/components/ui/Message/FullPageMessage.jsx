@@ -2,7 +2,13 @@ import PropTypes from "prop-types";
 import Message from "./Message";
 import { StyledFullPageContainer } from "./message.styles";
 
-export default function FullPageMessage({ variant, heading, message, loader }) {
+export default function FullPageMessage({
+	variant,
+	heading,
+	message,
+	loader,
+	button,
+}) {
 	return (
 		<StyledFullPageContainer>
 			<div className="inner">
@@ -11,6 +17,7 @@ export default function FullPageMessage({ variant, heading, message, loader }) {
 					message={message}
 					heading={heading}
 					loader={loader}
+					button={button}
 				/>
 			</div>
 		</StyledFullPageContainer>
@@ -22,6 +29,7 @@ FullPageMessage.propTypes = {
 	message: PropTypes.string.isRequired,
 	variant: PropTypes.string,
 	loader: PropTypes.bool,
+	button: PropTypes.object,
 };
 
 FullPageMessage.defaultProps = {

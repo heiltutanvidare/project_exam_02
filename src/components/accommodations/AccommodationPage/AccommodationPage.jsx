@@ -25,7 +25,7 @@ export default function AccommodationPage() {
 	// Get the search context
 	const [search] = useContext(SearchContext);
 
-	const [bookingIsVisible] = useContext(BookingContext);
+	const [bookingIsVisible, setBookingIsVisible] = useContext(BookingContext);
 
 	if (fetching) {
 		return (
@@ -116,7 +116,11 @@ export default function AccommodationPage() {
 					<Container>
 						<h2 className="booking__heading">Book accommodation</h2>
 						<p className="booking__title">{data.title}</p>
-						<EnquiryForm asBooking={true} title={data.title} />
+						<EnquiryForm
+							asBooking={true}
+							title={data.title}
+							action={() => setBookingIsVisible(false)}
+						/>
 					</Container>
 				</div>
 			)}

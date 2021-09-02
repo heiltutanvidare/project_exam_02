@@ -21,6 +21,9 @@ export const StyledMenuOverlay = styled.div`
 		background-color: var(--clr-primary-900);
 		margin-left: auto;
 		width: 85%;
+		min-height: 85vh;
+		display: grid;
+		align-content: center;
 	}
 
 	.menu {
@@ -56,7 +59,7 @@ export const StyledMenuOverlay = styled.div`
 		}
 
 		&__title {
-			margin-top: var(--space-xsm);
+			margin-top: var(--space-xxsm);
 			font-family: Viaoda Libre;
 			font-style: normal;
 			font-weight: normal;
@@ -70,7 +73,7 @@ export const StyledMenuOverlay = styled.div`
 
 		&__text {
 			font-size: 0.875rem;
-			margin: var(--space-xxsm) 0;
+			margin: var(--space-xxxsm) 0;
 
 			span {
 				display: block;

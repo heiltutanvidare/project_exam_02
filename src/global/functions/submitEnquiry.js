@@ -23,8 +23,15 @@ async function submitEnquiry(data) {
 		const response = await fetch(`${API_BASE_URL}/enquiries`, options);
 		const json = await response.json();
 		console.log(json);
+		if (json.error) {
+			return { success: false, json: json };
+		}
+		if (json.created_at) {
+			return { success: true, json: json };
+		}
 	} catch (error) {
 		console.error(error);
+		return { success: false, error: error };
 	}
 }
 

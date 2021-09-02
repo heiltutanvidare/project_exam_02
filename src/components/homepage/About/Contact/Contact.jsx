@@ -46,6 +46,8 @@ const schema = yup.object().shape({
 export default function Contact() {
 	// Initiate state for the form submission
 	const [submitted, setSubmitted] = useState(false);
+	const [loading, setLoading] = useState(false);
+	const [submittingFailed, setSubmittedFailed] = useState(false);
 
 	// Set upe useForm to use the yup shcema
 	const {
@@ -56,10 +58,19 @@ export default function Contact() {
 	} = useForm({ resolver: yupResolver(schema) });
 
 	// Function that will run when form is submitted
-	function onSubmit(data) {
-		setSubmitted(true);
-		submitContactMessage(data);
-		reset();
+	async function onSubmit(data) {
+		setLoading(true);
+		const contact = await submitContactMessage(data);
+		if (contact.success) {
+			setSubmittedFailed(false);
+			setLoading(false);
+			setSubmitted(true);
+			reset();
+		} else {
+			setLoading(false);
+			setSubmitted(false);
+			setSubmittedFailed(true);
+		}
 	}
 
 	// Log any form validation errors
@@ -148,8 +159,28 @@ export default function Contact() {
 				</Button>
 			</form>
 			{/* Render a success message if form is submitted */}
+
+			{loading && (
+				<Message
+					loader
+					variant="waiting"
+					heading="Sending"
+					message="Please wait while the message is being sent"
+				/>
+			)}
+			{submittingFailed && (
+				<div className="message-container">
+					<Message
+						heading="Could not send the message"
+						message="Something went wrong when sending our message. We are investigating what might have happened."
+						variant="danger"
+					/>
+				</div>
+			)}
+
 			{submitted && (
 				<Message
+					variant="success"
 					heading="Message was sendt"
 					message="Thank you for your message. We will get back to you shortly."
 				/>

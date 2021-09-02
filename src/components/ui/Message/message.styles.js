@@ -17,6 +17,7 @@ export const StyledFullPageContainer = styled.div`
 	right: 0;
 	bottom: 0;
 	background: #20212280;
+	z-index: 1000000;
 
 	.inner {
 		display: grid;
