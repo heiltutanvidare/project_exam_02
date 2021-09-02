@@ -3,11 +3,14 @@ import breakpoints from "../../../global/styles/breakpoints";
 
 export const StyledLoginPage = styled.main`
 	margin-top: 4rem;
+	margin-bottom: 4rem;
 	@media screen and (${breakpoints.md}) {
 		margin-top: 7rem;
+		margin-bottom: 7rem;
 	}
 	@media screen and (${breakpoints.lg}) {
 		margin-top: 11rem;
+		margin-bottom: 11rem;
 		max-width: 960px;
 		margin-left: auto;
 		margin-right: auto;
