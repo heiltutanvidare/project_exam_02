@@ -38,9 +38,12 @@ export default function EnquiryList() {
 									</div>
 									<div className="message__grid__item">
 										<p className="message__label">Email</p>
-										<p className="message__value">
+										<a
+											className="message__value"
+											href={`mailto:${enquiry.email}`}
+										>
 											{enquiry.email}
-										</p>
+										</a>
 									</div>
 									<div className="message__grid__item">
 										<p className="message__label">
@@ -60,11 +63,19 @@ export default function EnquiryList() {
 									</div>
 									<div className="message__grid__item">
 										<p className="message__label">Phone</p>
-										<p className="message__value">
-											{enquiry.telephone
-												? enquiry.telephone
-												: "Not provided"}
-										</p>
+										{enquiry.telephone && (
+											<a
+												className="message__value"
+												href={`tel:${enquiry.telephone}`}
+											>
+												{enquiry.telephone}
+											</a>
+										)}
+										{!enquiry.telephone && (
+											<p className="message__value">
+												None provided
+											</p>
+										)}
 									</div>
 								</div>
 

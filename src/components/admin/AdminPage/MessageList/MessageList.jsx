@@ -37,17 +37,28 @@ export default function MessageList() {
 									</div>
 									<div className="message__grid__item">
 										<p className="message__label">Email</p>
-										<p className="message__value">
+										<a
+											className="message__value"
+											href={`mailto:${message.email}`}
+										>
 											{message.email}
-										</p>
+										</a>
 									</div>
 									<div className="message__grid__item">
 										<p className="message__label">Phone</p>
-										<p className="message__value">
-											{message.telephone
-												? message.telephone
-												: "Not provided"}
-										</p>
+										{message.telephone && (
+											<a
+												className="message__value"
+												href={`tel:${message.telephone}`}
+											>
+												{message.telephone}
+											</a>
+										)}
+										{!message.telephone && (
+											<p className="message__value">
+												None provided
+											</p>
+										)}
 									</div>
 									<div className="message__grid__item">
 										<p className="message__label">

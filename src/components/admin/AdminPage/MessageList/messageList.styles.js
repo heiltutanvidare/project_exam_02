@@ -42,6 +42,15 @@ export const StyledMessageList = styled.div`
 		&__value {
 			font-size: 0.875rem;
 		}
+		a {
+			cursor: pointer;
+			color: inherit;
+			transition: opacity 0.125s linear;
+
+			&:hover {
+				opacity: 0.5;
+			}
+		}
 	}
 
 	@media screen and (${breakpoints.md}) {
