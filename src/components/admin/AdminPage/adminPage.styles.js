@@ -4,6 +4,10 @@ import breakpoints from "../../../global/styles/breakpoints";
 export const StyledAdminPage = styled.section`
 	margin: 4rem 0;
 
+	@media screen and (${breakpoints.md}) {
+		margin: 4.4rem 0;
+	}
+
 	.nav {
 		margin-bottom: var(--space-xxsm);
 		width: 100%;

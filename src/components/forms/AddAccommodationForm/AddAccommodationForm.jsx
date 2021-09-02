@@ -192,78 +192,90 @@ export default function AddAccommodationForm() {
 					)}
 				</div>
 
-				{/* Kilometers */}
-				<div className="form__field">
-					<label htmlFor="km_from_city">Kilometers (required)</label>
-					<input
-						type="number"
-						placeholder="Kilometers from city centre"
-						id="km_from_city"
-						{...register("km_from_city")}
-						className={
-							errors.km_from_city || creatingFailed
-								? "hasError"
-								: ""
-						}
-					/>
-					{errors.km_from_city && (
-						<p className="form__error">
-							{errors.km_from_city.message}
-						</p>
-					)}
-				</div>
+				<div className="form__grid">
+					{/* Kilometers */}
+					<div className="form__field">
+						<label htmlFor="km_from_city">
+							Kilometers (required)
+						</label>
+						<input
+							type="number"
+							placeholder="Kilometers from city centre"
+							id="km_from_city"
+							{...register("km_from_city")}
+							className={
+								errors.km_from_city || creatingFailed
+									? "hasError"
+									: ""
+							}
+						/>
+						{errors.km_from_city && (
+							<p className="form__error">
+								{errors.km_from_city.message}
+							</p>
+						)}
+					</div>
 
-				{/* Price */}
-				<div className="form__field">
-					<label htmlFor="price">Price in USD (required)</label>
-					<input
-						type="number"
-						placeholder="Enter a price in USD"
-						id="price"
-						{...register("price")}
-						className={
-							errors.price || creatingFailed ? "hasError" : ""
-						}
-					/>
-					{errors.price && (
-						<p className="form__error">{errors.price.message}</p>
-					)}
-				</div>
+					{/* Price */}
+					<div className="form__field">
+						<label htmlFor="price">Price in USD (required)</label>
+						<input
+							type="number"
+							placeholder="Enter a price in USD"
+							id="price"
+							{...register("price")}
+							className={
+								errors.price || creatingFailed ? "hasError" : ""
+							}
+						/>
+						{errors.price && (
+							<p className="form__error">
+								{errors.price.message}
+							</p>
+						)}
+					</div>
 
-				{/* Bedrooms */}
-				<div className="form__field">
-					<label htmlFor="bedrooms">Bedrooms (required)</label>
-					<input
-						type="number"
-						placeholder="Enter number of bedrooms"
-						id="bedrooms"
-						{...register("bedrooms")}
-						className={
-							errors.bedrooms || creatingFailed ? "hasError" : ""
-						}
-					/>
-					{errors.bedrooms && (
-						<p className="form__error">{errors.bedrooms.message}</p>
-					)}
-				</div>
+					{/* Bedrooms */}
+					<div className="form__field">
+						<label htmlFor="bedrooms">Bedrooms (required)</label>
+						<input
+							type="number"
+							placeholder="Enter number of bedrooms"
+							id="bedrooms"
+							{...register("bedrooms")}
+							className={
+								errors.bedrooms || creatingFailed
+									? "hasError"
+									: ""
+							}
+						/>
+						{errors.bedrooms && (
+							<p className="form__error">
+								{errors.bedrooms.message}
+							</p>
+						)}
+					</div>
 
-				{/* Bathrooms */}
-				<div className="form__field">
-					<label htmlFor="bathrooms">Bathrooms (required)</label>
-					<input
-						type="number"
-						placeholder="Enter number of bathrooms"
-						id="bathrooms"
-						{...register("bathrooms")}
-						className={
-							errors.bathrooms || creatingFailed ? "hasError" : ""
-						}
-					/>
-					{errors.bathrooms && (
-						<p className="form__error">
-							{errors.bathrooms.message}
-						</p>
-					)}
+					{/* Bathrooms */}
+					<div className="form__field">
+						<label htmlFor="bathrooms">Bathrooms (required)</label>
+						<input
+							type="number"
+							placeholder="Enter number of bathrooms"
+							id="bathrooms"
+							{...register("bathrooms")}
+							className={
+								errors.bathrooms || creatingFailed
+									? "hasError"
+									: ""
+							}
+						/>
+						{errors.bathrooms && (
+							<p className="form__error">
+								{errors.bathrooms.message}
+							</p>
+						)}
+					</div>
 				</div>
 
 				{/* Description */}
@@ -319,44 +331,51 @@ export default function AddAccommodationForm() {
 				</div>
 
 				{/* Main image */}
-				<div className="form__field">
-					<label htmlFor="main_image">Main image (required)</label>
-					<input
-						{...register("main_image")}
-						className={
-							errors.main_image || creatingFailed
-								? "hasError"
-								: ""
-						}
-						type="file"
-						name="main_image"
-						id="main_image"
-					/>
-					{errors.main_image && (
-						<p className="form__error">
-							{errors.main_image.message}
-						</p>
-					)}
-				</div>
-
-				{/* Additional images */}
-				<div className="form__field">
-					<label htmlFor="images">
-						Additional images (4 images are required)
-					</label>
-					<input
-						className={
-							errors.images || creatingFailed ? "hasError" : ""
-						}
-						{...register("images")}
-						type="file"
-						name="images"
-						id="images"
-						multiple
-					/>
-					{errors.images && (
-						<p className="form__error">{errors.images.message}</p>
-					)}
+				<div className="form__grid">
+					<div className="form__field">
+						<label htmlFor="main_image">
+							Main image (required)
+						</label>
+						<input
+							{...register("main_image")}
+							className={
+								errors.main_image || creatingFailed
+									? "hasError"
+									: ""
+							}
+							type="file"
+							name="main_image"
+							id="main_image"
+						/>
+						{errors.main_image && (
+							<p className="form__error">
+								{errors.main_image.message}
+							</p>
+						)}
+					</div>
+					{/* Additional images */}
+					<div className="form__field">
+						<label htmlFor="images">
+							Additional images (4 images are required)
+						</label>
+						<input
+							className={
+								errors.images || creatingFailed
+									? "hasError"
+									: ""
+							}
+							{...register("images")}
+							type="file"
+							name="images"
+							id="images"
+							multiple
+						/>
+						{errors.images && (
+							<p className="form__error">
+								{errors.images.message}
+							</p>
+						)}
+					</div>
 				</div>
 
 				<div className="button-group">

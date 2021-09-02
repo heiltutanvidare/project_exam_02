@@ -1,4 +1,5 @@
 import styled from "styled-components";
+import breakpoints from "../../../global/styles/breakpoints";
 
 export const StyledLoginForm = styled.div`
 	margin-top: var(--space-xxsm);
@@ -6,6 +7,7 @@ export const StyledLoginForm = styled.div`
 	.message-container {
 		margin-bottom: var(--space-xxsm);
 	}
+
 	.form__field {
 		display: flex;
 		flex-direction: column;
@@ -29,6 +31,10 @@ export const StyledLoginForm = styled.div`
 		&::placeholder {
 			font-size: 0.75rem;
 		}
+	}
+
+	input[type="file"] {
+		width: 100%;
 	}
 
 	.form__checkbox__grid {
@@ -70,11 +76,19 @@ export const StyledLoginForm = styled.div`
 
 	.button-group {
 		margin-top: var(--space-xxsm);
-		display: flex;
-		align-items: center;
 
 		button {
-			margin: 0;
+			margin: 0 0 2rem 0;
+		}
+
+		@media screen and (${breakpoints.sm}) {
+			display: flex;
+			gap: 2rem;
+			justify-content: space-between;
+
+			button {
+				margin: 0;
+			}
 		}
 
 		.form__forgot-password {
@@ -85,6 +99,14 @@ export const StyledLoginForm = styled.div`
 			font-weight: 700;
 			color: var(--clr-drk-600);
 			border-bottom: 1px solid var(--clr-drk-600);
+		}
+	}
+
+	.form__grid {
+		display: grid;
+		@media screen and (${breakpoints.sm}) {
+			grid-template-columns: repeat(2, 1fr);
+			grid-column-gap: 1rem;
 		}
 	}
 `;

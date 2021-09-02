@@ -6,7 +6,6 @@ import { API_BASE_URL } from "../../../../global/constants/api";
 import Container from "../../../layout/Container/Container";
 import { StyledEditAccommodationPage } from "./editAccommodationPage.styles";
 import EditAccommodationForm from "../../../forms/EditAccommodationForm/EditAccommodationForm";
-import DeleteAccommodation from "./DeleteAccommodation";
 import Message from "../../../ui/Message/Message";
 
 export default function EditAccommodationPage() {
@@ -47,7 +46,6 @@ export default function EditAccommodationPage() {
 			<Container>
 				<h2>Edit your accommodation</h2>
 				<EditAccommodationForm accommodation={data} />
-				<DeleteAccommodation id={data.id} />
 			</Container>
 		</StyledEditAccommodationPage>
 	);
