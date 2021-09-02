@@ -1,6 +1,7 @@
 import PropTypes from "prop-types";
 import Hamburger from "../Hamburger/Hamburger";
 import HolidazeLogo from "../../../assets/graphics/HolidazeLogo/HolidazeLogo";
+
 import { StyledHeader } from "./header.styles";
 
 export default function Header({ filled = true }) {
@@ -8,6 +9,7 @@ export default function Header({ filled = true }) {
 		<StyledHeader filled={filled}>
 			<div className="inner max-width">
 				<HolidazeLogo />
+
 				<Hamburger />
 			</div>
 		</StyledHeader>

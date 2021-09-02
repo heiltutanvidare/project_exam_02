@@ -25,6 +25,8 @@ export const StyledHeader = styled.header`
 		justify-content: space-between;
 
 		svg {
+			width: 100%;
+			height: 100%;
 			max-width: 5rem;
 			max-height: 2rem;
 		}
