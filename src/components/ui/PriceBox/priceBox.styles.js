@@ -1,4 +1,5 @@
 import styled from "styled-components";
+import breakpoints from "../../../global/styles/breakpoints";
 
 export const StyledPriceBox = styled.div`
 	position: ${(props) => (props.sticky ? "sticky" : "static")};
@@ -76,5 +77,10 @@ export const StyledPriceBox = styled.div`
 				border-color: var(--clr-drk-600);
 			}
 		}
+	}
+
+	@media screen and (${breakpoints.md}) {
+		top: 6rem;
+		bottom: 10%;
 	}
 `;

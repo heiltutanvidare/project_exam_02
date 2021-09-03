@@ -49,6 +49,11 @@ export const StyledAccommodation = styled(Link)`
 		grid-template-columns: 1fr 2fr;
 		grid-template-rows: 1fr;
 		border-radius: var(--br-md);
+		transition: box-shadow 0.2s linear;
+
+		&:hover {
+			box-shadow: var(--box-shadow-sm);
+		}
 
 		.accommodation__image {
 			height: 100%;
