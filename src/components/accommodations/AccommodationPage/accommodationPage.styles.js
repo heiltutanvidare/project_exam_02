@@ -72,6 +72,13 @@ export const StyledAccommodationPage = styled.main`
 			}
 		}
 
+		&__priceBox--mobile {
+			position: sticky;
+			bottom: 0;
+			left: 0;
+			right: 0;
+		}
+
 		&__priceBox--desktop {
 			display: none;
 		}

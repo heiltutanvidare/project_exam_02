@@ -35,6 +35,14 @@ export const StyledPriceBox = styled.div`
 			font-weight: 700;
 			color: var(--clr-drk-900);
 			margin-right: 2px;
+
+			@media screen and (${breakpoints.lg}) {
+				display: block;
+			}
+
+			@media screen and (min-width: 1270px) {
+				display: inline;
+			}
 		}
 
 		&__price {
