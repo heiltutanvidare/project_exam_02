@@ -11,6 +11,7 @@ import BreadCrumbs from "../../ui/BreadCrumbs/BreadCrumbs";
 import AccommodationImages from "./AccommodationImages/AccommodationImages";
 import BookingContext from "../../../global/contexts/bookingContext";
 import EnquiryForm from "../../forms/EnquityForm/EnquiryForm";
+import Message from "../../ui/Message/Message";
 import { StyledAccommodationPage } from "./accommodationPage.styles";
 
 export default function AccommodationPage() {
@@ -39,15 +40,17 @@ export default function AccommodationPage() {
 
 	if (error) {
 		return (
-			// TODO: Use the message component here
 			<Container>
-				<p>An error occured 😔</p>
+				<Message
+					variant="danger"
+					heading="An error occured"
+					message="Failed while loading the data. We are sorry for the inconveniance, and hope to have the issue sorted out soon."
+				/>
 			</Container>
 		);
 	}
 
 	return (
-		// TODO: Create and use a breadcrumb component
 		<StyledAccommodationPage>
 			<Helmet>
 				<title>Holidaze | {data.title}</title>

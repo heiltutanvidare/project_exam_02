@@ -27,7 +27,6 @@ export default function EditAccommodationPage() {
 
 	if (error) {
 		return (
-			// TODO: Use the message component here
 			<Container>
 				<Message
 					variant="danger"
