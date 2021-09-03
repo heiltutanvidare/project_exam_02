@@ -40,7 +40,7 @@ export default function PriceBox({ data, search }) {
 							</p>
 							<p className="priceBox__total">
 								{search?.days
-									? data.price * search?.days
+									? Math.floor(data.price * search?.days)
 									: data.price}
 								$ total
 							</p>
