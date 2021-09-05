@@ -1,9 +1,34 @@
 import Heading from "../../../ui/Heading/Heading";
 import bergen from "../../../../assets/photos/bergen01.jpg";
 import aalesund from "../../../../assets/photos/aalesund01.jpg";
+import Reveal from "react-awesome-reveal";
+import { keyframes } from "@emotion/react";
 import { StyledIntro } from "./intro.styles";
 
 export default function Intro() {
+	const fadeInFromLeft = keyframes`
+  from {
+    opacity: 0;
+    transform: translate3d(-200px, -100px, 0);
+  }
+
+  to {
+    opacity: 1;
+    transform: translate3d(0, 0, 0);
+  }
+`;
+	const fadeInFromRight = keyframes`
+  from {
+    opacity: 0;
+    transform: translate3d(200px, -100px, 0);
+  }
+
+  to {
+    opacity: 1;
+    transform: translate3d(0, 0, 0);
+  }
+`;
+
 	return (
 		<StyledIntro>
 			<div className="intro__text">
@@ -23,10 +48,14 @@ export default function Intro() {
 				</p>
 			</div>
 			<div className="intro__images intro__images--main">
-				<img src={aalesund} alt="" />
+				<Reveal keyframes={fadeInFromLeft}>
+					<img src={aalesund} alt="" />
+				</Reveal>
 			</div>
 			<div className="intro__images intro__images--secondary">
-				<img src={bergen} alt="" />
+				<Reveal keyframes={fadeInFromRight}>
+					<img src={bergen} alt="" />
+				</Reveal>
 			</div>
 		</StyledIntro>
 	);

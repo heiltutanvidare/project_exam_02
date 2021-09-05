@@ -6,6 +6,7 @@ import Accommodation from "../../../accommodations/Accommodation/Accommodation";
 import { API_BASE_URL } from "../../../../global/constants/api";
 import useAuthenticatedFetch from "../../../../hooks/useAuthenticatedFetch";
 import AuthContext from "../../../../global/contexts/AuthContext";
+import { Fade } from "react-awesome-reveal";
 import { StyledAccommodationList } from "./accommodation.styles";
 
 export default function AccommodationList() {
@@ -34,29 +35,32 @@ export default function AccommodationList() {
 		return (
 			<StyledAccommodationList>
 				<StyledSearchResults>
-					{data.length > 0 &&
-						data.map((accommodation) => {
-							return (
-								<Accommodation
-									key={accommodation.id}
-									price={accommodation.price}
-									title={accommodation.title}
-									amenities={accommodation.amenities}
-									type={
-										accommodation.type?.accommodation_type
-											? accommodation.type
-													.accommodation_type
-											: "Who knows"
-									}
-									image={
-										accommodation.main_image?.url
-											? accommodation.main_image.url
-											: "https://picsum.photos/200/300"
-									}
-									to={`edit/${accommodation.id}`}
-								/>
-							);
-						})}
+					<Fade duration="450">
+						{data.length > 0 &&
+							data.map((accommodation) => {
+								return (
+									<Accommodation
+										key={accommodation.id}
+										price={accommodation.price}
+										title={accommodation.title}
+										amenities={accommodation.amenities}
+										type={
+											accommodation.type
+												?.accommodation_type
+												? accommodation.type
+														.accommodation_type
+												: "Who knows"
+										}
+										image={
+											accommodation.main_image?.url
+												? accommodation.main_image.url
+												: "https://picsum.photos/200/300"
+										}
+										to={`edit/${accommodation.id}`}
+									/>
+								);
+							})}
+					</Fade>
 				</StyledSearchResults>
 			</StyledAccommodationList>
 		);

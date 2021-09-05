@@ -23,7 +23,9 @@ export const StyledIntro = styled.div`
 			&--secondary {
 				grid-column: 2 / -1;
 				margin-top: -5rem;
-				box-shadow: var(--box-shadow-sm);
+				img {
+					box-shadow: var(--box-shadow-sm);
+				}
 			}
 		}
 	}

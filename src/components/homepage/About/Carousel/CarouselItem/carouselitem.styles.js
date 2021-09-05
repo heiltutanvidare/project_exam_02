@@ -6,7 +6,8 @@ export const StyledCarouselItem = styled.div`
 	background-size: cover;
 	background-position: center center;
 	min-width: 11rem;
-	height: 17rem;
+	min-height: 17rem;
+	height: 100%;
 	position: relative;
 	cursor: pointer;
 

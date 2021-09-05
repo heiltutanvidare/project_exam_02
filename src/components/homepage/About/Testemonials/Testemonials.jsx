@@ -2,6 +2,7 @@ import Heading from "../../../ui/Heading/Heading";
 import Paragraph from "../../../ui/Paragraph/Paragraph";
 import hiker from "../../../../assets/photos/hiker.png";
 import Container from "../../../layout/Container/Container";
+import { Fade } from "react-awesome-reveal";
 import {
 	StyledTestemonials,
 	StyledQuotationMarks,
@@ -25,7 +26,12 @@ export default function Testemonials() {
 				<div className="testemonial__name">Chrissy McLaughalot</div>
 			</Container>
 			<div className="img-container">
-				<img src={hiker} alt="A hiker in the mountains above Bergen" />
+				<Fade>
+					<img
+						src={hiker}
+						alt="A hiker in the mountains above Bergen"
+					/>
+				</Fade>
 			</div>
 		</StyledTestemonials>
 	);
