@@ -43,7 +43,7 @@ function App() {
 														comunity of accommodation owners."
 												/>
 											</Helmet>
-											<Header filled={true} />
+											<Header filled={false} />
 											<Hero />
 											<About />
 										</Route>
