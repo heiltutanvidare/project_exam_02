@@ -16,8 +16,8 @@ export default function Bergen({ scrollTarget }) {
 					/>
 				</Slide>
 			</div>
-			<div className="right">
-				<Slide direction="right">
+			<Slide direction="right" cascade={false}>
+				<div className="right">
 					<p>
 						Bergen is the gateway to Norway, with its fjords and
 						mountains, its fairytale colour, and a close proximity
@@ -35,8 +35,8 @@ export default function Bergen({ scrollTarget }) {
 					>
 						Contact us
 					</Button>
-				</Slide>
-			</div>
+				</div>
+			</Slide>
 		</StyledBergen>
 	);
 }

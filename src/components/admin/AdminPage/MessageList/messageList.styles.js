@@ -10,10 +10,10 @@ export const StyledMessageList = styled.div`
 		border-bottom: 1px solid var(--clr-drk-200);
 		padding: var(--space-xxsm) 0;
 
-		:first-of-type {
+		/* :first-of-type {
 			margin-top: var(--space-xxsm);
 			border-top: 1px solid var(--clr-drk-200);
-		}
+		} */
 
 		&__grid {
 			&--col01 {
