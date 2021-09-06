@@ -4,7 +4,7 @@ import breakpoints from "../../../global/styles/breakpoints";
 
 export const StyledHero = styled.div`
 	height: 100vh;
-	max-height: 1024px;
+	max-height: 1280px;
 	color: white;
 	background: url(${herobg});
 	background-size: cover;
