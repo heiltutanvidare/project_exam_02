@@ -8,9 +8,9 @@ import Message from "../../ui/Message/Message";
 import FullPageMessage from "../../ui/Message/FullPageMessage";
 import submitLogin from "../../../global/functions/submitLogin";
 import AuthContext from "../../../global/contexts/AuthContext";
-import monkeyPassword from "../../../assets/graphics/monkey-password.png";
-import monkeyError from "../../../assets/graphics/monkey-error.png";
-import monkeyHello from "../../../assets/graphics/monkey-hello.png";
+import loginManPassword from "../../../assets/graphics/loginMan-password.png";
+import loginManError from "../../../assets/graphics/loginMan-error.png";
+import loginManHello from "../../../assets/graphics/loginMan-hello.png";
 import { StyledForm } from "../form.styles";
 
 const schema = yup.object().shape({
@@ -36,7 +36,7 @@ export default function LoginForm({ setEmoji }) {
 	async function onSubmit(data) {
 		window.scrollTo(0, 0);
 		setLoading(true);
-		setEmoji(monkeyHello);
+		setEmoji(loginManHello);
 		const login = await submitLogin(data.username, data.password);
 		if (login.success) {
 			setLoading(false);
@@ -49,7 +49,7 @@ export default function LoginForm({ setEmoji }) {
 			}, 2000);
 		}
 		if (login.json.error) {
-			setEmoji(monkeyError);
+			setEmoji(loginManError);
 			setLoading(false);
 			setLoggedIn(false);
 			setLogInFailed(true);
@@ -93,7 +93,7 @@ export default function LoginForm({ setEmoji }) {
 				<div className="form__field">
 					<label htmlFor="username">Username (required)</label>
 					<input
-						onFocus={() => setEmoji(monkeyHello)}
+						onFocus={() => setEmoji(loginManHello)}
 						type="text"
 						placeholder="Enter your username"
 						id="username"
@@ -111,7 +111,7 @@ export default function LoginForm({ setEmoji }) {
 				<div className="form__field">
 					<label htmlFor="username">Password (required)</label>
 					<input
-						onFocus={() => setEmoji(monkeyPassword)}
+						onFocus={() => setEmoji(loginManPassword)}
 						type="password"
 						placeholder="Enter your password"
 						id="password"

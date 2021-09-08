@@ -1,12 +1,12 @@
 import { useState } from "react";
 import { Helmet } from "react-helmet-async";
-import monkeyHello from "../../../assets/graphics/monkey-hello.png";
+import loginManHello from "../../../assets/graphics/loginMan-hello.png";
 import Container from "../../layout/Container/Container";
 import LoginForm from "../../forms/LoginForm/LoginForm";
 import { StyledLoginPage } from "./loginPage.styles";
 
 export default function LoginPage() {
-	const [emoji, setEmoji] = useState(monkeyHello);
+	const [emoji, setEmoji] = useState(loginManHello);
 
 	return (
 		<StyledLoginPage className="login">

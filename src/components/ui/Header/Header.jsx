@@ -11,15 +11,15 @@ export default function Header({ filled = true }) {
 	useEffect(() => {
 		if (!filled) {
 			window.addEventListener("scroll", handleScroll);
-			return () => window.removeEventListener("scroll", handleScroll);
 		}
+		return () => window.removeEventListener("scroll", handleScroll);
 	}, [filled]);
 
 	function handleScroll(e) {
 		if (window.pageYOffset > headingRef?.current.offsetHeight) {
-			headingRef.current.classList.add("filled");
+			headingRef?.current.classList.add("filled");
 		} else {
-			headingRef.current.classList.remove("filled");
+			headingRef?.current.classList.remove("filled");
 		}
 	}
 

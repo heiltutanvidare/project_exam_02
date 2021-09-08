@@ -4,6 +4,7 @@ import breakpoints from "../../../global/styles/breakpoints";
 export const StyledLoginPage = styled.main`
 	margin-top: 4rem;
 	margin-bottom: 4rem;
+
 	@media screen and (${breakpoints.md}) {
 		margin-top: 7rem;
 		margin-bottom: 7rem;
@@ -26,7 +27,7 @@ export const StyledLoginPage = styled.main`
 
 				&--left {
 					img {
-						max-height: 9rem;
+						max-height: 20rem;
 					}
 				}
 
@@ -48,7 +49,8 @@ export const StyledLoginPage = styled.main`
 		}
 
 		&__image {
-			max-height: 4rem;
+			max-height: 6rem;
+			border-radius: 50%;
 		}
 
 		&__title {
