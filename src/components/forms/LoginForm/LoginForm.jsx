@@ -1,4 +1,5 @@
 import { useState, useContext } from "react";
+import PropTypes from "prop-types";
 import { useForm } from "react-hook-form";
 import { useHistory } from "react-router-dom";
 import * as yup from "yup";
@@ -18,7 +19,7 @@ const schema = yup.object().shape({
 	password: yup.string().required("Please enter your password"),
 });
 
-export default function LoginForm({ setEmoji }) {
+export default function LoginForm({ setAvatar }) {
 	const [loading, setLoading] = useState(false);
 	const [loggedIn, setLoggedIn] = useState(false);
 	const [logInFailed, setLogInFailed] = useState(false);
@@ -36,7 +37,7 @@ export default function LoginForm({ setEmoji }) {
 	async function onSubmit(data) {
 		window.scrollTo(0, 0);
 		setLoading(true);
-		setEmoji(loginManHello);
+		setAvatar(loginManHello);
 		const login = await submitLogin(data.username, data.password);
 		if (login.success) {
 			setLoading(false);
@@ -49,7 +50,7 @@ export default function LoginForm({ setEmoji }) {
 			}, 2000);
 		}
 		if (login.json.error) {
-			setEmoji(loginManError);
+			setAvatar(loginManError);
 			setLoading(false);
 			setLoggedIn(false);
 			setLogInFailed(true);
@@ -93,7 +94,7 @@ export default function LoginForm({ setEmoji }) {
 				<div className="form__field">
 					<label htmlFor="username">Username (required)</label>
 					<input
-						onFocus={() => setEmoji(loginManHello)}
+						onFocus={() => setAvatar(loginManHello)}
 						type="text"
 						placeholder="Enter your username"
 						id="username"
@@ -111,7 +112,7 @@ export default function LoginForm({ setEmoji }) {
 				<div className="form__field">
 					<label htmlFor="username">Password (required)</label>
 					<input
-						onFocus={() => setEmoji(loginManPassword)}
+						onFocus={() => setAvatar(loginManPassword)}
 						type="password"
 						placeholder="Enter your password"
 						id="password"
@@ -136,3 +137,7 @@ export default function LoginForm({ setEmoji }) {
 		</StyledForm>
 	);
 }
+
+LoginForm.propTypes = {
+	setAvatar: PropTypes.func,
+};

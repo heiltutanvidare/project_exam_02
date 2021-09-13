@@ -6,7 +6,7 @@ import LoginForm from "../../forms/LoginForm/LoginForm";
 import { StyledLoginPage } from "./loginPage.styles";
 
 export default function LoginPage() {
-	const [emoji, setEmoji] = useState(loginManHello);
+	const [avatar, setAvatar] = useState(loginManHello);
 
 	return (
 		<StyledLoginPage className="login">
@@ -23,7 +23,7 @@ export default function LoginPage() {
 						<div className="login__image-container">
 							<img
 								className="login__image"
-								src={emoji}
+								src={avatar}
 								alt="A monkey welcomming you"
 							/>
 						</div>
@@ -34,7 +34,7 @@ export default function LoginPage() {
 							Log in to add accommodations and manage messages and
 							enquiries
 						</p>
-						<LoginForm setEmoji={setEmoji} />
+						<LoginForm setAvatar={setAvatar} />
 					</div>
 				</section>
 			</Container>
