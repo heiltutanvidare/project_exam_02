@@ -2,7 +2,7 @@ import styled from "styled-components";
 
 export const StyledMessage = styled.div`
 	margin-top: var(--space-xxsm);
-	padding: var(--space-xxsm);
+	padding: var(--space-xxxsm);
 	color: var(--clr-white);
 	background-color: ${(props) =>
 		props.bg ? props.bg : "var(--clr-drk-900)"};
