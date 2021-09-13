@@ -16,10 +16,12 @@ export default function Header({ filled = true }) {
 	}, [filled]);
 
 	function handleScroll(e) {
-		if (window.pageYOffset > headingRef?.current.offsetHeight) {
-			headingRef?.current.classList.add("filled");
-		} else {
-			headingRef?.current.classList.remove("filled");
+		if (headingRef.current) {
+			if (window.pageYOffset > headingRef.current.offsetHeight) {
+				headingRef?.current.classList.add("filled");
+			} else {
+				headingRef?.current.classList.remove("filled");
+			}
 		}
 	}
 
