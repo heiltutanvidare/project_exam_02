@@ -85,6 +85,8 @@ export default function EditAccommodationForm({ accommodation }) {
 	const { data: amenities } = useFetch(`${API_BASE_URL}/amenities`);
 	const history = useHistory();
 
+	console.log(accommodation.type.id);
+
 	function checkIfAmenityExists(id) {
 		return accommodation.amenities.find((amenity) => amenity.id === id);
 	}
@@ -196,7 +198,7 @@ export default function EditAccommodationForm({ accommodation }) {
 					<select
 						name="type"
 						id="type"
-						defaultValue=""
+						value={accommodation.type.id}
 						className={
 							errors.type || updateFailed ? "hasError" : ""
 						}
