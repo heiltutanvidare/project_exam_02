@@ -1,6 +1,6 @@
 import { useContext } from "react";
 import { API_BASE_URL } from "../../../../global/constants/api";
-import useAuthenticatedFetch from "../../../../hooks/useAuthenticatedFetch";
+import useAuthenticatedFetch from "../../../../global/hooks/useAuthenticatedFetch";
 import Loader from "../../../ui/Loader/Loader";
 import AuthContext from "../../../../global/contexts/AuthContext";
 import Message from "../../../ui/Message/Message";

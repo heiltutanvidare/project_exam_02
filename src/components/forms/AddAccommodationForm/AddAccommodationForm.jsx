@@ -6,7 +6,7 @@ import { yupResolver } from "@hookform/resolvers/yup";
 import { API_BASE_URL } from "../../../global/constants/api";
 import Button from "../../ui/Button/Button";
 import Message from "../../ui/Message/Message";
-import useFetch from "../../../hooks/useFetch";
+import useFetch from "../../../global/hooks/useFetch";
 import AuthContext from "../../../global/contexts/AuthContext";
 import submitCreate from "../../../global/functions/submitCreate";
 import FullPageMessage from "../../ui/Message/FullPageMessage";

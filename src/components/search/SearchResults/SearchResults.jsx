@@ -3,7 +3,7 @@ import SearchContext from "../../../global/contexts/SearchContext";
 import Accommodation from "../../accommodations/Accommodation/Accommodation";
 import Container from "../../layout/Container/Container";
 import { API_BASE_URL } from "../../../global/constants/api";
-import useFetch from "../../../hooks/useFetch";
+import useFetch from "../../../global/hooks/useFetch";
 import Loader from "../../ui/Loader/Loader";
 import { Fade } from "react-awesome-reveal";
 import { StyledSearchResults } from "./searchResults.styles";

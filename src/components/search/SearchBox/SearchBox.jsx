@@ -3,7 +3,7 @@ import { useHistory } from "react-router-dom";
 import SearchContext from "../../../global/contexts/SearchContext";
 import handleSearch from "../../../global/functions/handleSearch";
 import Button from "../../ui/Button/Button";
-import useFetch from "../../../hooks/useFetch";
+import useFetch from "../../../global/hooks/useFetch";
 import { API_BASE_URL } from "../../../global/constants/api";
 import setMinDate from "../../../global/functions/setMinDate";
 import {

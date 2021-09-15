@@ -2,7 +2,7 @@ import { useContext } from "react";
 import { Helmet } from "react-helmet-async";
 import SearchContext from "../../../global/contexts/SearchContext";
 import { useParams } from "react-router-dom";
-import useFetch from "../../../hooks/useFetch";
+import useFetch from "../../../global/hooks/useFetch";
 import { API_BASE_URL } from "../../../global/constants/api";
 import Container from "../../layout/Container/Container";
 import Loader from "../../ui/Loader/Loader";

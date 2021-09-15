@@ -4,7 +4,7 @@ import Message from "../../../ui/Message/Message";
 import { StyledSearchResults } from "../../../search/SearchResults/searchResults.styles";
 import Accommodation from "../../../accommodations/Accommodation/Accommodation";
 import { API_BASE_URL } from "../../../../global/constants/api";
-import useAuthenticatedFetch from "../../../../hooks/useAuthenticatedFetch";
+import useAuthenticatedFetch from "../../../../global/hooks/useAuthenticatedFetch";
 import AuthContext from "../../../../global/contexts/AuthContext";
 import { Fade } from "react-awesome-reveal";
 import { StyledAccommodationList } from "./accommodation.styles";

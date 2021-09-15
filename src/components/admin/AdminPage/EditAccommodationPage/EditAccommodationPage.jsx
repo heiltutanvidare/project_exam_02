@@ -1,6 +1,6 @@
 import { Helmet } from "react-helmet-async";
 import { useParams } from "react-router-dom";
-import useFetch from "../../../../hooks/useFetch";
+import useFetch from "../../../../global/hooks/useFetch";
 import Loader from "../../../ui/Loader/Loader";
 import { API_BASE_URL } from "../../../../global/constants/api";
 import Container from "../../../layout/Container/Container";
