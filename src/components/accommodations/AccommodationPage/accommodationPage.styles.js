@@ -170,7 +170,7 @@ export const StyledAccommodationPage = styled.main`
 
 			&__priceBox--desktop {
 				grid-column: 9 / -1;
-				grid-row: 1 / -1;
+				grid-row: 1 / 4;
 				display: grid;
 				justify-items: stretch;
 				align-items: center;
