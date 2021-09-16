@@ -84,7 +84,7 @@ export const StyledForm = styled.div`
 		@media screen and (${breakpoints.md}) {
 			display: flex;
 			gap: 2rem;
-			justify-content: space-between;
+
 			align-items: center;
 
 			button {

@@ -2,7 +2,7 @@ import styled from "styled-components";
 import breakpoints from "../../../global/styles/breakpoints";
 
 export const StyledLoginPage = styled.main`
-	margin-top: 4rem;
+	margin-top: 5.5rem;
 	padding-bottom: 4rem;
 	position: relative;
 
@@ -10,6 +10,7 @@ export const StyledLoginPage = styled.main`
 		margin-top: 7rem;
 		padding-bottom: 7rem;
 	}
+
 	@media screen and (${breakpoints.lg}) {
 		margin-top: 11rem;
 		padding-bottom: 11rem;
@@ -44,7 +45,6 @@ export const StyledLoginPage = styled.main`
 		&__image-container {
 			height: 100%;
 			display: grid;
-			padding: 2rem 0 1rem 0;
 			@media screen and (${breakpoints.lg}) {
 				place-items: center;
 			}
@@ -57,16 +57,6 @@ export const StyledLoginPage = styled.main`
 			bottom: -1rem;
 			z-index: -1;
 			right: 10%;
-
-			@media screen and (${breakpoints.sm}) {
-				max-height: 15rem;
-				bottom: -5rem;
-			}
-
-			@media screen and (${breakpoints.md}) {
-				max-height: 22rem;
-				bottom: -15rem;
-			}
 		}
 
 		&__title {
