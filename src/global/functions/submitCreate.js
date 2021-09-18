@@ -3,7 +3,7 @@ import { API_BASE_URL } from "../constants/api";
 async function submitCreate(uploadData, token) {
 	const formData = new FormData();
 
-	// Handeling the main image and appending it to the formData
+	// Handling the main image and appending it to the formData
 	const mainImage = uploadData.main_image[0];
 	formData.append("files.main_image", mainImage, mainImage.name);
 
