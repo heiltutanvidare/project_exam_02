@@ -13,7 +13,7 @@ export default function Hero() {
 					<div>
 						<Heading
 							align="center"
-							content={`Experience «Vestlandet»`}
+							content={`Experience Vestlandet`}
 							heroTitle
 						/>
 					</div>
