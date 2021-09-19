@@ -19,15 +19,15 @@ export default function Bergen({ scrollTarget }) {
 			<Slide direction="right" cascade={false}>
 				<div className="right">
 					<p>
-						Bergen is the gateway to Norway, with its fjords and
-						mountains, its fairytale colour, and a close proximity
-						to some of the world's most beautiful attractions.
-						Bergen offers fantastic hiking trails through the
-						majestic nature, opportunities for more active holidays
-						like biking or kayaking, cozy cafés on every corner with
-						good scones and coffee, and of course the city centre,
-						where you can find museums like Bryggens Museum or
-						Marine-Museum.
+						Bergen, with its fjords and mountains, fantasy color,
+						and closeness to some of the world's most stunning
+						sights, is the entryway to Norway. Bergen provides
+						wonderful hiking paths through magnificent environment,
+						possibilities for more active vacations such as
+						bicycling or kayaking, nice cafés on every corner
+						serving delicious scones and coffee, and, of course, the
+						city center, which has museums such as Bryggens Museum
+						and the Marine-Museum.
 					</p>
 					<Button
 						variant="outlined"

@@ -34,13 +34,7 @@ function App() {
 												<title>Holidaze | Home</title>
 												<meta
 													name="description"
-													content="	Holidaze are here to help visitors to «Vestlandet» (Western
-														Norway) find accommodations that suit their budget and their
-														needs. If you are travelin to the area of Bergen and its
-														surroundings, you can get the chance to experience the best
-														of the area – while stayig at one of the many greate hotels,
-														apartments, cabins etc, provided by our great and passionate
-														comunity of accommodation owners."
+													content="Holidaze is here to assist tourists to «Vestlandet» (Western Norway) in finding lodging that fits their budget and needs. If you are visiting Bergen and its vicinities, you can stay at one of the many wonderful hotels, apartments, cabins, and other accommodations supplied by our wonderful and dedicated community of accommodation owners."
 												/>
 											</Helmet>
 											<Header filled={false} />

@@ -107,11 +107,11 @@ export default function AdminPage() {
 						<div className="admin__section__intro">
 							<h2>Your accommodations</h2>
 							<p>
-								The list shows the properties you currently have
-								made available for rent. The preview is
-								identical to how the travelers visiting the site
-								will see them. Click on a property to open edit
-								mode.
+								The list displays the properties you've placed
+								available for rent right now. The preview
+								accurately reflects how visitors to the site
+								will see them. Open edit mode by clicking on a
+								property.
 							</p>
 							<Button variant="outlined">
 								<Link to="/add">+ Add new accommodation</Link>
