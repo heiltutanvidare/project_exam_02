@@ -24,12 +24,15 @@ export default function Intro() {
 			</div>
 			<div className="intro__images intro__images--main">
 				<Slide direction="left" duration="450">
-					<img src={aalesund} alt="" />
+					<img src={aalesund} alt="The beautiful town of Aalesund" />
 				</Slide>
 			</div>
 			<div className="intro__images intro__images--secondary">
 				<Slide direction="right" duration="450">
-					<img src={bergen} alt="" />
+					<img
+						src={bergen}
+						alt="Bergen city, the capitol of Vestlandet"
+					/>
 				</Slide>
 			</div>
 		</StyledIntro>
