@@ -4,7 +4,7 @@ import Container from "../../layout/Container/Container";
 import close from "../../../assets/graphics/Close.svg";
 import MailIcon from "../../../assets/graphics/MailIcon";
 import PhoneIcon from "../../../assets/graphics/PhoneIcon";
-import EnquiryForm from "../../forms/EnquityForm/EnquiryForm";
+import EnquiryForm from "../../forms/EnquiryForm/EnquiryForm";
 import MenuNav from "../Navigation/MenuNav/MenuNav";
 import DecorativeDivider from "../DecorativeDivider/DecorativeDivider";
 import { StyledMenuOverlay } from "./menuOverlay.styles";
