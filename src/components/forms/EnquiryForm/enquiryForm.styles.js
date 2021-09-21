@@ -5,6 +5,7 @@ export const StyledEnquiryForm = styled.div`
 	color: var(--clr-drk-200);
 
 	form {
+		max-width: 960px;
 		@media screen and (${breakpoints.lg}) {
 			display: grid;
 			grid-template-columns: repeat(2, 1fr);

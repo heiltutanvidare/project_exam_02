@@ -28,6 +28,7 @@ const schema = yup.object().shape({
 	phone: yup.string().optional(),
 	travelers: yup
 		.number()
+		.positive("Please enter more than 0 travelers")
 		.typeError("Please enter a number")
 		.required("Please tell us how many you are"),
 	checkin: yup
@@ -43,6 +44,7 @@ const schema = yup.object().shape({
 
 export default function EnquiryForm({ asBooking, title, action }) {
 	const [search] = useContext(SearchContext);
+	const [minCheckOut, setMinCheckOut] = useState(setMinDate);
 
 	// Initiate state for the form submission
 	const [submitted, setSubmitted] = useState(false);
@@ -79,7 +81,7 @@ export default function EnquiryForm({ asBooking, title, action }) {
 	}
 
 	return (
-		<StyledEnquiryForm>
+		<StyledEnquiryForm asBooking={asBooking}>
 			<form onSubmit={handleSubmit(onSubmit)}>
 				<div className="form__field">
 					<label htmlFor="name">Name (required)</label>
@@ -145,11 +147,13 @@ export default function EnquiryForm({ asBooking, title, action }) {
 							type="date"
 							placeholder="Select a check in date"
 							id="checkin"
-							defaultValue={
-								asBooking ? search.checkIn : setMinDate()
-							}
+							defaultValue={search?.checkIn || setMinDate()}
 							{...register("checkin")}
 							className={errors.checkin ? "hasError" : ""}
+							min={setMinDate()}
+							onChange={(e) => {
+								setMinCheckOut(e.target.value);
+							}}
 						/>
 						{errors.checkin && (
 							<p className="form__error">
@@ -163,11 +167,10 @@ export default function EnquiryForm({ asBooking, title, action }) {
 							type="date"
 							placeholder="Select a check out date"
 							id="checkout"
-							defaultValue={
-								asBooking ? search.checkOut : setMinDate()
-							}
+							defaultValue={search?.checkOut || minCheckOut}
 							{...register("checkout")}
 							className={errors.checkout ? "hasError" : ""}
+							min={minCheckOut}
 						/>
 						{errors.checkout && (
 							<p className="form__error">
