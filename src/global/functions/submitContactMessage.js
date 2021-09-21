@@ -20,7 +20,6 @@ async function submitContactMessage(data) {
 	try {
 		const response = await fetch(`${API_BASE_URL}/messages`, options);
 		const json = await response.json();
-		console.log(json);
 		if (json.error) {
 			return { success: false, json: json };
 		}

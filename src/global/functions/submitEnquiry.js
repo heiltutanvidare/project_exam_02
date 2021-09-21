@@ -22,7 +22,6 @@ async function submitEnquiry(data) {
 	try {
 		const response = await fetch(`${API_BASE_URL}/enquiries`, options);
 		const json = await response.json();
-		console.log(json);
 		if (json.error) {
 			return { success: false, json: json };
 		}

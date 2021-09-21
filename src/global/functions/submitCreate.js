@@ -40,7 +40,6 @@ async function submitCreate(uploadData, token) {
 			options
 		);
 		const json = await response.json();
-		console.log(json);
 		if (json.error) {
 			return { success: false, json: json };
 		}

@@ -44,7 +44,6 @@ async function submitUpdate(updateData, token, id) {
 			options
 		);
 		const json = await response.json();
-		console.log(json);
 		if (json.error) {
 			return { success: false, json: json };
 		}
