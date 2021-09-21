@@ -10,7 +10,7 @@ import PriceBox from "../../ui/PriceBox/PriceBox";
 import BreadCrumbs from "../../ui/BreadCrumbs/BreadCrumbs";
 import AccommodationImages from "./AccommodationImages/AccommodationImages";
 import BookingContext from "../../../global/contexts/bookingContext";
-import EnquiryForm from "../../forms/EnquityForm/EnquiryForm";
+import EnquiryForm from "../../forms/EnquiryForm/EnquiryForm";
 import Message from "../../ui/Message/Message";
 import { StyledAccommodationPage } from "./accommodationPage.styles";
 
@@ -116,7 +116,7 @@ export default function AccommodationPage() {
 					<div className="pricebox-container">
 						<PriceBox data={data} search={search} />
 					</div>
-					<Container>
+					<Container maxWidth="640px">
 						<h2 className="booking__heading">Book accommodation</h2>
 						<p className="booking__title">{data.title}</p>
 						<EnquiryForm

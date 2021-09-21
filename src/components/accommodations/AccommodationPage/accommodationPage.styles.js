@@ -186,6 +186,19 @@ export const StyledAccommodationPage = styled.main`
 		background-color: var(--clr-primary-500);
 		padding-bottom: 2rem;
 		box-shadow: var(--box-shadow-lg);
+
+		animation: slideUp 0.25s ease-in-out;
+
+		@keyframes slideUp {
+			from {
+				opacity: 0;
+				transform: translateY(100%);
+			}
+			to {
+				opacity: 1;
+				transform: translateY(0);
+			}
+		}
 	}
 	.pricebox-container {
 		margin: 0 0 2rem 0;
@@ -200,5 +213,9 @@ export const StyledAccommodationPage = styled.main`
 
 	.booking__title {
 		margin-bottom: var(--space-xxsm);
+	}
+
+	@media screen and (${breakpoints.lg}) {
+		margin-top: 5.3rem;
 	}
 `;
