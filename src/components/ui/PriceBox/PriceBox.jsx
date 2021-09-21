@@ -22,7 +22,7 @@ export default function PriceBox({ data, search }) {
 	return (
 		<StyledPriceBox sticky={bookingIsVisible ? false : true}>
 			<div className="priceBox" ref={priceBoxRef}>
-				<Container>
+				<Container maxWidth="640px">
 					<div className="priceBox__dates">
 						<p className="priceBox__checkin">
 							<span>Check in </span>
