@@ -10,8 +10,10 @@ import { Fade } from "react-awesome-reveal";
 import { StyledAccommodationList } from "./accommodation.styles";
 
 export default function AccommodationList() {
+	// Getting auth if any from the context
 	const [auth] = useContext(AuthContext);
 
+	// Fetch data from the API
 	let { data, fetching, error } = useAuthenticatedFetch(
 		`${API_BASE_URL}/establishments`,
 		auth

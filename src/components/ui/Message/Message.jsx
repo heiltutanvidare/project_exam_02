@@ -1,7 +1,6 @@
 import PropTypes from "prop-types";
 import Loader from "../Loader/Loader";
 import Button from "../Button/Button";
-
 import { StyledMessage } from "./message.styles";
 
 export default function Message({ heading, message, variant, loader, button }) {

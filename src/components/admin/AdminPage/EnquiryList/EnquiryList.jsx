@@ -10,6 +10,7 @@ import { StyledMessageList } from "../MessageList/messageList.styles";
 export default function EnquiryList() {
 	const [auth] = useContext(AuthContext);
 
+	// Fetch enquiries from the API
 	const { data, fetching, error } = useAuthenticatedFetch(
 		`${API_BASE_URL}/enquiries`,
 		auth

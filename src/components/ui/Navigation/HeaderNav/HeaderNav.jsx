@@ -6,6 +6,8 @@ import { useHistory } from "react-router-dom";
 import { StyledHeaderNav } from "./headerNav.styles";
 
 export default function HeaderNav() {
+	// Get auth context to decide if user is logged in,
+	// and show or hide nav elements according to this
 	const [auth, setAuth] = useContext(AuthContext);
 
 	const history = useHistory();

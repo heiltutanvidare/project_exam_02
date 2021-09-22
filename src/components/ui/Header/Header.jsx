@@ -6,6 +6,11 @@ import HeaderNav from "../Navigation/HeaderNav/HeaderNav";
 import { StyledHeader } from "./header.styles";
 
 export default function Header({ filled = true }) {
+	// The header is filled with a translucent version of the primary color,
+	// but on the home page, the header is transparent when on top of the hero image.
+	// Using a scroll event listener, the header will get the color applied after the user scrolls down.
+	// This does not happen if the prop "filled" is set to true
+
 	const headingRef = useRef(null);
 
 	useEffect(() => {

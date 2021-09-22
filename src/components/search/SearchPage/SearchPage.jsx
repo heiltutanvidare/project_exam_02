@@ -3,11 +3,12 @@ import SearchContext from "../../../global/contexts/SearchContext";
 import SearchBox from "../SearchBox/SearchBox";
 import SearchResults from "../SearchResults/SearchResults";
 import Container from "../../layout/Container/Container";
-import { StyledSearchPage } from "./searchPage.styles";
 import Paragraph from "../../ui/Paragraph/Paragraph";
 import DecorativeDivider from "../../ui/DecorativeDivider/DecorativeDivider";
+import { StyledSearchPage } from "./searchPage.styles";
 
 export default function SearchPage() {
+	// Get search from context
 	const [search] = useContext(SearchContext);
 
 	if (search?.days) {

@@ -1,3 +1,6 @@
+// Helper function that will set the minimum date
+// allowed in the booking and search forms
+
 export default function setMinDate() {
 	let d = new Date();
 	let month = "" + (d.getMonth() + 1);

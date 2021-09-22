@@ -14,6 +14,7 @@ import { MAX_FILE_SIZE } from "../../../global/constants/formValidation";
 import DeleteAccommodation from "../../admin/AdminPage/EditAccommodationPage/DeleteAccommodation";
 import { StyledForm } from "../form.styles";
 
+// Define the validation schema for the edit form
 const schema = yup.object().shape({
 	title: yup.string().required("Please enter a title"),
 	type: yup.string().required("Please select an accommodation type"),
@@ -81,16 +82,19 @@ export default function EditAccommodationForm({ accommodation }) {
 	const [updated, setUpdated] = useState(false);
 	const [updateFailed, setUpdateFailed] = useState(false);
 	const [auth] = useContext(AuthContext);
-	const { data: types } = useFetch(`${API_BASE_URL}/types`);
-	const { data: amenities } = useFetch(`${API_BASE_URL}/amenities`);
 	const history = useHistory();
 
-	console.log(accommodation.type.id);
+	// Get the types and amenities from the API,
+	// so they can be used as options in the form
+	const { data: types } = useFetch(`${API_BASE_URL}/types`);
+	const { data: amenities } = useFetch(`${API_BASE_URL}/amenities`);
 
+	// Get the matching amenities already defined on the accommodation
 	function checkIfAmenityExists(id) {
 		return accommodation.amenities.find((amenity) => amenity.id === id);
 	}
 
+	// Initializing react hook form
 	const {
 		register,
 		handleSubmit,
@@ -221,7 +225,7 @@ export default function EditAccommodationForm({ accommodation }) {
 				</div>
 
 				<div className="form__grid">
-					{/* Kilometeres */}
+					{/* Kilometers */}
 					<div className="form__field">
 						<label htmlFor="km_from_city">
 							Kilometers (required)

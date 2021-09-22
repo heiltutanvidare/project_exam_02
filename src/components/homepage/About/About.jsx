@@ -32,7 +32,7 @@ export default function About() {
 				<Paragraph align="center">
 					Superb geographical location, picture-book fjords, wonderful
 					mountains, a thousand lakes and countless islands. We love
-					this peninsula amidst all of nature's splendour. And we're
+					this peninsula amidst all of nature's splendor. And we're
 					looking forward to welcoming you here!
 				</Paragraph>
 				<Button

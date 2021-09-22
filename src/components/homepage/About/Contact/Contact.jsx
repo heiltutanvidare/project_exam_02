@@ -74,7 +74,6 @@ export default function Contact() {
 	}
 
 	// Log any form validation errors
-
 	if (Object.entries(errors).length !== 0) {
 		console.log("Errors:", errors);
 	}

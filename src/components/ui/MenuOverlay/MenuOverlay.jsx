@@ -12,6 +12,7 @@ import { StyledMenuOverlay } from "./menuOverlay.styles";
 export default function MenuOverlay() {
 	const [menuIsOpen, setMenuIsOpen] = useContext(MenuContext);
 
+	// Close the overlay menu if user clicks outside the menu
 	function handleMenuClick(e) {
 		if (e.target.classList.contains("outer")) {
 			setMenuIsOpen(false);
@@ -36,7 +37,7 @@ export default function MenuOverlay() {
 							}
 						}}
 					>
-						Close <img src={close} alt="Close the overlay meny" />
+						Close <img src={close} alt="Close the overlay menu" />
 					</button>
 
 					<div className="mobile-only">

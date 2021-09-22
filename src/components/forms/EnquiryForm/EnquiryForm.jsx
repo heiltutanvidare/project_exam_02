@@ -44,6 +44,8 @@ const schema = yup.object().shape({
 
 export default function EnquiryForm({ asBooking, title, action }) {
 	const [search] = useContext(SearchContext);
+
+	// State variable to handle the minimum check out date, as it depends on the check in date.
 	const [minCheckOut, setMinCheckOut] = useState(setMinDate);
 
 	// Initiate state for the form submission
@@ -51,7 +53,7 @@ export default function EnquiryForm({ asBooking, title, action }) {
 	const [loading, setLoading] = useState(false);
 	const [submittingFailed, setSubmittedFailed] = useState(false);
 
-	// Set upe useForm to use the yup shcema
+	// Set upe useForm to use the yup schema
 	const {
 		register,
 		handleSubmit,

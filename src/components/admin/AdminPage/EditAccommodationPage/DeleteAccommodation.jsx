@@ -8,6 +8,9 @@ import Message from "../../../ui/Message/Message";
 
 export default function DeleteAccommodation({ id }) {
 	const [auth] = useContext(AuthContext);
+
+	// State variables to handle the process of deleting,
+	// and show feedback to the user based on the state
 	const [deleting, setDeleting] = useState(false);
 	const [deleted, setDeleted] = useState(false);
 	const [deletingFailed, setDeletingFailed] = useState(false);
@@ -27,6 +30,7 @@ export default function DeleteAccommodation({ id }) {
 				setDeleting(false);
 				setDeletingFailed(false);
 				setDeleted(true);
+				// Send user to /admuin after 2 seconds
 				setTimeout(() => {
 					history.push("/admin");
 				}, 2000);

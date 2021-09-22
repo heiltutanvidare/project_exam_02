@@ -26,6 +26,7 @@ export default function AccommodationPage() {
 	// Get the search context
 	const [search] = useContext(SearchContext);
 
+	// set state variables for if the booking form is visible
 	const [bookingIsVisible, setBookingIsVisible] = useContext(BookingContext);
 
 	if (fetching) {

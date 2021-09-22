@@ -2,7 +2,7 @@ import Heading from "../../../ui/Heading/Heading";
 import Button from "../../../ui/Button/Button";
 import scrollToElement from "../../../../global/functions/scrollToElement";
 import { Slide } from "react-awesome-reveal";
-import { StyledBergen } from "./bergens.styles";
+import { StyledBergen } from "./bergen.styles";
 
 export default function Bergen({ scrollTarget }) {
 	return (

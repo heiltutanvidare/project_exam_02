@@ -8,30 +8,54 @@ import article06 from "../../../../assets/photos/article06.jpg";
 import CarouselNav from "./CarouselNav/CarouselNav";
 import { StyledCarousel, StyledCarouselContainer } from "./carousel.styles";
 
+const articles = [
+	{
+		id: 1,
+		img: article01,
+		heading: "See the seven mountains",
+	},
+	{
+		id: 2,
+		img: article02,
+		heading: "Oceanic delicacies at Bergen Fish Market",
+	},
+	{
+		id: 3,
+		img: article03,
+		heading: "An amazing view",
+	},
+	{
+		id: 4,
+		img: article04,
+		heading: "Seaside tranquility",
+	},
+	{
+		id: 5,
+		img: article05,
+		heading: "Group discounts to save you time and money",
+	},
+	{
+		id: 6,
+		img: article06,
+		heading: "How to get to around",
+	},
+];
+
 export default function Carousel() {
 	return (
 		<StyledCarouselContainer>
 			<CarouselNav />
 
 			<StyledCarousel>
-				<CarouselItem
-					image={article01}
-					heading="See the seven mountains"
-				/>
-				<CarouselItem
-					image={article02}
-					heading="Oceanic delicacies at Bergen Fish Market"
-				/>
-				<CarouselItem image={article03} heading="An amazing view" />
-				<CarouselItem image={article04} heading="Seaside tranquility" />
-				<CarouselItem
-					image={article05}
-					heading="Group discounts to save you time and money"
-				/>
-				<CarouselItem
-					image={article06}
-					heading="How to get to around"
-				/>
+				{articles.map((article) => {
+					return (
+						<CarouselItem
+							key={article.id}
+							image={article.img}
+							heading={article.heading}
+						/>
+					);
+				})}
 			</StyledCarousel>
 		</StyledCarouselContainer>
 	);

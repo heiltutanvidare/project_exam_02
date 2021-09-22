@@ -13,6 +13,7 @@ import FullPageMessage from "../../ui/Message/FullPageMessage";
 import { MAX_FILE_SIZE } from "../../../global/constants/formValidation";
 import { StyledForm } from "../form.styles";
 
+// Define the validation schema for the form
 const schema = yup.object().shape({
 	title: yup.string().required("Please enter a title"),
 	type: yup
@@ -80,11 +81,15 @@ export default function AddAccommodationForm() {
 	const [created, setCreated] = useState(false);
 	const [creatingFailed, setCreatingFailed] = useState(false);
 	const [auth] = useContext(AuthContext);
+
+	// Get the types and amenities from the API,
+	// so they can be used as options in the form
 	const { data: types } = useFetch(`${API_BASE_URL}/types`);
 	const { data: amenities } = useFetch(`${API_BASE_URL}/amenities`);
 
 	const history = useHistory();
 
+	// Initialize the react hook form
 	const {
 		register,
 		handleSubmit,

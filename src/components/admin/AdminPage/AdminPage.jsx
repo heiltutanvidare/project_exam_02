@@ -15,9 +15,11 @@ import Button from "../../ui/Button/Button";
 import { StyledAdminPage } from "./adminPage.styles";
 
 export default function AdminPage() {
-	const [activeView, setActiveView] = useState("accommodations");
 	const [auth] = useContext(AuthContext);
 	const history = useHistory();
+
+	// state variable to handle what list the user is viewing
+	const [activeView, setActiveView] = useState("accommodations");
 
 	// Redirect user away from admin page,
 	// if not logged in

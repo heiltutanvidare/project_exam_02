@@ -11,7 +11,7 @@ export default function Intro() {
 				<Heading
 					align="left"
 					pretitle="We are Holidaze"
-					content="Rooms for rent on the Norewgian coast – safe and affordable"
+					content="Rooms for rent on the Norwegian coast – safe and affordable"
 				/>
 				<p>
 					Holidaze is here to assist tourists to «Vestlandet» (Western

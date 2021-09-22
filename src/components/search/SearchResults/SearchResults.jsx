@@ -2,6 +2,7 @@ import { useContext } from "react";
 import SearchContext from "../../../global/contexts/SearchContext";
 import Accommodation from "../../accommodations/Accommodation/Accommodation";
 import Container from "../../layout/Container/Container";
+import Message from "../../ui/Message/Message";
 import { API_BASE_URL } from "../../../global/constants/api";
 import useFetch from "../../../global/hooks/useFetch";
 import Loader from "../../ui/Loader/Loader";
@@ -9,13 +10,18 @@ import { Fade } from "react-awesome-reveal";
 import { StyledSearchResults } from "./searchResults.styles";
 
 export default function SearchResults() {
+	// Get accommodations from the API
 	const { data, fetching, error } = useFetch(
 		`${API_BASE_URL}/establishments`
 	);
 
+	// Get the search from context, so that number of days
+	// will be calculated into the total price
 	const [search] = useContext(SearchContext);
 
 	let numberOfDays = 1;
+
+	// Set number of days to what is in the search if the search exists
 	if (search && search.days > 0) {
 		numberOfDays = search.days;
 	}
@@ -23,6 +29,10 @@ export default function SearchResults() {
 	let topResult = [];
 	let restResults = data;
 
+	// Set the top result to be what the user searched for
+	// if he or she wrote in the search field,
+	// else no top result will show,
+	// but all accommodations will still show
 	if (search) {
 		topResult = data.filter(
 			({ title }) => title.toLowerCase() === search.title.toLowerCase()
@@ -42,9 +52,11 @@ export default function SearchResults() {
 
 	if (error) {
 		return (
-			<Container>
-				<p>An error occured 😔</p>
-			</Container>
+			<Message
+				variant="danger"
+				heading="Something went wrong"
+				message="We are sorry but we could not load the accommodations at this time. Please try again later."
+			/>
 		);
 	}
 

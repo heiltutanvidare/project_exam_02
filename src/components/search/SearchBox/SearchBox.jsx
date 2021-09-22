@@ -30,11 +30,12 @@ export default function SearchBox() {
 	}
 
 	// Handle the autocomplete / typeahead
+	// Will display when search input is being used
 	const [display, setDisplay] = useState(false);
 	const [input, setInput] = useState("");
 	const inputRef = useRef(null);
-	// const [options, setOptions] = useState([]);
 
+	// When user selects a result
 	const setSearchValue = (title) => {
 		setInput(title);
 		setDisplay(false);
@@ -48,6 +49,7 @@ export default function SearchBox() {
 		};
 	}, []);
 
+	// Handle if user clicks outside the result list
 	const handleClickOutside = (event) => {
 		if (inputRef.current && !inputRef.current.contains(event.target)) {
 			setDisplay(false);

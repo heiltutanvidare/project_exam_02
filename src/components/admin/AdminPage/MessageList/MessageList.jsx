@@ -9,6 +9,8 @@ import { StyledMessageList } from "./messageList.styles";
 
 export default function MessageList() {
 	const [auth] = useContext(AuthContext);
+
+	// Fetch messages from the API
 	const { data, fetching, error } = useAuthenticatedFetch(
 		`${API_BASE_URL}/messages`,
 		auth

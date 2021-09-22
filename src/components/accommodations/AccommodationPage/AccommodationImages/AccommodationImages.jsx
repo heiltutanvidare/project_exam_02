@@ -5,10 +5,13 @@ import ChevronRight from "../../../../assets/graphics/ChevronRight";
 import { StyledAccommodationImages } from "./accommodationImages.styles";
 
 function AccommodationImages({ data: accommodation, asCarousel }) {
+	// Array of the main and additional images combined
 	let images = [accommodation.main_image, ...accommodation.images];
 
+	// State variable that will control wich image in the array is showing
 	const [activeIndex, setActiveIndex] = useState(0);
 
+	// Move backwards in the image array
 	function viewPrevImage() {
 		if (activeIndex === 0) {
 			setActiveIndex(images.length - 1);
@@ -17,6 +20,7 @@ function AccommodationImages({ data: accommodation, asCarousel }) {
 		}
 	}
 
+	// Move forwards in the image array
 	function viewNextImage() {
 		if (activeIndex === images.length - 1) {
 			setActiveIndex(0);

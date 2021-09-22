@@ -6,6 +6,7 @@ import LoginForm from "../../forms/LoginForm/LoginForm";
 import { StyledLoginPage } from "./loginPage.styles";
 
 export default function LoginPage() {
+	// State variable to handle the version of avatar that is showing
 	const [avatar, setAvatar] = useState(loginManHello);
 
 	return (
